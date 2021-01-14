@@ -1,0 +1,118 @@
+# depslib dependency file v1.0
+1610650991 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\main.cpp
+	<iostream>
+	"Helper.h"
+	<vector>
+	<Lexer.h>
+	<regex>
+	<queue>
+	"Parser.h"
+	"Token.h"
+	"Program.h"
+	<fstream>
+	<sstream>
+
+1610651894 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\return.cpp
+	"Return.h"
+	"Expression.h"
+	"Helper.h"
+
+1610650976 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\return.h
+	"Expression.h"
+
+1610651789 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\const.h
+	<iostream>
+	<queue>
+	<Token.h>
+	<sstream>
+	<fstream>
+
+1610651789 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\const.cpp
+	"Const.h"
+	<iostream>
+	<Helper.h>
+	<sstream>
+	<fstream>
+
+1610651639 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\fun.cpp
+	"Fun.h"
+	<string>
+	"Helper.h"
+
+1610650976 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\fun.h
+	<string>
+	<Return.h>
+
+1610396055 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\prog.cpp
+	"Prog.h"
+
+1610396079 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\prog.h
+	<Fun.h>
+
+1610557375 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\lexer.cpp
+	"Lexer.h"
+	"Token.h"
+	"Helper.h"
+	<regex>
+	<iostream>
+
+1610492273 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\lexer.h
+	<vector>
+	<Token.h>
+
+1610553566 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\token.h
+	<string>
+	<regex>
+
+1610553553 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\token.cpp
+	"Token.h"
+
+1610395198 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\function.cpp
+
+1610650976 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\helper.cpp
+	<string>
+	"Helper.h"
+	<vector>
+	<fstream>
+	<sstream>
+	<iostream>
+	<exception>
+	<memory>
+
+1610650838 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\helper.h
+	<string>
+	<vector>
+
+1610651018 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\program.cpp
+	"Program.h"
+	"Fun.h"
+	"Helper.h"
+
+1610650976 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\program.h
+	"Fun.h"
+
+1610645108 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\parser.cpp
+	"Program.h"
+	"Token.h"
+	<queue>
+	"Helper.h"
+	<iostream>
+	"Program.h"
+	"Fun.h"
+	"Return.h"
+	"Expression.h"
+	"Const.h"
+
+1610561219 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\parser.h
+	<vector>
+	<Token.h>
+	"Program.h"
+
+1610651789 c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\include\expression.h
+	"Const.h"
+
+1610651789 source:c:\users\dani\onedrive - cinvestav\maestría\vf & st\cpp\mcc\src\expression.cpp
+	"Expression.h"
+	"Const.h"
+	"Helper.h"
+
