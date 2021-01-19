@@ -116,3 +116,132 @@
 	"Const.h"
 	"Helper.h"
 
+1611002753 source:d:\maestria\softs\model_checking_c\main.cpp
+	<iostream>
+	"Helper.h"
+	<vector>
+	<Lexer.h>
+	<regex>
+	<queue>
+	"Token.h"
+	"Program.h"
+	<fstream>
+	<sstream>
+	"Fun.h"
+
+1610738033 d:\maestria\softs\model_checking_c\include\helper.h
+	<string>
+	<vector>
+	<iostream>
+	<queue>
+	<Token.h>
+	<sstream>
+	<fstream>
+
+1610492273 d:\maestria\softs\model_checking_c\include\lexer.h
+	<vector>
+	<Token.h>
+
+1610553566 d:\maestria\softs\model_checking_c\include\token.h
+	<string>
+	<regex>
+
+1610561219 d:\maestria\softs\model_checking_c\include\parser.h
+	<vector>
+	<Token.h>
+	"Program.h"
+
+1610753706 d:\maestria\softs\model_checking_c\include\program.h
+	"Helper.h"
+	"Fun.h"
+
+1610992154 d:\maestria\softs\model_checking_c\include\fun.h
+	<string>
+	<Helper.h>
+	"Return.h"
+
+1610753959 d:\maestria\softs\model_checking_c\include\return.h
+	"Helper.h"
+	"Expression.h"
+
+1611002702 d:\maestria\softs\model_checking_c\include\expression.h
+	"Const.h"
+
+1610651789 d:\maestria\softs\model_checking_c\include\const.h
+	<iostream>
+	<queue>
+	<Token.h>
+	<sstream>
+	<fstream>
+
+1610733221 source:d:\maestria\softs\model_checking_c\src\const.cpp
+	"Const.h"
+	<iostream>
+	<Helper.h>
+	<sstream>
+	<fstream>
+
+1611001313 source:d:\maestria\softs\model_checking_c\src\expression.cpp
+	"Expression.h"
+	"Const.h"
+	"Helper.h"
+	"UnaryOperator.h"
+
+1610754011 source:d:\maestria\softs\model_checking_c\src\fun.cpp
+	"Fun.h"
+	<string>
+	"Helper.h"
+	"Return.h"
+
+1610650976 source:d:\maestria\softs\model_checking_c\src\helper.cpp
+	<string>
+	"Helper.h"
+	<vector>
+	<fstream>
+	<sstream>
+	<iostream>
+	<exception>
+	<memory>
+
+1610672306 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
+	"Lexer.h"
+	"Token.h"
+	"Helper.h"
+	<regex>
+	<iostream>
+
+1610992154 source:d:\maestria\softs\model_checking_c\src\program.cpp
+	"Program.h"
+	"Fun.h"
+	"Helper.h"
+	"Return.h"
+	"Expression.h"
+	"UnaryOperator.h"
+	"Program.h"
+
+1610753959 source:d:\maestria\softs\model_checking_c\src\return.cpp
+	"Return.h"
+	"Expression.h"
+	"Helper.h"
+	"UnaryOperator.h"
+
+1610553553 source:d:\maestria\softs\model_checking_c\src\token.cpp
+	"Token.h"
+
+1611003806 d:\maestria\softs\model_checking_c\include\unaryoperator.h
+	"Helper.h"
+	"Expression.h"
+
+1611003806 source:d:\maestria\softs\model_checking_c\src\unaryoperator.cpp
+	"UnaryOperator.h"
+	"Helper.h"
+	"Expression.h"
+
+1610395198 source:d:\maestria\softs\model_checking_c\src\function.cpp
+
+1610396055 source:d:\maestria\softs\model_checking_c\src\prog.cpp
+	"Prog.h"
+
+1610396079 d:\maestria\softs\model_checking_c\include\prog.h
+	<Fun.h>
+

@@ -1,10 +1,7 @@
 #include "Return.h"
 #include "Expression.h"
 #include "Helper.h"
-Return::Return(Expression &_expression)
-{
-    expression = _expression;
-}
+#include "UnaryOperator.h"
 Return::Return()
 {
 }
@@ -24,9 +21,7 @@ void Return::parse(queue<Token>& tokens) {
     Expression _expression;
 
     _expression.parse(tokens);
-
     expression = _expression;
-
     token = tokens.front();
 
     if(token.type != "SEMICOLON")

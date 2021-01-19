@@ -2,12 +2,23 @@
 #define EXPRESSION_H
 #include "Const.h"
 
+class UnaryOperator;
+
+enum ExpressionType {
+    CONSTANT,
+    UNARY_OPERATOR
+};
+
 class Expression
 {
     public:
-        Const constant;
+        enum ExpressionType type;
+        union {
+            Const* constant;
+            UnaryOperator* unaryOperator;
+        };
+
         Expression();
-        Expression(const Const &_constant);
         void parse(queue<Token>& tokens);
         string translate();
 };

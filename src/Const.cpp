@@ -3,7 +3,6 @@
 #include <Helper.h>
 #include <sstream>
 #include <fstream>
-using std::string;
 using std::cout;
 using std::endl;
 using std::ofstream;

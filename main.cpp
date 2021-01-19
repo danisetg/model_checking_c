@@ -4,17 +4,17 @@
 #include <Lexer.h>
 #include <regex>
 #include <queue>
-#include "Parser.h"
 #include "Token.h"
 #include "Program.h"
 #include <fstream>
 #include <sstream>
+#include "Fun.h"
 using namespace std;
 
 
 int main()
 {
-    string program = fileToString("C:\\c_tests\\stage_1\\valid\\return_2.c");
+    string program = fileToString("C:\\c_tests\\stage_2\\valid\\nested_ops_2.c");
 
     queue<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
@@ -29,7 +29,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_1\\valid\\return_2.pml");
+    outfile.open("C:\\c_tests\\stage_2\\valid\\nested_ops_2.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

@@ -1,14 +1,8 @@
 #include "Fun.h"
 #include <string>
 #include "Helper.h"
-using std::string;
-using std::cout;
-using std::endl;
-Fun::Fun(string _name, Return &_statement)
-{
-    name = _name;
-    statement = _statement;
-}
+#include "Return.h"
+
 Fun::Fun()
 {
 }
