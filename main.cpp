@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    string program = fileToString("C:\\c_tests\\stage_2\\valid\\nested_ops_2.c");
+    string program = fileToString("C:\\c_tests\\stage_3\\invalid\\no_semicolon.c");
 
     queue<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
@@ -29,7 +29,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_2\\valid\\nested_ops_2.pml");
+    outfile.open("C:\\c_tests\\stage_3\\valid\\no_semicolon.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

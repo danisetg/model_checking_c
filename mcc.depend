@@ -116,7 +116,7 @@
 	"Const.h"
 	"Helper.h"
 
-1611002753 source:d:\maestria\softs\model_checking_c\main.cpp
+1611082273 source:d:\maestria\softs\model_checking_c\main.cpp
 	<iostream>
 	"Helper.h"
 	<vector>
@@ -164,7 +164,7 @@
 	"Helper.h"
 	"Expression.h"
 
-1611002702 d:\maestria\softs\model_checking_c\include\expression.h
+1611077813 d:\maestria\softs\model_checking_c\include\expression.h
 	"Const.h"
 
 1610651789 d:\maestria\softs\model_checking_c\include\const.h
@@ -181,11 +181,12 @@
 	<sstream>
 	<fstream>
 
-1611001313 source:d:\maestria\softs\model_checking_c\src\expression.cpp
+1611080618 source:d:\maestria\softs\model_checking_c\src\expression.cpp
 	"Expression.h"
 	"Const.h"
 	"Helper.h"
 	"UnaryOperator.h"
+	"BinaryOperator.h"
 
 1610754011 source:d:\maestria\softs\model_checking_c\src\fun.cpp
 	"Fun.h"
@@ -203,12 +204,11 @@
 	<exception>
 	<memory>
 
-1610672306 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
+1611069389 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
 	"Lexer.h"
 	"Token.h"
 	"Helper.h"
 	<regex>
-	<iostream>
 
 1610992154 source:d:\maestria\softs\model_checking_c\src\program.cpp
 	"Program.h"
@@ -232,7 +232,7 @@
 	"Helper.h"
 	"Expression.h"
 
-1611003806 source:d:\maestria\softs\model_checking_c\src\unaryoperator.cpp
+1611098171 source:d:\maestria\softs\model_checking_c\src\unaryoperator.cpp
 	"UnaryOperator.h"
 	"Helper.h"
 	"Expression.h"
@@ -244,4 +244,11 @@
 
 1610396079 d:\maestria\softs\model_checking_c\include\prog.h
 	<Fun.h>
+
+1611079579 source:d:\maestria\softs\model_checking_c\src\binaryoperator.cpp
+	"BinaryOperator.h"
+	"Helper.h"
+
+1611074634 d:\maestria\softs\model_checking_c\include\binaryoperator.h
+	"Expression.h"
 

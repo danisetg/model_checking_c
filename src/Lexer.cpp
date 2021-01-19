@@ -2,18 +2,19 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-#include <iostream>
-int tokensLength = 12;
-using std::cout;
-using std::endl;
+int tokensLength = 15;
+
 //predefined list of tokens to to find program code
-Token tokens[12] = {
+Token tokens[15] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
             Token("CLOSE_PARENTHESIS", regex("\\)"), ""),
             Token("SEMICOLON", regex(";"), ""),
             Token("NEGATION", regex("-"), ""),
+            Token("ADDITION", regex("\\+"), ""),
+            Token("MULTIPLICATION", regex("\\*"), ""),
+            Token("DIVISION", regex("/"), ""),
             Token("BITWISE_COMPLEMENT", regex("~"), ""),
             Token("LOGICAL_NEGATION", regex("!"), ""),
             Token("INT_KEYWORD", regex("int"), ""),
@@ -23,7 +24,7 @@ Token tokens[12] = {
             };
 
 //predefined program special characters that can be found joint to words
-string predefinedCharacters = "{}();-~!";
+string predefinedCharacters = "{}();-~!+*/";
 
 //function for getting a vector with all words and special characters found in program code
 vector<string> getProgramWords(string program) {

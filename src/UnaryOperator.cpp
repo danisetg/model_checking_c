@@ -20,8 +20,8 @@ void UnaryOperator::parse (queue<Token>& tokens) {
     tokens.pop();
 
     Expression _expression;
-    _expression.parse(tokens);
-    expression = _expression;
+
+    expression = _expression.parseFactor(tokens);
 }
 
 string UnaryOperator::translate() {
