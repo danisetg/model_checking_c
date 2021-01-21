@@ -10,6 +10,5 @@ BinaryOperator::BinaryOperator(string _op, Expression& _exp1, Expression& _exp2)
     exp2 = _exp2;
 }
 string BinaryOperator::translate() {
-    cout<<op<<endl;
-    return exp1.translate() + op + exp2.translate();
+    return exp1.translate() + " " + op + " " + exp2.translate();
 }

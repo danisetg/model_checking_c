@@ -26,6 +26,12 @@ class Expression
         Expression parseExpression(queue<Token>& tokens);
         Expression parseTerm(queue<Token>& tokens);
         Expression parseFactor(queue<Token>& tokens);
+        Expression parseAddition(queue<Token>& tokens);
+        Expression parseRelationalEqualities(queue<Token>& tokens);
+        Expression parseRelationalInequalities(queue<Token>& tokens);
+        Expression parseAnd(queue<Token>& tokens);
+        Expression parseOr(queue<Token>& tokens);
+
         string translate();
 };
 

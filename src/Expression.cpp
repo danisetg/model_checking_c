@@ -15,7 +15,7 @@ Expression Expression::parseFactor (queue<Token>& tokens) {
     cout<<token.word<<endl;
     if(token.type == "OPEN_PARENTHESIS") {
         tokens.pop();
-        exp = parseExpression(tokens);
+        exp = parseOr(tokens);
         token = tokens.front();
         if(token.type != "CLOSE_PARENTHESIS")
             mad("Incorrect expression format, missing ')'");
@@ -60,7 +60,7 @@ Expression Expression::parseTerm(queue<Token>& tokens) {
     return factor;
 }
 
-Expression Expression::parseExpression(queue<Token>& tokens) {
+Expression Expression::parseAddition(queue<Token>& tokens) {
 
     if(tokens.empty())
         mad("Expression is empty");
@@ -82,8 +82,95 @@ Expression Expression::parseExpression(queue<Token>& tokens) {
     return term;
 }
 
+Expression Expression::parseRelationalInequalities(queue<Token>& tokens) {
+
+    if(tokens.empty())
+        mad("Expression is empty");
+
+    Expression add = parseAddition(tokens);
+    Token token = tokens.front();
+
+    while(token.type == "LESS_OR_EQUAL_TO" || token.type == "LESS_THAN" || token.type == "GREATER_OR_EQUAL_TO" || token.type == "GREATER_THAN") {
+        cout<<token.word<<endl;
+        tokens.pop();
+        Expression add1 = add;
+        Expression add2 = parseAddition(tokens);
+        add.type = BINARY_OPERATOR;
+        BinaryOperator _binaryOperator = BinaryOperator(token.word, add1, add2);
+        add.binaryOperator = new BinaryOperator();
+        *add.binaryOperator = _binaryOperator;
+        token = tokens.front();
+    }
+    return add;
+}
+
+Expression Expression::parseRelationalEqualities(queue<Token>& tokens) {
+
+    if(tokens.empty())
+        mad("Expression is empty");
+
+    Expression rel = parseRelationalInequalities(tokens);
+    Token token = tokens.front();
+
+    while(token.type == "EQUAL_TO" || token.type == "NOT_EQUAL_TO") {
+        cout<<token.word<<endl;
+        tokens.pop();
+        Expression rel1 = rel;
+        Expression rel2 = parseRelationalInequalities(tokens);
+        rel.type = BINARY_OPERATOR;
+        BinaryOperator _binaryOperator = BinaryOperator(token.word, rel1, rel2);
+        rel.binaryOperator = new BinaryOperator();
+        *rel.binaryOperator = _binaryOperator;
+        token = tokens.front();
+    }
+    return rel;
+}
+
+Expression Expression::parseAnd(queue<Token>& tokens) {
+
+    if(tokens.empty())
+        mad("Expression is empty");
+
+    Expression rel = parseRelationalEqualities(tokens);
+    Token token = tokens.front();
+
+    while(token.type == "LOGICAL_AND") {
+        cout<<token.word<<endl;
+        tokens.pop();
+        Expression rel1 = rel;
+        Expression rel2 = parseRelationalEqualities(tokens);
+        rel.type = BINARY_OPERATOR;
+        BinaryOperator _binaryOperator = BinaryOperator(token.word, rel1, rel2);
+        rel.binaryOperator = new BinaryOperator();
+        *rel.binaryOperator = _binaryOperator;
+        token = tokens.front();
+    }
+    return rel;
+}
+
+Expression Expression::parseOr(queue<Token>& tokens) {
+
+    if(tokens.empty())
+        mad("Expression is empty");
+
+    Expression logical = parseAnd(tokens);
+    Token token = tokens.front();
+    while(token.type == "LOGICAL_OR") {
+        cout<<token.word<<endl;
+        tokens.pop();
+        Expression logical1 = logical;
+        Expression logical2 = parseAnd(tokens);
+        logical.type = BINARY_OPERATOR;
+        BinaryOperator _binaryOperator = BinaryOperator(token.word, logical1, logical2);
+        logical.binaryOperator = new BinaryOperator();
+        *logical.binaryOperator = _binaryOperator;
+        token = tokens.front();
+    }
+    return logical;
+}
+
 void Expression::parse(queue<Token>& tokens) {
-    *this = parseExpression(tokens);
+    *this = parseOr(tokens);
 }
 
 string Expression::translate() {
