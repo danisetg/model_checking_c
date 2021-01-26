@@ -2,13 +2,13 @@
 #define FUN_H
 #include <string>
 #include <Helper.h>
-#include "Return.h"
+#include "Statement.h"
 
 class Fun
 {
     public:
         string name;
-        Return statement;
+        vector<Statement> statements;
         Fun();
         void parse(queue<Token>& tokens);
         string translate(int& tabs);

@@ -2,7 +2,7 @@
 #include <string>
 #include "Helper.h"
 #include "Return.h"
-
+#include "Declaration.h"
 Fun::Fun()
 {
 }
@@ -48,11 +48,22 @@ void Fun::parse(queue<Token>& tokens) {
 
     tokens.pop();
 
-    Return _statement;
-    _statement.parse(tokens);
+    while(!tokens.empty() && tokens.front().type != "CLOSE_BRACE") {
+        Statement statement;
+        statement.parse(tokens);
+        if(statement.type == DECLARATION) {
+            statements.insert(statements.begin(), statement);
+            if(statement.decl->expression.has_value()) {
+                Statement _statement;
+                _statement.type = EXPRESSION;
+                _statement.expression = new Expression();
+                *_statement.expression = statement.decl->expression.value();
+                statements.push_back(_statement);
+            }
 
-
-    statement = _statement;
+        } else
+            statements.push_back(statement);
+    }
 
     if(tokens.empty())
         mad("Expected '}' after function declaration");
@@ -65,10 +76,14 @@ void Fun::parse(queue<Token>& tokens) {
     tokens.pop();
 }
 
+
+
 string Fun::translate(int& tabs) {
     string code = printTabs(tabs) + "proctype " + name + "(" + "chan in_" + name + "){\n";
     tabs++;
-    code += statement.translate(name, tabs) + '\n';
+    for(int i = 0; i < statements.size(); i++) {
+        code += statements[i].translate(name, tabs) + '\n';
+    }
     code += printTabs(tabs) + "end: printf(\"End of " + name + "\");\n";
     tabs--;
     code += printTabs(tabs) + "}";

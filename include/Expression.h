@@ -4,11 +4,15 @@
 
 class UnaryOperator;
 class BinaryOperator;
+class Assignment;
+class Variable;
 
 enum ExpressionType {
     CONSTANT,
     UNARY_OPERATOR,
-    BINARY_OPERATOR
+    BINARY_OPERATOR,
+    ASSIGNMENT,
+    VARIABLE
 };
 
 class Expression
@@ -19,6 +23,8 @@ class Expression
             Const* constant;
             UnaryOperator* unaryOperator;
             BinaryOperator* binaryOperator;
+            Assignment* assignment;
+            Variable* variable;
         };
 
         Expression();
@@ -31,8 +37,9 @@ class Expression
         Expression parseRelationalInequalities(queue<Token>& tokens);
         Expression parseAnd(queue<Token>& tokens);
         Expression parseOr(queue<Token>& tokens);
+        Expression parseAssignment(queue<Token>& tokens);
 
-        string translate();
+        string translate(int& tabs);
 };
 
 #endif // EXPRESSION_H

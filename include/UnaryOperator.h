@@ -10,7 +10,7 @@ class UnaryOperator
         string op;
         UnaryOperator();
         void parse(queue<Token>& tokens);
-        string translate();
+        string translate(int& tabs);
 };
 
 #endif // UNARYOPERATOR_H

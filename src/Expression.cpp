@@ -3,7 +3,8 @@
 #include "Helper.h"
 #include "UnaryOperator.h"
 #include "BinaryOperator.h"
-
+#include "Variable.h"
+#include "Assignment.h"
 Expression::Expression()
 {
 }
@@ -15,7 +16,7 @@ Expression Expression::parseFactor (queue<Token>& tokens) {
     cout<<token.word<<endl;
     if(token.type == "OPEN_PARENTHESIS") {
         tokens.pop();
-        exp = parseOr(tokens);
+        exp = parseAssignment(tokens);
         token = tokens.front();
         if(token.type != "CLOSE_PARENTHESIS")
             mad("Incorrect expression format, missing ')'");
@@ -32,9 +33,14 @@ Expression Expression::parseFactor (queue<Token>& tokens) {
         exp.type = UNARY_OPERATOR;
         exp.unaryOperator = new UnaryOperator();
         *exp.unaryOperator = _unaryOperator;
-        type = UNARY_OPERATOR;
-    } else {
-        mad("Missing return value");
+    } else if(token.type == "IDENTIFIER") {
+        Variable _var;
+        _var.parse(tokens);
+        exp.type = VARIABLE;
+        exp.variable = new Variable();
+        *exp.variable = _var;
+    }else {
+        mad("Incorrect expression structure");
     }
     return exp;
 }
@@ -169,20 +175,47 @@ Expression Expression::parseOr(queue<Token>& tokens) {
     return logical;
 }
 
-void Expression::parse(queue<Token>& tokens) {
-    *this = parseOr(tokens);
+Expression Expression::parseAssignment(queue<Token>& tokens) {
+    if(tokens.empty())
+        mad("Expression is empty");
+
+    Expression logical = parseOr(tokens);
+    Token token = tokens.front();
+    if(token.type == "ASSIGNMENT") {
+        cout<<token.word<<endl;
+        if(logical.type != VARIABLE)
+            mad("Left part of assignment must be a variable");
+        tokens.pop();
+        Variable _variable = *logical.variable;
+        Expression logical2 = parseAssignment(tokens);
+        logical.type = ASSIGNMENT;
+        Assignment _assignment = Assignment(_variable, logical2);
+        logical.assignment = new Assignment();
+        *logical.assignment = _assignment;
+    }
+    return logical;
 }
 
-string Expression::translate() {
-    cout<<type<<endl;
+void Expression::parse(queue<Token>& tokens) {
+    *this = parseAssignment(tokens);
+}
+
+string Expression::translate(int& tabs) {
     switch(type) {
         case CONSTANT:
             return constant->translate();
             break;
         case UNARY_OPERATOR:
-            return "(" + unaryOperator->translate() + ")";
+            return "(" + unaryOperator->translate(tabs) + ")";
             break;
         case BINARY_OPERATOR:
-            return "(" + binaryOperator->translate() + ")";
+            return "(" + binaryOperator->translate(tabs) + ")";
+            break;
+        case ASSIGNMENT:
+            return assignment->translate(tabs);
+            break;
+        case VARIABLE:
+            return variable->translate();
+            break;
     }
 }

@@ -11,7 +11,7 @@ class BinaryOperator
         BinaryOperator();
         BinaryOperator(string _op, Expression& _exp1, Expression& _exp2);
         void parse(queue<Token>& tokens);
-        string translate();
+        string translate(int& tabs);
 };
 
 #endif // BINARYOPERATOR_H

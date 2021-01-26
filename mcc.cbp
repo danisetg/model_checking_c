@@ -35,31 +35,37 @@
 			<Add option="-fexceptions" />
 			<Add directory="include" />
 		</Compiler>
+		<Unit filename="include/Assignment.h" />
 		<Unit filename="include/BinaryOperator.h" />
 		<Unit filename="include/Const.h" />
+		<Unit filename="include/Declaration.h" />
 		<Unit filename="include/Expression.h" />
 		<Unit filename="include/Fun.h" />
-		<Unit filename="include/Function.h" />
 		<Unit filename="include/Helper.h" />
 		<Unit filename="include/Lexer.h" />
 		<Unit filename="include/Prog.h" />
 		<Unit filename="include/Program.h" />
 		<Unit filename="include/Return.h" />
+		<Unit filename="include/Statement.h" />
 		<Unit filename="include/Token.h" />
 		<Unit filename="include/UnaryOperator.h" />
+		<Unit filename="include/Variable.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Assignment.cpp" />
 		<Unit filename="src/BinaryOperator.cpp" />
 		<Unit filename="src/Const.cpp" />
+		<Unit filename="src/Declaration.cpp" />
 		<Unit filename="src/Expression.cpp" />
 		<Unit filename="src/Fun.cpp" />
-		<Unit filename="src/Function.cpp" />
 		<Unit filename="src/Helper.cpp" />
 		<Unit filename="src/Lexer.cpp" />
 		<Unit filename="src/Prog.cpp" />
 		<Unit filename="src/Program.cpp" />
 		<Unit filename="src/Return.cpp" />
+		<Unit filename="src/Statement.cpp" />
 		<Unit filename="src/Token.cpp" />
 		<Unit filename="src/UnaryOperator.cpp" />
+		<Unit filename="src/Variable.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
