@@ -1,6 +1,7 @@
 #include "Statement.h"
 #include "Return.h"
 #include "Declaration.h"
+#include "If.h"
 Statement::Statement()
 {
     //ctor
@@ -29,16 +30,23 @@ void Statement::parse(queue<Token>& tokens) {
         expression = new Expression;
         *expression = _exp;
         type = EXPRESSION;
+    } else if(token.type == "IF_KEYWORD") {
+        If _if;
+        _if.parse(tokens);
+        ifStatement = new If();
+        *ifStatement = _if;
+        type = IF;
     } else {
         mad("Wrong statement structure");
     }
 
     token = tokens.front();
 
-    if(token.type != "SEMICOLON")
+    if(token.type != "SEMICOLON" && type != IF)
         mad("Missing ';'");
 
-    tokens.pop();
+    if(type != IF)
+        tokens.pop();
 }
 
 string Statement::translate(string fun_name, int& tabs) {
@@ -50,5 +58,7 @@ string Statement::translate(string fun_name, int& tabs) {
             return decl->translate(tabs);
         case EXPRESSION:
             return printTabs(tabs) + expression->translate(tabs) + ";";
+        case IF:
+            return ifStatement->translate(fun_name, tabs);
     }
 }

@@ -5,11 +5,13 @@
 class Expression;
 class Return;
 class Declaration;
+class If;
 
 enum StatementType {
     EXPRESSION,
     RETURN,
-    DECLARATION
+    DECLARATION,
+    IF
 };
 
 class Statement
@@ -20,6 +22,7 @@ class Statement
             Expression* expression;
             Return* ret;
             Declaration* decl;
+            If* ifStatement;
         };
         Statement();
         void parse(queue<Token>& tokens);

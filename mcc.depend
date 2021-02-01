@@ -116,7 +116,7 @@
 	"Const.h"
 	"Helper.h"
 
-1611340334 source:d:\maestria\softs\model_checking_c\main.cpp
+1611939343 source:d:\maestria\softs\model_checking_c\main.cpp
 	<iostream>
 	"Helper.h"
 	<vector>
@@ -182,7 +182,7 @@
 	<sstream>
 	<fstream>
 
-1611340186 source:d:\maestria\softs\model_checking_c\src\expression.cpp
+1611589774 source:d:\maestria\softs\model_checking_c\src\expression.cpp
 	"Expression.h"
 	"Const.h"
 	"Helper.h"
@@ -208,7 +208,7 @@
 	<exception>
 	<memory>
 
-1611249320 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
+1611675173 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
 	"Lexer.h"
 	"Token.h"
 	"Helper.h"
@@ -280,11 +280,20 @@
 1611252034 source:d:\maestria\softs\model_checking_c\src\variable.cpp
 	"Variable.h"
 
-1611339080 source:d:\maestria\softs\model_checking_c\src\statement.cpp
+1611940131 source:d:\maestria\softs\model_checking_c\src\statement.cpp
 	"Statement.h"
 	"Return.h"
 	"Declaration.h"
+	"If.h"
 
-1611252524 d:\maestria\softs\model_checking_c\include\statement.h
+1611682972 d:\maestria\softs\model_checking_c\include\statement.h
+	"Helper.h"
+
+1611693054 d:\maestria\softs\model_checking_c\include\if.h
+	"Expression.h"
+	"Statement.h"
+
+1611940630 source:d:\maestria\softs\model_checking_c\src\if.cpp
+	"If.h"
 	"Helper.h"
 

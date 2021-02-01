@@ -2,10 +2,10 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-int tokensLength = 26;
+int tokensLength = 30;
 
 //predefined list of tokens to to find program code
-Token tokens[26] = {
+Token tokens[30] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
@@ -30,8 +30,14 @@ Token tokens[26] = {
             Token("LOGICAL_NEGATION", regex("!"), ""),
             Token("INT_KEYWORD", regex("int"), ""),
             Token("RETURN_KEYWORD", regex("return"), ""),
+            Token("IF_KEYWORD", regex("if"), ""),
+            Token("ELSE_KEYWORD", regex("else"), ""),
+            Token("COLON", regex(":"), ""),
+            Token("QUESTION_MARK", regex("\\?"), ""),
             Token("IDENTIFIER", regex("[a-zA-Z]\\w*"), ""),
             Token("INTEGER", regex("[0-9]+"), "")
+
+
             };
 
 //predefined program special characters that can be found joint to words

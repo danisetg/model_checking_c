@@ -14,11 +14,20 @@ using namespace std;
 
 int main()
 {
-    string program = fileToString("C:\\c_tests\\stage_3\\invalid\\malformed_paren.c");
+    string program = fileToString("C:\\c_tests\\stage_6\\valid\\statement\\multiple_if.c");
     queue<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
     int len = foundTokens.size();
+
+    int a = 1;
+
+    if (a > 5){
+        //do something
+    } else {
+        //do something else
+    }
+
 
     for(int i = 0; i < len; i++) {
  //       cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
@@ -29,7 +38,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_3\\invalid\\malformed_paren.pml");
+    outfile.open("C:\\c_tests\\stage_6\\valid\\statement\\multiple_if.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 
