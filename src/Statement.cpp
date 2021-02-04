@@ -7,11 +7,12 @@ Statement::Statement()
     //ctor
 }
 
-void Statement::parse(queue<Token>& tokens) {
+void Statement::parse(queue<Token>& tokens, vector<Statement>& statements) {
     if(tokens.empty())
         mad("Statement is Empty");
 
     Token token = tokens.front();
+    cout<<token.word<<endl;
     if(token.type == "RETURN_KEYWORD") {
         Return _ret;
         _ret.parse(tokens);
@@ -32,7 +33,7 @@ void Statement::parse(queue<Token>& tokens) {
         type = EXPRESSION;
     } else if(token.type == "IF_KEYWORD") {
         If _if;
-        _if.parse(tokens);
+        _if.parse(tokens, statements);
         ifStatement = new If();
         *ifStatement = _if;
         type = IF;
@@ -57,8 +58,8 @@ string Statement::translate(string fun_name, int& tabs) {
         case DECLARATION:
             return decl->translate(tabs);
         case EXPRESSION:
-            return printTabs(tabs) + expression->translate(tabs) + ";";
+            return printTabs(tabs) + expression->translate(fun_name, tabs) + ";";
         case IF:
-            return ifStatement->translate(fun_name, tabs);
+            return printTabs(tabs) + ifStatement->translate(fun_name, tabs) + ";";
     }
 }

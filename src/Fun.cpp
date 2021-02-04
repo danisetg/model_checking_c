@@ -50,7 +50,7 @@ void Fun::parse(queue<Token>& tokens) {
 
     while(!tokens.empty() && tokens.front().type != "CLOSE_BRACE") {
         Statement statement;
-        statement.parse(tokens);
+        statement.parse(tokens, statements);
         if(statement.type == DECLARATION) {
             statements.insert(statements.begin(), statement);
             if(statement.decl->expression.has_value()) {

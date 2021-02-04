@@ -9,6 +9,7 @@ class Return
         Return();
         void parse(queue<Token>& tokens);
         string translate(string fun_name, int& tabs);
+        string translateConditional(string fun_name, int& tabs);
 };
 
 #endif // RETURN_H

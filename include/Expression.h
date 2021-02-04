@@ -6,13 +6,15 @@ class UnaryOperator;
 class BinaryOperator;
 class Assignment;
 class Variable;
+class Conditional;
 
 enum ExpressionType {
     CONSTANT,
     UNARY_OPERATOR,
     BINARY_OPERATOR,
     ASSIGNMENT,
-    VARIABLE
+    VARIABLE,
+    CONDITIONAL
 };
 
 class Expression
@@ -25,6 +27,7 @@ class Expression
             BinaryOperator* binaryOperator;
             Assignment* assignment;
             Variable* variable;
+            Conditional* cond;
         };
 
         Expression();
@@ -38,8 +41,9 @@ class Expression
         Expression parseAnd(queue<Token>& tokens);
         Expression parseOr(queue<Token>& tokens);
         Expression parseAssignment(queue<Token>& tokens);
+        Expression parseConditional(queue<Token>& tokens);
 
-        string translate(int& tabs);
+        string translate(string fun_name, int& tabs);
 };
 
 #endif // EXPRESSION_H

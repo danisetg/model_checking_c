@@ -5,6 +5,7 @@
 #include "BinaryOperator.h"
 #include "Variable.h"
 #include "Assignment.h"
+#include "Conditional.h"
 Expression::Expression()
 {
 }
@@ -13,7 +14,6 @@ Expression Expression::parseFactor (queue<Token>& tokens) {
         mad("Missing factor expression");
     Expression exp;
     Token token = tokens.front();
-    cout<<token.word<<endl;
     if(token.type == "OPEN_PARENTHESIS") {
         tokens.pop();
         exp = parseAssignment(tokens);
@@ -52,7 +52,6 @@ Expression Expression::parseTerm(queue<Token>& tokens) {
     Expression factor = parseFactor(tokens);
     Token token = tokens.front();
     while(token.type == "MULTIPLICATION" || token.type == "DIVISION") {
-        cout<<token.word<<endl;
         tokens.pop();
         Expression factor1 = factor;
         Expression factor2 = parseFactor(tokens);
@@ -75,7 +74,6 @@ Expression Expression::parseAddition(queue<Token>& tokens) {
     Token token = tokens.front();
 
     while(token.type == "NEGATION" || token.type == "ADDITION") {
-        cout<<token.word<<endl;
         tokens.pop();
         Expression term1 = term;
         Expression term2 = parseTerm(tokens);
@@ -97,7 +95,6 @@ Expression Expression::parseRelationalInequalities(queue<Token>& tokens) {
     Token token = tokens.front();
 
     while(token.type == "LESS_OR_EQUAL_TO" || token.type == "LESS_THAN" || token.type == "GREATER_OR_EQUAL_TO" || token.type == "GREATER_THAN") {
-        cout<<token.word<<endl;
         tokens.pop();
         Expression add1 = add;
         Expression add2 = parseAddition(tokens);
@@ -119,7 +116,6 @@ Expression Expression::parseRelationalEqualities(queue<Token>& tokens) {
     Token token = tokens.front();
 
     while(token.type == "EQUAL_TO" || token.type == "NOT_EQUAL_TO") {
-        cout<<token.word<<endl;
         tokens.pop();
         Expression rel1 = rel;
         Expression rel2 = parseRelationalInequalities(tokens);
@@ -141,7 +137,6 @@ Expression Expression::parseAnd(queue<Token>& tokens) {
     Token token = tokens.front();
 
     while(token.type == "LOGICAL_AND") {
-        cout<<token.word<<endl;
         tokens.pop();
         Expression rel1 = rel;
         Expression rel2 = parseRelationalEqualities(tokens);
@@ -175,14 +170,43 @@ Expression Expression::parseOr(queue<Token>& tokens) {
     return logical;
 }
 
-Expression Expression::parseAssignment(queue<Token>& tokens) {
+Expression Expression::parseConditional(queue<Token>& tokens) {
+
     if(tokens.empty())
         mad("Expression is empty");
 
     Expression logical = parseOr(tokens);
     Token token = tokens.front();
+    while(token.type == "QUESTION_MARK") {
+        tokens.pop();
+        Expression e1 = logical;
+        Expression e2 = parseAssignment(tokens);
+
+        token = tokens.front();
+        if(token.type != "COLON")
+            mad("Incorrect conditional structure, expected ':'");
+
+        tokens.pop();
+
+        Expression e3 = parseConditional(tokens);
+
+        logical.type = CONDITIONAL;
+
+        Conditional _cond = Conditional(e1, e2, e3);
+        logical.cond = new Conditional();
+        *logical.cond = _cond;
+        token = tokens.front();
+    }
+    return logical;
+}
+
+Expression Expression::parseAssignment(queue<Token>& tokens) {
+    if(tokens.empty())
+        mad("Expression is empty");
+
+    Expression logical = parseConditional(tokens);
+    Token token = tokens.front();
     if(token.type == "ASSIGNMENT") {
-        cout<<token.word<<endl;
         if(logical.type != VARIABLE)
             mad("Left part of assignment must be a variable");
         tokens.pop();
@@ -200,22 +224,25 @@ void Expression::parse(queue<Token>& tokens) {
     *this = parseAssignment(tokens);
 }
 
-string Expression::translate(int& tabs) {
+string Expression::translate(string fun_name, int& tabs) {
     switch(type) {
         case CONSTANT:
             return constant->translate();
             break;
         case UNARY_OPERATOR:
-            return "(" + unaryOperator->translate(tabs) + ")";
+            return "(" + unaryOperator->translate(fun_name, tabs) + ")";
             break;
         case BINARY_OPERATOR:
-            return "(" + binaryOperator->translate(tabs) + ")";
+            return "(" + binaryOperator->translate(fun_name, tabs) + ")";
             break;
         case ASSIGNMENT:
-            return assignment->translate(tabs);
+            return assignment->translate(fun_name, tabs);
             break;
         case VARIABLE:
             return variable->translate();
+            break;
+        case CONDITIONAL:
+            return cond->translate(fun_name, tabs);
             break;
     }
 }

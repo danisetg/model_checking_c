@@ -24,6 +24,6 @@ void UnaryOperator::parse (queue<Token>& tokens) {
     expression = _expression.parseFactor(tokens);
 }
 
-string UnaryOperator::translate(int& tabs) {
-    return op + expression.translate(tabs);
+string UnaryOperator::translate(string fun_name, int& tabs) {
+    return op + expression.translate(fun_name, tabs);
 }

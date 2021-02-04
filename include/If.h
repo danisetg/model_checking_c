@@ -2,15 +2,15 @@
 #define IF_H
 #include "Expression.h"
 #include "Statement.h"
-
+#include "Helper.h"
 class If
 {
     public:
         Expression condition;
-        Statement ifBody;
-        std::optional<Statement> elseBody;
+        vector<Statement> ifBody;
+        vector<Statement> elseBody;
         If();
-        void parse(queue<Token>& tokens);
+        void parse(queue<Token>& tokens, vector<Statement>& statements);
         string translate(string fun_name,int& tabs);
 };
 

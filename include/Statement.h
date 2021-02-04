@@ -25,7 +25,7 @@ class Statement
             If* ifStatement;
         };
         Statement();
-        void parse(queue<Token>& tokens);
+        void parse(queue<Token>& tokens, vector<Statement>& statements);
         string translate(string fun_name, int& tabs);
 };
 

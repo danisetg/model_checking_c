@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    string program = fileToString("C:\\c_tests\\stage_6\\valid\\statement\\multiple_if.c");
+    string program = fileToString("C:\\c_tests\\stage_7\\valid\\nested_if.c");
     queue<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
@@ -38,7 +38,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_6\\valid\\statement\\multiple_if.pml");
+    outfile.open("C:\\c_tests\\stage_7\\valid\\nested_if.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 
