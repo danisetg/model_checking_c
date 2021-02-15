@@ -11,7 +11,7 @@ class Conditional
         Expression falseAssign;
         Conditional();
         Conditional(Expression& e1, Expression& e2, Expression& e3);
-        string translate(string fun_name, int& tabs);
+        string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 
 #endif // CONDITIONAL_H

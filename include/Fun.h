@@ -3,12 +3,15 @@
 #include <string>
 #include <Helper.h>
 #include "Statement.h"
-
+#include "Variable.h"
 class Fun
 {
     public:
         string name;
+        map<string, bool> chanDeclared;
         vector<Statement> statements;
+        vector<Variable> parameters;
+        vector<string> funCalls;
         Fun();
         void parse(queue<Token>& tokens);
         string translate(int& tabs);

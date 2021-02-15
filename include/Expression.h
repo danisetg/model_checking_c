@@ -1,12 +1,13 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 #include "Const.h"
-
+#include "Helper.h"
 class UnaryOperator;
 class BinaryOperator;
 class Assignment;
 class Variable;
 class Conditional;
+class FunCall;
 
 enum ExpressionType {
     CONSTANT,
@@ -14,7 +15,8 @@ enum ExpressionType {
     BINARY_OPERATOR,
     ASSIGNMENT,
     VARIABLE,
-    CONDITIONAL
+    CONDITIONAL,
+    FUN_CALL
 };
 
 class Expression
@@ -28,22 +30,23 @@ class Expression
             Assignment* assignment;
             Variable* variable;
             Conditional* cond;
+            FunCall* funCall;
         };
 
         Expression();
-        void parse(queue<Token>& tokens);
-        Expression parseExpression(queue<Token>& tokens);
-        Expression parseTerm(queue<Token>& tokens);
-        Expression parseFactor(queue<Token>& tokens);
-        Expression parseAddition(queue<Token>& tokens);
-        Expression parseRelationalEqualities(queue<Token>& tokens);
-        Expression parseRelationalInequalities(queue<Token>& tokens);
-        Expression parseAnd(queue<Token>& tokens);
-        Expression parseOr(queue<Token>& tokens);
-        Expression parseAssignment(queue<Token>& tokens);
-        Expression parseConditional(queue<Token>& tokens);
+        void parse(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseExpression(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseTerm(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseFactor(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseAddition(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseRelationalEqualities(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseRelationalInequalities(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseAnd(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseOr(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseAssignment(queue<Token>& tokens, vector<string>& _funCalls);
+        Expression parseConditional(queue<Token>& tokens, vector<string>& _funCalls);
 
-        string translate(string fun_name, int& tabs);
+        string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 
 #endif // EXPRESSION_H

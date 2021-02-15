@@ -10,8 +10,8 @@ class Assignment
         Assignment(Variable& _var, Expression& _exp);
         Assignment();
         void parse(queue<Token>& tokens);
-        string translate(string fun_name, int& tabs);
-        string translateConditional(string fun_name, int& tabs);
+        string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
+        string translateConditional(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 
 #endif // ASSIGNMENT_H

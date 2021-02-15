@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    string program = fileToString("C:\\c_tests\\stage_7\\valid\\nested_if.c");
+    string program = fileToString("C:\\c_tests\\stage_9\\valid\\precedence.c");
     queue<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
@@ -30,7 +30,7 @@ int main()
 
 
     for(int i = 0; i < len; i++) {
- //       cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
+    //   cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
         tokens.push(foundTokens[i]);
     }
 
@@ -38,7 +38,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_7\\valid\\nested_if.pml");
+    outfile.open("C:\\c_tests\\stage_9\\valid\\precedence.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

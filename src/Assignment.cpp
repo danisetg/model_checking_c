@@ -12,7 +12,7 @@ Assignment::Assignment()
 {
 }
 
-string Assignment::translateConditional(string fun_name, int& tabs) {
+string Assignment::translateConditional(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     If ifStatement;
     ifStatement.condition = exp.cond->condition;
 
@@ -48,18 +48,17 @@ string Assignment::translateConditional(string fun_name, int& tabs) {
     ifStatement.ifBody.push_back(trueStatement);
     ifStatement.elseBody.push_back(falseStatement);
 
-    return ifStatement.translate(fun_name, tabs);
+    return ifStatement.translate(fun_name, tabs, funCallNumber, previousCode);
 }
 
-string Assignment::translate(string fun_name, int& tabs) {
+string Assignment::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     cout<<exp.type<<endl;
     string code = "";
     if(exp.type == ASSIGNMENT)
-        code = exp.translate(fun_name, tabs) + ";\n" + printTabs(tabs) + var.translate() + " = " + exp.assignment->var.translate();
+        code = exp.translate(fun_name, tabs, funCallNumber, previousCode) + ";\n" + printTabs(tabs) + var.translate() + " = " + exp.assignment->var.translate();
     else if(exp.type == CONDITIONAL) {
-        code = translateConditional(fun_name, tabs);
-    }
-    else
-        code = var.translate() + " = " + exp.translate(fun_name, tabs);
+        code = translateConditional(fun_name, tabs, funCallNumber, previousCode);
+    } else
+        code = var.translate() + " = " + exp.translate(fun_name, tabs, funCallNumber, previousCode);
     return code;
 }

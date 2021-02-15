@@ -37,11 +37,16 @@
 		</Compiler>
 		<Unit filename="include/Assignment.h" />
 		<Unit filename="include/BinaryOperator.h" />
+		<Unit filename="include/Break.h" />
 		<Unit filename="include/Conditional.h" />
 		<Unit filename="include/Const.h" />
+		<Unit filename="include/Continue.h" />
 		<Unit filename="include/Declaration.h" />
+		<Unit filename="include/DoWhile.h" />
 		<Unit filename="include/Expression.h" />
+		<Unit filename="include/For.h" />
 		<Unit filename="include/Fun.h" />
+		<Unit filename="include/FunCall.h" />
 		<Unit filename="include/Function.h" />
 		<Unit filename="include/Helper.h" />
 		<Unit filename="include/If.h" />
@@ -53,14 +58,20 @@
 		<Unit filename="include/Token.h" />
 		<Unit filename="include/UnaryOperator.h" />
 		<Unit filename="include/Variable.h" />
+		<Unit filename="include/While.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Assignment.cpp" />
 		<Unit filename="src/BinaryOperator.cpp" />
+		<Unit filename="src/Break.cpp" />
 		<Unit filename="src/Conditional.cpp" />
 		<Unit filename="src/Const.cpp" />
+		<Unit filename="src/Continue.cpp" />
 		<Unit filename="src/Declaration.cpp" />
+		<Unit filename="src/DoWhile.cpp" />
 		<Unit filename="src/Expression.cpp" />
+		<Unit filename="src/For.cpp" />
 		<Unit filename="src/Fun.cpp" />
+		<Unit filename="src/FunCall.cpp" />
 		<Unit filename="src/Function.cpp" />
 		<Unit filename="src/Helper.cpp" />
 		<Unit filename="src/If.cpp" />
@@ -72,6 +83,7 @@
 		<Unit filename="src/Token.cpp" />
 		<Unit filename="src/UnaryOperator.cpp" />
 		<Unit filename="src/Variable.cpp" />
+		<Unit filename="src/While.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -1,0 +1,16 @@
+#ifndef DOWHILE_H
+#define DOWHILE_H
+#include "Statement.h"
+#include "Expression.h"
+
+class DoWhile
+{
+    public:
+        Expression endCondition;
+        vector<Statement> body;
+        DoWhile();
+        void parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
+        string translate(string fun_name,int& tabs, int& funCallNumber, string& previousCode);
+};
+
+#endif // DOWHILE_H

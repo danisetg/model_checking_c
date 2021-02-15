@@ -10,8 +10,8 @@ class If
         vector<Statement> ifBody;
         vector<Statement> elseBody;
         If();
-        void parse(queue<Token>& tokens, vector<Statement>& statements);
-        string translate(string fun_name,int& tabs);
+        void parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
+        string translate(string fun_name,int& tabs, int& funCallNumber, string& previousCode);
 };
 
 #endif // IF_H

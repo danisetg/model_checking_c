@@ -9,7 +9,7 @@ class Declaration
         Variable var;
         std::optional<Expression> expression;
         Declaration();
-        void parse(queue<Token>& tokens);
+        void parse(queue<Token>& tokens, vector<string>& _funCalls);
         string translate(int& tabs);
 };
 

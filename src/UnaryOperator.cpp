@@ -6,7 +6,7 @@ UnaryOperator::UnaryOperator()
     //ctor
 }
 
-void UnaryOperator::parse (queue<Token>& tokens) {
+void UnaryOperator::parse (queue<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())
         mad("Missing unary operator");
@@ -21,9 +21,9 @@ void UnaryOperator::parse (queue<Token>& tokens) {
 
     Expression _expression;
 
-    expression = _expression.parseFactor(tokens);
+    expression = _expression.parseFactor(tokens, _funCalls);
 }
 
-string UnaryOperator::translate(string fun_name, int& tabs) {
-    return op + expression.translate(fun_name, tabs);
+string UnaryOperator::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
+    return op + expression.translate(fun_name, tabs, funCallNumber, previousCode);
 }

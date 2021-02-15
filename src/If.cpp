@@ -6,10 +6,9 @@ If::If()
     //ctor
 }
 
-void If::parse(queue<Token>& tokens, vector<Statement>& statements) {
+void If::parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();
-    cout<<token.word<<endl;
 
     if(token.type != "IF_KEYWORD")
         mad("not an if statement");
@@ -23,11 +22,10 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements) {
     tokens.pop();
 
     Expression _condition;
-    _condition.parse(tokens);
+    _condition.parse(tokens, _funCalls);
     condition = _condition;
 
     token = tokens.front();
-    cout<<token.word<<endl;
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Missing ')'");
 
@@ -40,7 +38,7 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements) {
         token = tokens.front();
         while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
             Statement _ifBody;
-            _ifBody.parse(tokens, statements);
+            _ifBody.parse(tokens, statements, _funCalls);
              if(_ifBody.type == DECLARATION) {
                 statements.insert(statements.begin(), _ifBody);
                 if(_ifBody.decl->expression.has_value()) {
@@ -71,7 +69,7 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements) {
                 }
 
         }
-        _ifBody.parse(tokens, statements);
+        _ifBody.parse(tokens, statements, _funCalls);
         ifBody.push_back(_ifBody);
     }
 
@@ -86,7 +84,7 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements) {
             token = tokens.front();
             while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
                 Statement _elseBody;
-                _elseBody.parse(tokens, statements);
+                _elseBody.parse(tokens, statements, _funCalls);
                 if(_elseBody.type == DECLARATION) {
                     statements.insert(statements.begin(), _elseBody);
                     if(_elseBody.decl->expression.has_value()) {
@@ -106,7 +104,7 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements) {
             tokens.pop();
         } else {
             Statement _elseBody;
-            _elseBody.parse(tokens, statements);
+            _elseBody.parse(tokens, statements, _funCalls);
             if(_elseBody.type == DECLARATION) {
                 statements.insert(statements.begin(), _elseBody);
                 if(_elseBody.decl->expression.has_value()) {
@@ -123,20 +121,20 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements) {
     }
 }
 
-string If::translate(string fun_name, int& tabs) {
+string If::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     string code = "if\n";
     tabs++;
-    code += printTabs(tabs) + "::" + condition.translate(fun_name, tabs) + " ->\n";
+    code += printTabs(tabs) + "::" + condition.translate(fun_name, tabs, funCallNumber, previousCode) + " ->\n";
     tabs++;
     for(int i = 0; i < ifBody.size(); i++) {
-        code += ifBody[i].translate(fun_name, tabs) + "\n";
+        code += ifBody[i].translate(fun_name, tabs, funCallNumber, previousCode) + "\n";
     }
     tabs--;
     if(elseBody.size()) {
         code += printTabs(tabs) + "::else ->\n";
         tabs++;
         for(int i = 0; i < elseBody.size(); i++) {
-            code += elseBody[i].translate(fun_name, tabs) + "\n";
+            code += elseBody[i].translate(fun_name, tabs, funCallNumber, previousCode) + "\n";
         }
         tabs--;
     }

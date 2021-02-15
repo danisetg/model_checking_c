@@ -6,7 +6,7 @@
 class Program
 {
     public:
-        Fun f;
+        vector<Fun> f;
         Program();
         void parse(queue<Token>& tokens);
         string translate(int& tabs);

@@ -7,9 +7,9 @@ class Return
     public:
         Expression expression;
         Return();
-        void parse(queue<Token>& tokens);
-        string translate(string fun_name, int& tabs);
-        string translateConditional(string fun_name, int& tabs);
+        void parse(queue<Token>& tokens, vector<string>& _funCalls);
+        string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
+        string translateConditional(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 
 #endif // RETURN_H

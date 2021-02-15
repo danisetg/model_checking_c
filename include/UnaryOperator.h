@@ -9,8 +9,8 @@ class UnaryOperator
         Expression expression;
         string op;
         UnaryOperator();
-        void parse(queue<Token>& tokens);
-        string translate(string fun_name, int& tabs);
+        void parse(queue<Token>& tokens, vector<string>& _funCalls);
+        string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 
 #endif // UNARYOPERATOR_H

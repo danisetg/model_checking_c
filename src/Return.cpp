@@ -8,7 +8,7 @@ Return::Return()
 {
 }
 
-void Return::parse(queue<Token>& tokens) {
+void Return::parse(queue<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())
         mad("Statement is Empty");
@@ -22,11 +22,11 @@ void Return::parse(queue<Token>& tokens) {
 
     Expression _expression;
 
-    _expression.parse(tokens);
+    _expression.parse(tokens, _funCalls);
     expression = _expression;
 }
 
-string Return::translateConditional(string fun_name, int& tabs) {
+string Return::translateConditional(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     If ifStatement;
     ifStatement.condition = expression.cond->condition;
 
@@ -50,14 +50,14 @@ string Return::translateConditional(string fun_name, int& tabs) {
     ifStatement.ifBody.push_back(trueStatement);
     ifStatement.elseBody.push_back(falseStatement);
 
-    return ifStatement.translate(fun_name, tabs);
+    return ifStatement.translate(fun_name, tabs, funCallNumber, previousCode);
 }
-string Return::translate(string fun_name, int& tabs) {
+string Return::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     string code = "";
     if(expression.type == CONDITIONAL) {
-        code = printTabs(tabs) + translateConditional(fun_name, tabs) + ";";
+        code = printTabs(tabs) + translateConditional(fun_name, tabs, funCallNumber, previousCode) + ";";
     } else {
-        code = printTabs(tabs) + "in_" + fun_name + " ! " + expression.translate(fun_name, tabs) + ";" + '\n';
+        code  = printTabs(tabs) + "in_" + fun_name + " ! " + expression.translate(fun_name, tabs, funCallNumber, previousCode) + ";" + '\n';
         code += printTabs(tabs) + "goto end;";
     }
     return code;

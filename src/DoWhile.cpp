@@ -1,0 +1,109 @@
+#include "DoWhile.h"
+#include "Declaration.h"
+
+DoWhile::DoWhile()
+{
+    //ctor
+}
+
+void DoWhile::parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
+
+    Token token = tokens.front();
+    cout<<token.type<<endl;
+    if(token.type != "DO_KEYWORD")
+        mad("not a do while statement");
+
+    tokens.pop();
+
+    token = tokens.front();
+    if(token.type == "OPEN_BRACE") {
+        tokens.pop();
+        token = tokens.front();
+        while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
+            Statement _doWhileBody;
+            _doWhileBody.parse(tokens, statements, _funCalls);
+             if(_doWhileBody.type == DECLARATION) {
+                statements.insert(statements.begin(), _doWhileBody);
+                if(_doWhileBody.decl->expression.has_value()) {
+                    Statement _statement;
+                    _statement.type = EXPRESSION;
+                    _statement.expression = new Expression();
+                    *_statement.expression = _doWhileBody.decl->expression.value();
+                    _doWhileBody = _statement;
+                }
+
+            }
+            body.push_back(_doWhileBody);
+            token = tokens.front();
+        }
+        if(token.type != "CLOSE_BRACE")
+            mad("missing '}'");
+        tokens.pop();
+    } else {
+        Statement _doWhileBody;
+        if(_doWhileBody.type == DECLARATION) {
+                statements.insert(statements.begin(), _doWhileBody);
+                if(_doWhileBody.decl->expression.has_value()) {
+                    Statement _statement;
+                    _statement.type = EXPRESSION;
+                    _statement.expression = new Expression();
+                    *_statement.expression = _doWhileBody.decl->expression.value();
+                    _doWhileBody = _statement;
+                }
+
+        }
+        _doWhileBody.parse(tokens, statements, _funCalls);
+        body.push_back(_doWhileBody);
+    }
+    token = tokens.front();
+    cout<<token.type<<endl;
+
+    if(token.type != "WHILE_KEYWORD")
+        mad("Missing 'while'");
+
+    tokens.pop();
+
+    token = tokens.front();
+    cout<<token.type<<endl;
+
+    if(token.type != "OPEN_PARENTHESIS")
+        mad("Missing '('");
+
+    tokens.pop();
+
+    token = tokens.front();
+    cout<<token.type<<endl;
+
+    Expression _endCondition;
+    _endCondition.parse(tokens, _funCalls);
+    endCondition = _endCondition;
+
+    token = tokens.front();
+    cout<<token.type<<endl;
+
+    if(token.type != "CLOSE_PARENTHESIS")
+        mad("Missing ')'");
+
+    tokens.pop();
+}
+
+string DoWhile::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
+    string code = "";
+    code += printTabs(tabs) + "do\n";
+    tabs++;
+    code += printTabs(tabs) + "::true ->\n";
+    tabs++;
+
+    for(int i = 0; i < body.size(); i++) {
+        code += body[i].translate(fun_name, tabs, funCallNumber, previousCode) + "\n";
+    }
+    code += printTabs(tabs) + "if\n";
+    tabs++;
+    code += printTabs(tabs) + "::!" + endCondition.translate(fun_name, tabs, funCallNumber, previousCode) + " -> break;\n";
+    tabs--;
+    code += printTabs(tabs) + "fi;\n";
+    tabs--;
+    tabs--;
+    code += printTabs(tabs) + "od";
+    return code;
+}

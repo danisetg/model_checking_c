@@ -5,7 +5,7 @@ Declaration::Declaration()
     //ctor
 }
 
-void Declaration::parse (queue<Token>& tokens) {
+void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())
         mad("Declaration is empty");
@@ -28,7 +28,7 @@ void Declaration::parse (queue<Token>& tokens) {
     if(token.type == "ASSIGNMENT") {
         tokens.pop();
         Expression _exp;
-        _exp.parse(tokens);
+        _exp.parse(tokens, _funCalls);
         Assignment assignment = Assignment(var, _exp);
 
         _exp.type = ASSIGNMENT;

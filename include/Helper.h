@@ -8,13 +8,20 @@
 #include <sstream>
 #include <fstream>
 #include <optional>
+#include <set>
+#include <iterator>
+#include <map>
 using std::queue;
+using std::map;
 using std::ofstream;
 using std::string;
 using std::vector;
 using std::cout;
 using std::endl;
 using std::optional;
+using std::set;
+using std::iterator;
+using std::to_string;
 
 vector<string> split(string str, char delimiter);
 

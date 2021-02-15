@@ -10,11 +10,8 @@ BinaryOperator::BinaryOperator(string _op, Expression& _exp1, Expression& _exp2)
     exp1 = _exp1;
     exp2 = _exp2;
 }
-string BinaryOperator::translate(string fun_name, int& tabs) {
-    string code = "";
-    if(exp2.type == ASSIGNMENT)
-        code = exp2.translate(fun_name, tabs) + ");\n" + printTabs(tabs) + "(" + exp1.translate(fun_name, tabs) + " " + op + " " + exp2.assignment->var.translate();
-    else
-        code = exp1.translate(fun_name, tabs) + " " + op + " " + exp2.translate(fun_name, tabs);
-    return code;
+string BinaryOperator::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
+    string code1 = exp1.translate(fun_name, tabs, funCallNumber, previousCode);
+    string code2 = exp2.translate(fun_name, tabs, funCallNumber, previousCode);
+    return code1 + " " + op + " " + code2;
 }
