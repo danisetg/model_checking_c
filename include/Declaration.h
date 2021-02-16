@@ -10,7 +10,7 @@ class Declaration
         std::optional<Expression> expression;
         Declaration();
         void parse(queue<Token>& tokens, vector<string>& _funCalls);
-        string translate(int& tabs);
+        string translate(int& tabs, bool addExpression);
 };
 
 #endif // DECLARATION_H

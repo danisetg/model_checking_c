@@ -7,27 +7,11 @@ Fun::Fun()
 {
 }
 
-void Fun::parse(queue<Token>& tokens) {
-    if(tokens.empty())
-        mad("Function is Empty");
+void Fun::parse(queue<Token>& tokens, string _name) {
+
+    name = _name;
 
     Token token = tokens.front();
-
-    if(token.type != "INT_KEYWORD")
-        mad("Unknown function type");
-
-    tokens.pop();
-
-    token = tokens.front();
-
-    if(token.type != "IDENTIFIER")
-        mad("Missing function identifier");
-
-    name = token.word;
-
-    tokens.pop();
-
-    token = tokens.front();
 
     if(token.type != "OPEN_PARENTHESIS")
         mad("Expected '(' after function name");

@@ -39,6 +39,13 @@ void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls) {
     }
 }
 
-string Declaration::translate(int& tabs) {
-    return printTabs(tabs) + "int " + var.translate() + ";";
+string Declaration::translate(int& tabs, bool addExpression) {
+    string code = printTabs(tabs) + "int " + var.translate();
+    if(addExpression) {
+        string tmp = "";
+        int aux = 0;
+        code += " = " + expression->translate(tmp, tabs, aux, tmp);
+    }
+
+    return code + ";";
 }

@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    string program = fileToString("C:\\c_tests\\stage_9\\valid\\precedence.c");
+    string program = fileToString("C:\\c_tests\\stage_10\\valid\\global.c");
     queue<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
@@ -38,7 +38,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_9\\valid\\precedence.pml");
+    outfile.open("C:\\c_tests\\stage_10\\valid\\global.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

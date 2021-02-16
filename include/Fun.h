@@ -13,7 +13,7 @@ class Fun
         vector<Variable> parameters;
         vector<string> funCalls;
         Fun();
-        void parse(queue<Token>& tokens);
+        void parse(queue<Token>& tokens, string _name);
         string translate(int& tabs);
 };
 
