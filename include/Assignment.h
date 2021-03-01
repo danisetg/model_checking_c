@@ -2,12 +2,13 @@
 #define ASSIGNMENT_H
 #include "Expression.h"
 #include "Variable.h"
+#include "Array.h"
 class Assignment
 {
     public:
-        Variable var;
+        Expression leftSide;
         Expression exp;
-        Assignment(Variable& _var, Expression& _exp);
+        Assignment(Expression& _leftSide, Expression& _exp);
         Assignment();
         void parse(queue<Token>& tokens);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);

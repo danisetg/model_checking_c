@@ -3,11 +3,13 @@
 #include "Helper.h"
 #include "Fun.h"
 #include "Declaration.h"
+#include "Struct.h"
 class Program
 {
     public:
         vector<Fun> f;
         vector<Declaration> d;
+        vector<Struct> s;
         Program();
         void parse(queue<Token>& tokens);
         string translate(int& tabs);

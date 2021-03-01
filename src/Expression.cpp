@@ -7,6 +7,7 @@
 #include "Assignment.h"
 #include "Conditional.h"
 #include "FunCall.h"
+#include "Array.h"
 Expression::Expression()
 {
 }
@@ -45,7 +46,13 @@ Expression Expression::parseFactor (queue<Token>& tokens, vector<string>& _funCa
             exp.funCall = new FunCall();
             *exp.funCall = _funCall;
             _funCalls.push_back(_var.name);
-        } else {
+        } else if(token.type == "OPEN_BRACKET") {
+            Array _arr;
+            _arr.parse(_var.name, tokens, _funCalls);
+            exp.type = ARRAY;
+            exp.arr = new Array();
+            *exp.arr = _arr;
+        }else {
             exp.type = VARIABLE;
             exp.variable = new Variable();
             *exp.variable = _var;
@@ -218,14 +225,16 @@ Expression Expression::parseAssignment(queue<Token>& tokens, vector<string>& _fu
 
     Expression logical = parseConditional(tokens, _funCalls);
     Token token = tokens.front();
+    cout<<token.word<<endl;
     if(token.type == "ASSIGNMENT") {
-        if(logical.type != VARIABLE)
+        if(logical.type != VARIABLE && logical.type != ARRAY)
             mad("Left part of assignment must be a variable");
         tokens.pop();
-        Variable _variable = *logical.variable;
-        Expression logical2 = parseAssignment(tokens, _funCalls);
+
+        Expression _left = logical;
+        Expression _rigth = parseAssignment(tokens, _funCalls);
         logical.type = ASSIGNMENT;
-        Assignment _assignment = Assignment(_variable, logical2);
+        Assignment _assignment = Assignment(_left, _rigth);
         logical.assignment = new Assignment();
         *logical.assignment = _assignment;
     }
@@ -237,6 +246,7 @@ void Expression::parse(queue<Token>& tokens, vector<string>& _funCalls) {
 }
 
 string Expression::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
+    cout<<type<<endl;
     switch(type) {
         case CONSTANT:
             return constant->translate();
@@ -258,6 +268,9 @@ string Expression::translate(string fun_name, int& tabs, int& funCallNumber, str
             break;
         case FUN_CALL:
             return funCall->translate(fun_name, tabs, funCallNumber, previousCode);
+            break;
+        case ARRAY:
+            return arr->translate(fun_name, tabs, funCallNumber, previousCode);
             break;
     }
 }

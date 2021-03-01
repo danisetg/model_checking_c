@@ -2,9 +2,9 @@
 #include "Helper.h"
 #include "If.h"
 #include "Conditional.h"
-Assignment::Assignment(Variable& _var, Expression& _exp)
+Assignment::Assignment(Expression& _leftSide, Expression& _exp)
 {
-    var = _var;
+    leftSide = _leftSide;
     exp = _exp;
 }
 
@@ -17,7 +17,7 @@ string Assignment::translateConditional(string fun_name, int& tabs, int& funCall
     ifStatement.condition = exp.cond->condition;
 
     Assignment trueAssignment;
-    trueAssignment.var = var;
+    trueAssignment.leftSide = leftSide;
     trueAssignment.exp = exp.cond->trueAssign;
 
     Expression trueExpression;
@@ -32,7 +32,7 @@ string Assignment::translateConditional(string fun_name, int& tabs, int& funCall
 
 
     Assignment falseAssignment;
-    falseAssignment.var = var;
+    falseAssignment.leftSide = leftSide;
     falseAssignment.exp = exp.cond->falseAssign;
 
     Expression falseExpression;
@@ -55,10 +55,10 @@ string Assignment::translate(string fun_name, int& tabs, int& funCallNumber, str
     cout<<exp.type<<endl;
     string code = "";
     if(exp.type == ASSIGNMENT)
-        code = exp.translate(fun_name, tabs, funCallNumber, previousCode) + ";\n" + printTabs(tabs) + var.translate() + " = " + exp.assignment->var.translate();
+        code = exp.translate(fun_name, tabs, funCallNumber, previousCode) + ";\n" + printTabs(tabs) + leftSide.translate(fun_name, tabs, funCallNumber, previousCode) + " = " + exp.assignment->leftSide.translate(fun_name, tabs, funCallNumber, previousCode);
     else if(exp.type == CONDITIONAL) {
         code = translateConditional(fun_name, tabs, funCallNumber, previousCode);
     } else
-        code = var.translate() + " = " + exp.translate(fun_name, tabs, funCallNumber, previousCode);
+        code = leftSide.translate(fun_name, tabs, funCallNumber, previousCode) + " = " + exp.translate(fun_name, tabs, funCallNumber, previousCode);
     return code;
 }

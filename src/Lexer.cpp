@@ -2,14 +2,16 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-int tokensLength = 37;
+int tokensLength = 40;
 
 //predefined list of tokens to to find program code
-Token tokens[37] = {
+Token tokens[40] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
+            Token("OPEN_BRACKET", regex("\\["), ""),
             Token("CLOSE_PARENTHESIS", regex("\\)"), ""),
+            Token("CLOSE_BRACKET", regex("\\]"), ""),
             Token("SEMICOLON", regex(";"), ""),
             Token("NEGATION", regex("-"), ""),
             Token("ADDITION", regex("\\+"), ""),
@@ -30,6 +32,7 @@ Token tokens[37] = {
             Token("ASSIGNMENT", regex("="), ""),
             Token("LOGICAL_NEGATION", regex("!"), ""),
             Token("INT_KEYWORD", regex("int"), ""),
+            Token("STRUCT_KEYWORD", regex("struct"), ""),
             Token("RETURN_KEYWORD", regex("return"), ""),
             Token("IF_KEYWORD", regex("if"), ""),
             Token("FOR_KEYWORD", regex("for"), ""),
@@ -48,7 +51,7 @@ Token tokens[37] = {
 
 //predefined program special characters that can be found joint to words
 string predefinedTwoCharacters[4] = {"==", "!=", "++", "--"};
-string predefinedCharacters = "{}();-~!+*/%?:,";
+string predefinedCharacters = "{}();-~!+*/%?:,[]";
 
 bool isPredefinedWord(string match) {
     for (int i = 0; i < 4; i++) {
@@ -100,6 +103,7 @@ vector<Token> getTokens(string program) {
     int len = words.size();
     //iterate the words vector and for each word check if it matches any of the predefined tokens
     for(int i = 0; i < len; i++) {
+        cout<<words[i]<<endl;
         for(int h = 0; h < tokensLength; h++) {
             //if word matches with a predefined token, add the token to the vector
             if(regex_match(words[i], tokens[h].regExp)) {

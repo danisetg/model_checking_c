@@ -8,6 +8,7 @@ class Assignment;
 class Variable;
 class Conditional;
 class FunCall;
+class Array;
 
 enum ExpressionType {
     CONSTANT,
@@ -16,7 +17,8 @@ enum ExpressionType {
     ASSIGNMENT,
     VARIABLE,
     CONDITIONAL,
-    FUN_CALL
+    FUN_CALL,
+    ARRAY
 };
 
 class Expression
@@ -31,6 +33,7 @@ class Expression
             Variable* variable;
             Conditional* cond;
             FunCall* funCall;
+            Array* arr;
         };
 
         Expression();

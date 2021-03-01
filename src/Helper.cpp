@@ -1,15 +1,7 @@
-#include <string>
 #include "Helper.h"
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <exception>
-#include <memory>
-using std::cout; using std::cerr;
-using std::endl; using std::string;
-using std::ifstream; using std::ostringstream;
-using std::vector;
+
+vector<ArrayDecl> globalArrays;
+vector<ArrayDecl> localArrays;
 
 vector<string> split(string str, char delimiter) {
     int len = str.length();
@@ -64,4 +56,36 @@ string printTabs(int tabs) {
     return s;
 }
 
+void saveArray(string name, vector<int> dimensions) {
+    ArrayDecl arr;
+    arr.dimensions = dimensions;
+    arr.name = name;
+    globalArrays.push_back(arr);
+}
+
+vector<int> getArrayDimensions(string name) {
+    vector<int> noResult;
+    for(int i = 0; i < globalArrays.size(); i++) {
+        if(globalArrays[i].name == name)
+            return globalArrays[i].dimensions;
+    }
+    return noResult;
+}
+
+void saveLocalArray(string name, vector<int> dimensions, string functionName) {
+    ArrayDecl arr;
+    arr.dimensions = dimensions;
+    arr.functionName = functionName;
+    arr.name = name;
+    globalArrays.push_back(arr);
+}
+
+vector<int> getLocalArrayDimensions(string name, string functionName) {
+    vector<int> noResult;
+    for(int i = 0; i < localArrays.size(); i++) {
+        if(localArrays[i].name == name && localArrays[i].functionName == functionName)
+            return localArrays[i].dimensions;
+    }
+    return noResult;
+}
 

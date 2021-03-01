@@ -35,6 +35,8 @@
 			<Add option="-fexceptions" />
 			<Add directory="include" />
 		</Compiler>
+		<Unit filename="include/Array.h" />
+		<Unit filename="include/ArrayDecl.h" />
 		<Unit filename="include/Assignment.h" />
 		<Unit filename="include/BinaryOperator.h" />
 		<Unit filename="include/Break.h" />
@@ -55,11 +57,14 @@
 		<Unit filename="include/Program.h" />
 		<Unit filename="include/Return.h" />
 		<Unit filename="include/Statement.h" />
+		<Unit filename="include/Struct.h" />
 		<Unit filename="include/Token.h" />
 		<Unit filename="include/UnaryOperator.h" />
 		<Unit filename="include/Variable.h" />
 		<Unit filename="include/While.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Array.cpp" />
+		<Unit filename="src/ArrayDecl.cpp" />
 		<Unit filename="src/Assignment.cpp" />
 		<Unit filename="src/BinaryOperator.cpp" />
 		<Unit filename="src/Break.cpp" />
@@ -80,6 +85,7 @@
 		<Unit filename="src/Program.cpp" />
 		<Unit filename="src/Return.cpp" />
 		<Unit filename="src/Statement.cpp" />
+		<Unit filename="src/Struct.cpp" />
 		<Unit filename="src/Token.cpp" />
 		<Unit filename="src/UnaryOperator.cpp" />
 		<Unit filename="src/Variable.cpp" />

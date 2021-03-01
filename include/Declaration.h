@@ -7,6 +7,7 @@ class Declaration
 {
     public:
         Variable var;
+        vector<int> dimensions;
         std::optional<Expression> expression;
         Declaration();
         void parse(queue<Token>& tokens, vector<string>& _funCalls);

@@ -75,6 +75,12 @@ void Fun::parse(queue<Token>& tokens, string _name) {
     } else if(token.type != "SEMICOLON")
         mad("Fordward declarations must end with ';'");
 
+    for(int i = 0; i < statements.size(); i++) {
+        if(statements[i].type == DECLARATION && statements[i].decl->dimensions.size()) {
+            saveLocalArray(statements[i].decl->var.name, statements[i].decl->dimensions, name);
+        }
+    }
+
     tokens.pop();
 }
 
