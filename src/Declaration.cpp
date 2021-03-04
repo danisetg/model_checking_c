@@ -1,27 +1,36 @@
 #include "Declaration.h"
 #include "Assignment.h"
+#include "IntDecl.h"
+#include "StructDecl.h"
 Declaration::Declaration()
 {
     //ctor
 }
 
-void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls) {
+void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls, string _type, string _name) {
 
     if(tokens.empty())
         mad("Declaration is empty");
 
     Token token = tokens.front();
-    cout<<token.word<<endl;
-
-    if(token.type != "INT_KEYWORD")
-        mad(token.word + " is not a variable type");
-
-    tokens.pop();
-
-    Variable _var;
-    _var.parse(tokens);
-
-    var = _var;
+    string name;
+    cout<<_name<<" "<<_type<<endl;
+    if(_type == "INT_KEYWORD") {
+        IntDecl _int;
+        _int.name = _name;
+        intDecl = new IntDecl();
+        *intDecl = _int;
+        name = intDecl->name;
+        type = INT;
+    } else if(_type == "STRUCT_KEYWORD") {
+        structDecl = new StructDecl();
+        structDecl->name = token.word;
+        structDecl->structName = _name;
+        name = structDecl->name;
+        tokens.pop();
+        type = STRUCT;
+    } else
+        mad("Not a variable type");
 
     token = tokens.front();
 
@@ -50,7 +59,7 @@ void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls) {
         Expression left;
         left.type = VARIABLE;
         left.variable = new Variable();
-        *left.variable = var;
+        left.variable->name = _name;
 
         Assignment assignment = Assignment(left, _exp);
 
@@ -63,7 +72,16 @@ void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls) {
 }
 
 string Declaration::translate(int& tabs, bool addExpression) {
-    string code = printTabs(tabs) + "int " + var.translate();
+    string code = printTabs(tabs);
+    cout<<type<<endl;
+    switch(type) {
+        case INT:
+            code += intDecl->translate();
+            break;
+        case STRUCT:
+            code += structDecl->translate();
+            break;
+    }
 
     if(dimensions.size()) {
         int dim = 1;

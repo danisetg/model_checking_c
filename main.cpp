@@ -26,22 +26,15 @@ int main()
     }
     return 0;*/
 
-    string program = fileToString("C:\\c_tests\\stage_11\\valid\\one_dimension.c");
+    string program = fileToString("C:\\c_tests\\stage_12\\valid\\expression.c");
     queue<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
     int len = foundTokens.size();
 
-    int aux = 0;
-    for(int i = 0; i < 5; i++) {
-            for(int h = 0; h < 7; h++) {
-                cout<<i<<" "<<h<<" "<<aux<<endl;
-                aux++;
-            }
-    }
 
     for(int i = 0; i < len; i++) {
-    //   cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
+      // cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
         tokens.push(foundTokens[i]);
     }
 
@@ -49,7 +42,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_11\\valid\\one_dimension.pml");
+    outfile.open("C:\\c_tests\\stage_12\\valid\\expression.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

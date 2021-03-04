@@ -10,7 +10,7 @@ Fun::Fun()
 void Fun::parse(queue<Token>& tokens, string _name) {
 
     name = _name;
-
+    cout<<name<<endl;
     Token token = tokens.front();
 
     if(token.type != "OPEN_PARENTHESIS")
@@ -77,7 +77,8 @@ void Fun::parse(queue<Token>& tokens, string _name) {
 
     for(int i = 0; i < statements.size(); i++) {
         if(statements[i].type == DECLARATION && statements[i].decl->dimensions.size()) {
-            saveLocalArray(statements[i].decl->var.name, statements[i].decl->dimensions, name);
+            string _name = statements[i].decl->type == INT? statements[i].decl->intDecl->name: statements[i].decl->structDecl->name;
+            saveLocalArray(_name, statements[i].decl->dimensions, name);
         }
     }
 

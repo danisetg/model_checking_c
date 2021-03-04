@@ -9,7 +9,7 @@ class Struct
         string name;
         vector<Declaration> declarations;
         Struct();
-        void parse(queue<Token>& tokens);
+        void parse(queue<Token>& tokens, string _name);
         string translate(int& tabs);
 };
 

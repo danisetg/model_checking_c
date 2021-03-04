@@ -9,6 +9,7 @@ class Variable;
 class Conditional;
 class FunCall;
 class Array;
+class StructExp;
 
 enum ExpressionType {
     CONSTANT,
@@ -18,7 +19,8 @@ enum ExpressionType {
     VARIABLE,
     CONDITIONAL,
     FUN_CALL,
-    ARRAY
+    ARRAY,
+    STRUCT_EXPRESSION
 };
 
 class Expression
@@ -34,6 +36,7 @@ class Expression
             Conditional* cond;
             FunCall* funCall;
             Array* arr;
+            StructExp* structExp;
         };
 
         Expression();

@@ -2,10 +2,10 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-int tokensLength = 40;
+int tokensLength = 41;
 
 //predefined list of tokens to to find program code
-Token tokens[40] = {
+Token tokens[41] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
@@ -13,6 +13,7 @@ Token tokens[40] = {
             Token("CLOSE_PARENTHESIS", regex("\\)"), ""),
             Token("CLOSE_BRACKET", regex("\\]"), ""),
             Token("SEMICOLON", regex(";"), ""),
+            Token("DOT", regex("\\."), ""),
             Token("NEGATION", regex("-"), ""),
             Token("ADDITION", regex("\\+"), ""),
             Token("MULTIPLICATION", regex("\\*"), ""),
@@ -51,7 +52,7 @@ Token tokens[40] = {
 
 //predefined program special characters that can be found joint to words
 string predefinedTwoCharacters[4] = {"==", "!=", "++", "--"};
-string predefinedCharacters = "{}();-~!+*/%?:,[]";
+string predefinedCharacters = "{}();-~!+*/%?:,[].";
 
 bool isPredefinedWord(string match) {
     for (int i = 0; i < 4; i++) {

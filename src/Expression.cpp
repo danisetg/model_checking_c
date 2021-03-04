@@ -8,6 +8,7 @@
 #include "Conditional.h"
 #include "FunCall.h"
 #include "Array.h"
+#include "StructExp.h"
 Expression::Expression()
 {
 }
@@ -16,6 +17,7 @@ Expression Expression::parseFactor (queue<Token>& tokens, vector<string>& _funCa
         mad("Missing factor expression");
     Expression exp;
     Token token = tokens.front();
+    cout<<token.word<<endl;
     if(token.type == "OPEN_PARENTHESIS") {
         tokens.pop();
         exp = parseAssignment(tokens, _funCalls);
@@ -52,6 +54,12 @@ Expression Expression::parseFactor (queue<Token>& tokens, vector<string>& _funCa
             exp.type = ARRAY;
             exp.arr = new Array();
             *exp.arr = _arr;
+        } else if(token.type == "DOT") {
+            StructExp _struct;
+            _struct.parse(_var.name, tokens);
+            exp.type = STRUCT_EXPRESSION;
+            exp.structExp = new StructExp();
+            *exp.structExp = _struct;
         }else {
             exp.type = VARIABLE;
             exp.variable = new Variable();
@@ -227,7 +235,7 @@ Expression Expression::parseAssignment(queue<Token>& tokens, vector<string>& _fu
     Token token = tokens.front();
     cout<<token.word<<endl;
     if(token.type == "ASSIGNMENT") {
-        if(logical.type != VARIABLE && logical.type != ARRAY)
+        if(logical.type != VARIABLE && logical.type != ARRAY && logical.type != STRUCT_EXPRESSION)
             mad("Left part of assignment must be a variable");
         tokens.pop();
 
@@ -271,6 +279,9 @@ string Expression::translate(string fun_name, int& tabs, int& funCallNumber, str
             break;
         case ARRAY:
             return arr->translate(fun_name, tabs, funCallNumber, previousCode);
+            break;
+        case STRUCT_EXPRESSION:
+            return structExp->translate();
             break;
     }
 }

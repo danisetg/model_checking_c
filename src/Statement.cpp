@@ -24,9 +24,14 @@ void Statement::parse(queue<Token>& tokens, vector<Statement>& statements, vecto
         ret = new Return();
         *ret = _ret;
         type = RETURN;
-    } else if(token.type == "INT_KEYWORD") {
+    } else if(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD") {
+        tokens.pop();
+        string _type = token.type;
+        token = tokens.front();
+        tokens.pop();
         Declaration _decl;
-        _decl.parse(tokens, _funCalls);
+        _decl.parse(tokens, _funCalls, _type, token.word);
+        cout<<_type<<" "<<token.word<<endl;
         decl = new Declaration();
         *decl = _decl;
         type = DECLARATION;
@@ -82,6 +87,7 @@ void Statement::parse(queue<Token>& tokens, vector<Statement>& statements, vecto
 }
 
 string Statement::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
+    cout<<type<<endl;
     switch(type) {
         case RETURN:
             return previousCode + ret->translate(fun_name, tabs, funCallNumber, previousCode);
