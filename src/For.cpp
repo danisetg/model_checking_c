@@ -5,20 +5,20 @@ For::For()
     //ctor
 }
 
-void For::parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
+void For::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();
     cout<<token.type<<endl;
     if(token.type != "FOR_KEYWORD")
         mad("not a for statement");
 
-    tokens.pop();
+    tokens.pop_front();
     token = tokens.front();
     cout<<token.type<<endl;
     if(token.type != "OPEN_PARENTHESIS")
         mad("Missing '('");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     if(token.type != "SEMICOLON") {
@@ -38,7 +38,7 @@ void For::parse(queue<Token>& tokens, vector<Statement>& statements, vector<stri
 
         initialValue = _initialValue;
     } else
-        tokens.pop();
+        tokens.pop_front();
 
     token = tokens.front();
     cout<<token.type<<endl;
@@ -54,7 +54,7 @@ void For::parse(queue<Token>& tokens, vector<Statement>& statements, vector<stri
     if(token.type != "SEMICOLON")
         mad("Missing ';'");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     cout<<token.type<<endl;
@@ -69,11 +69,11 @@ void For::parse(queue<Token>& tokens, vector<Statement>& statements, vector<stri
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Missing ')'");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     if(token.type == "OPEN_BRACE") {
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
         while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
             Statement _forBody;
@@ -94,7 +94,7 @@ void For::parse(queue<Token>& tokens, vector<Statement>& statements, vector<stri
         }
         if(token.type != "CLOSE_BRACE")
             mad("missing '}'");
-        tokens.pop();
+        tokens.pop_front();
     } else {
         Statement _forBody;
         if(_forBody.type == DECLARATION) {

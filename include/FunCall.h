@@ -8,7 +8,7 @@ class FunCall
         string name;
         vector<Expression> arguments;
         FunCall();
-        void parse(string _name, queue<Token>& tokens, vector<string>& _funCalls);
+        void parse(string _name, deque<Token>& tokens, vector<string>& _funCalls);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 

@@ -2,10 +2,10 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-int tokensLength = 41;
+int tokensLength = 44;
 
 //predefined list of tokens to to find program code
-Token tokens[41] = {
+Token tokens[44] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
@@ -14,7 +14,9 @@ Token tokens[41] = {
             Token("CLOSE_BRACKET", regex("\\]"), ""),
             Token("SEMICOLON", regex(";"), ""),
             Token("DOT", regex("\\."), ""),
+            Token("DECREMENT", regex("--"), ""),
             Token("NEGATION", regex("-"), ""),
+            Token("INCREMENT", regex("\\+\\+"), ""),
             Token("ADDITION", regex("\\+"), ""),
             Token("MULTIPLICATION", regex("\\*"), ""),
             Token("MOD", regex("%"), ""),
@@ -38,6 +40,7 @@ Token tokens[41] = {
             Token("IF_KEYWORD", regex("if"), ""),
             Token("FOR_KEYWORD", regex("for"), ""),
             Token("WHILE_KEYWORD", regex("while"), ""),
+            Token("GOTO_KEYWORD", regex("goto"), ""),
             Token("DO_KEYWORD", regex("do"), ""),
             Token("BREAK_KEYWORD", regex("break"), ""),
             Token("CONTINUE_KEYWORD", regex("continue"), ""),

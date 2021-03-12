@@ -13,7 +13,7 @@ Const::Const(string _value)
 Const::Const()
 {
 }
-void Const::parse(queue<Token>& tokens) {
+void Const::parse(deque<Token>& tokens) {
     if(tokens.empty())
         mad("Constant is empty");
 
@@ -23,7 +23,7 @@ void Const::parse(queue<Token>& tokens) {
         mad("Not an integer value");
 
     value = token.word;
-    tokens.pop();
+    tokens.pop_front();
 }
 
 string Const::translate() {

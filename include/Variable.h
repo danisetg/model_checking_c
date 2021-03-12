@@ -7,7 +7,7 @@ class Variable
     public:
         string name;
         Variable();
-        void parse(queue<Token>& tokens);
+        void parse(deque<Token>& tokens);
         string translate();
 };
 

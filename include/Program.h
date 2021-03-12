@@ -11,7 +11,7 @@ class Program
         vector<Declaration> d;
         vector<Struct> s;
         Program();
-        void parse(queue<Token>& tokens);
+        void parse(deque<Token>& tokens);
         string translate(int& tabs);
 };
 

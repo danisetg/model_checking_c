@@ -5,14 +5,14 @@ IntDecl::IntDecl()
     //ctor
 }
 
-void IntDecl::parse(queue<Token>& tokens) {
+void IntDecl::parse(deque<Token>& tokens) {
 
     Token token = tokens.front();
 
     if(token.type != "INT_KEYWORD")
         mad("Not an int");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
 
@@ -21,7 +21,7 @@ void IntDecl::parse(queue<Token>& tokens) {
 
     name = token.word;
 
-    tokens.pop();
+    tokens.pop_front();
 }
 
 string IntDecl::translate() {

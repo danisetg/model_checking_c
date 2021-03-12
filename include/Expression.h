@@ -10,6 +10,8 @@ class Conditional;
 class FunCall;
 class Array;
 class StructExp;
+class Increment;
+class Decrement;
 
 enum ExpressionType {
     CONSTANT,
@@ -20,7 +22,9 @@ enum ExpressionType {
     CONDITIONAL,
     FUN_CALL,
     ARRAY,
-    STRUCT_EXPRESSION
+    STRUCT_EXPRESSION,
+    INCREMENT,
+    DECREMENT
 };
 
 class Expression
@@ -37,20 +41,22 @@ class Expression
             FunCall* funCall;
             Array* arr;
             StructExp* structExp;
+            Increment* increment;
+            Decrement* decrement;
         };
 
         Expression();
-        void parse(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseExpression(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseTerm(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseFactor(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseAddition(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseRelationalEqualities(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseRelationalInequalities(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseAnd(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseOr(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseAssignment(queue<Token>& tokens, vector<string>& _funCalls);
-        Expression parseConditional(queue<Token>& tokens, vector<string>& _funCalls);
+        void parse(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseExpression(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseTerm(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseFactor(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseAddition(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseRelationalEqualities(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseRelationalInequalities(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseAnd(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseOr(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseAssignment(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseConditional(deque<Token>& tokens, vector<string>& _funCalls);
 
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };

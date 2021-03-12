@@ -6,20 +6,20 @@ If::If()
     //ctor
 }
 
-void If::parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
+void If::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();
 
     if(token.type != "IF_KEYWORD")
         mad("not an if statement");
 
-    tokens.pop();
+    tokens.pop_front();
     token = tokens.front();
 
     if(token.type != "OPEN_PARENTHESIS")
         mad("Missing '('");
 
-    tokens.pop();
+    tokens.pop_front();
 
     Expression _condition;
     _condition.parse(tokens, _funCalls);
@@ -29,12 +29,12 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements, vector<strin
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Missing ')'");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
 
     if(token.type == "OPEN_BRACE") {
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
         while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
             Statement _ifBody;
@@ -55,7 +55,7 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements, vector<strin
         }
         if(token.type != "CLOSE_BRACE")
             mad("missing '}'");
-        tokens.pop();
+        tokens.pop_front();
     } else {
         Statement _ifBody;
         if(_ifBody.type == DECLARATION) {
@@ -77,10 +77,10 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements, vector<strin
     token = tokens.front();
     cout<<token.word<<endl;
     if(token.type == "ELSE_KEYWORD") {
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
         if(token.type == "OPEN_BRACE") {
-            tokens.pop();
+            tokens.pop_front();
             token = tokens.front();
             while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
                 Statement _elseBody;
@@ -101,7 +101,7 @@ void If::parse(queue<Token>& tokens, vector<Statement>& statements, vector<strin
             }
             if(token.type != "CLOSE_BRACE")
                 mad("missing '}'");
-            tokens.pop();
+            tokens.pop_front();
         } else {
             Statement _elseBody;
             _elseBody.parse(tokens, statements, _funCalls);

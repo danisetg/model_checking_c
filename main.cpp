@@ -3,7 +3,7 @@
 #include <vector>
 #include <Lexer.h>
 #include <regex>
-#include <queue>
+#include <deque>
 #include "Token.h"
 #include "Program.h"
 #include <fstream>
@@ -26,8 +26,8 @@ int main()
     }
     return 0;*/
 
-    string program = fileToString("C:\\c_tests\\stage_12\\valid\\expression.c");
-    queue<Token> tokens;
+    string program = fileToString("C:\\c_tests\\stage_12\\valid\\goto.c");
+    deque<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
     int len = foundTokens.size();
@@ -35,14 +35,14 @@ int main()
 
     for(int i = 0; i < len; i++) {
       // cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
-        tokens.push(foundTokens[i]);
+        tokens.push_back(foundTokens[i]);
     }
 
     Program p;
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_12\\valid\\expression.pml");
+    outfile.open("C:\\c_tests\\stage_12\\valid\\goto.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

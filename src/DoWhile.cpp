@@ -6,18 +6,18 @@ DoWhile::DoWhile()
     //ctor
 }
 
-void DoWhile::parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
+void DoWhile::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();
     cout<<token.type<<endl;
     if(token.type != "DO_KEYWORD")
         mad("not a do while statement");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     if(token.type == "OPEN_BRACE") {
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
         while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
             Statement _doWhileBody;
@@ -38,7 +38,7 @@ void DoWhile::parse(queue<Token>& tokens, vector<Statement>& statements, vector<
         }
         if(token.type != "CLOSE_BRACE")
             mad("missing '}'");
-        tokens.pop();
+        tokens.pop_front();
     } else {
         Statement _doWhileBody;
         if(_doWhileBody.type == DECLARATION) {
@@ -61,7 +61,7 @@ void DoWhile::parse(queue<Token>& tokens, vector<Statement>& statements, vector<
     if(token.type != "WHILE_KEYWORD")
         mad("Missing 'while'");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     cout<<token.type<<endl;
@@ -69,7 +69,7 @@ void DoWhile::parse(queue<Token>& tokens, vector<Statement>& statements, vector<
     if(token.type != "OPEN_PARENTHESIS")
         mad("Missing '('");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     cout<<token.type<<endl;
@@ -84,7 +84,7 @@ void DoWhile::parse(queue<Token>& tokens, vector<Statement>& statements, vector<
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Missing ')'");
 
-    tokens.pop();
+    tokens.pop_front();
 }
 
 string DoWhile::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {

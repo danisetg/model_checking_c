@@ -7,7 +7,7 @@ Fun::Fun()
 {
 }
 
-void Fun::parse(queue<Token>& tokens, string _name) {
+void Fun::parse(deque<Token>& tokens, string _name) {
 
     name = _name;
     cout<<name<<endl;
@@ -16,13 +16,13 @@ void Fun::parse(queue<Token>& tokens, string _name) {
     if(token.type != "OPEN_PARENTHESIS")
         mad("Expected '(' after function name");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     while(token.type != "CLOSE_PARENTHESIS") {
         if(token.type != "INT_KEYWORD")
             mad("Unsupported parameter type");
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
         cout<<token.type<<endl;
         Variable _var;
@@ -33,7 +33,7 @@ void Fun::parse(queue<Token>& tokens, string _name) {
         if(token.type != "COMMA" && token.type != "CLOSE_PARENTHESIS")
             mad("Arguments must be separated by ','");
         else if(token.type == "COMMA")
-            tokens.pop();
+            tokens.pop_front();
         token = tokens.front();
     }
 
@@ -41,12 +41,12 @@ void Fun::parse(queue<Token>& tokens, string _name) {
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Expected ')' after function arguments");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
 
     if(token.type == "OPEN_BRACE") {
-        tokens.pop();
+        tokens.pop_front();
 
         while(!tokens.empty() && tokens.front().type != "CLOSE_BRACE") {
             Statement statement;
@@ -82,7 +82,7 @@ void Fun::parse(queue<Token>& tokens, string _name) {
         }
     }
 
-    tokens.pop();
+    tokens.pop_front();
 }
 
 

@@ -5,7 +5,7 @@ Struct::Struct()
     //ctor
 }
 
-void Struct::parse(queue<Token>& tokens, string _name) {
+void Struct::parse(deque<Token>& tokens, string _name) {
 
     name = _name;
 
@@ -13,7 +13,7 @@ void Struct::parse(queue<Token>& tokens, string _name) {
     if(token.type != "OPEN_BRACE")
         mad("Expected '{' after struct name");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
 
@@ -24,23 +24,23 @@ void Struct::parse(queue<Token>& tokens, string _name) {
        if(token.type != "STRUCT_KEYWORD" && token.type != "INT_KEYWORD")
             mad("Unknown type");
        string type = token.type;
-       tokens.pop();
+       tokens.pop_front();
        token = tokens.front();
-       tokens.pop();
+       tokens.pop_front();
        decl.parse(tokens, funCalls, type, token.word);
        declarations.push_back(decl);
        token = tokens.front();
        cout<<token.word<<endl;
        if(token.type != "SEMICOLON")
             mad("Missing ';'");
-       tokens.pop();
+       tokens.pop_front();
        token = tokens.front();
     }
-    tokens.pop();
+    tokens.pop_front();
     token = tokens.front();
     if(token.type != "SEMICOLON")
         mad("Missing ';'");
-    tokens.pop();
+    tokens.pop_front();
 }
 
 

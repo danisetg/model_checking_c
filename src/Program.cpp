@@ -12,7 +12,7 @@ Program::Program()
 {
 }
 
-void Program::parse(queue<Token>& tokens) {
+void Program::parse(deque<Token>& tokens) {
 
     if(tokens.empty())
         mad("Program is empty");
@@ -21,14 +21,14 @@ void Program::parse(queue<Token>& tokens) {
     while(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD") {
 
         string type = token.type;
-        tokens.pop();
+        tokens.pop_front();
 
         token = tokens.front();
         if(token.type != "IDENTIFIER")
                 mad("Missing identifier");
 
         string name = token.word;
-        tokens.pop();
+        tokens.pop_front();
 
         token = tokens.front();
         vector<string> funCalls;
@@ -41,7 +41,7 @@ void Program::parse(queue<Token>& tokens) {
             token = tokens.front();
             if(token.type != "SEMICOLON")
                 mad("Missing ';'");
-            tokens.pop();
+            tokens.pop_front();
         } else if (type == "STRUCT_KEYWORD" && token.type == "OPEN_BRACE") {
             Struct _s;
             _s.parse(tokens, name);

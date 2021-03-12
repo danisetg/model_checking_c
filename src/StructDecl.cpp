@@ -5,14 +5,14 @@ StructDecl::StructDecl()
     //ctor
 }
 
-void StructDecl::parse(queue<Token>& tokens) {
+void StructDecl::parse(deque<Token>& tokens) {
 
     Token token = tokens.front();
 
     if(token.type != "STRUCT_KEYWORD")
         mad("Not a struct");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
 
@@ -22,7 +22,7 @@ void StructDecl::parse(queue<Token>& tokens) {
 
     structName = token.word;
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
 
@@ -31,7 +31,7 @@ void StructDecl::parse(queue<Token>& tokens) {
 
     name = token.word;
 
-    tokens.pop();
+    tokens.pop_front();
 }
 
 string StructDecl::translate() {

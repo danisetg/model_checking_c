@@ -9,7 +9,7 @@ class Array
         vector<Expression> positions;
         string name;
         Array();
-        void parse(string _name, queue<Token>& tokens, vector<string>& _funCalls);
+        void parse(string _name, deque<Token>& tokens, vector<string>& _funCalls);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
         string getPosition(string fun_name, int& tabs, int& funCallNumber, string& previousCode,
                           vector<int> dimensions, int dimsLength);

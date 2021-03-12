@@ -4,17 +4,17 @@ StructExp::StructExp()
 {
     //ctor
 }
-void StructExp::parse(string _name, queue<Token>& tokens) {
+void StructExp::parse(Expression _exp, deque<Token>& tokens) {
     if(tokens.empty())
         mad("Missing variable");
-    name = _name;
+    exp = _exp;
 
     Token token = tokens.front();
 
     if(token.type != "DOT")
         mad("Missing '.'");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
 
@@ -22,9 +22,9 @@ void StructExp::parse(string _name, queue<Token>& tokens) {
         mad("Missing struct variable reference");
 
     varName = token.word;
-    tokens.pop();
+    tokens.pop_front();
 }
 
-string StructExp::translate() {
-    return name + "." + varName;
+string StructExp::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
+    return exp.translate(fun_name, tabs, funCallNumber, previousCode) + "." + varName;
 }

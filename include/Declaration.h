@@ -21,7 +21,7 @@ class Declaration
         vector<int> dimensions;
         std::optional<Expression> expression;
         Declaration();
-        void parse(queue<Token>& tokens, vector<string>& _funCalls, string _type, string _name);
+        void parse(deque<Token>& tokens, vector<string>& _funCalls, string _type, string _name);
         string translate(int& tabs, bool addExpression);
 };
 

@@ -5,7 +5,7 @@ Array::Array()
     //ctor
 }
 
-void Array::parse(string _name, queue<Token>& tokens, vector<string>& _funCalls) {
+void Array::parse(string _name, deque<Token>& tokens, vector<string>& _funCalls) {
     if(tokens.empty())
         mad("Array is empty");
 
@@ -14,14 +14,15 @@ void Array::parse(string _name, queue<Token>& tokens, vector<string>& _funCalls)
     Token token = tokens.front();
 
     while(token.type == "OPEN_BRACKET") {
-        tokens.pop();
+        cout<<"    "<<token.type<<endl;
+        tokens.pop_front();
         Expression exp;
         exp.parse(tokens, _funCalls);
         positions.push_back(exp);
         token = tokens.front();
         if(token.type != "CLOSE_BRACKET")
             mad("Missing ']'");
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
     }
 }

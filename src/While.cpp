@@ -6,20 +6,20 @@ While::While()
     //ctor
 }
 
-void While::parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
+void While::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();
     cout<<token.type<<endl;
     if(token.type != "WHILE_KEYWORD")
         mad("not a while statement");
 
-    tokens.pop();
+    tokens.pop_front();
     token = tokens.front();
     cout<<token.type<<endl;
     if(token.type != "OPEN_PARENTHESIS")
         mad("Missing '('");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     cout<<token.type<<endl;
@@ -34,11 +34,11 @@ void While::parse(queue<Token>& tokens, vector<Statement>& statements, vector<st
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Missing ')'");
 
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     if(token.type == "OPEN_BRACE") {
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
         while(token.type != "CLOSE_BRACE" && !tokens.empty()) {
             Statement _whileBody;
@@ -59,7 +59,7 @@ void While::parse(queue<Token>& tokens, vector<Statement>& statements, vector<st
         }
         if(token.type != "CLOSE_BRACE")
             mad("missing '}'");
-        tokens.pop();
+        tokens.pop_front();
     } else {
         Statement _whileBody;
         if(_whileBody.type == DECLARATION) {

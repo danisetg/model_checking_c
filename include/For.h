@@ -10,7 +10,7 @@ class For
         std::optional<Expression> nextValue;
         vector<Statement> forBody;
         For();
-        void parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
+        void parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
         string translate(string fun_name,int& tabs, int& funCallNumber, string& previousCode);
 };
 

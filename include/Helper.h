@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <queue>
+#include <deque>
 #include <Token.h>
 #include <sstream>
 #include <fstream>
@@ -12,7 +12,7 @@
 #include <iterator>
 #include <map>
 #include "ArrayDecl.h"
-using std::queue;
+using std::deque;
 using std::map;
 using std::ofstream;
 using std::string;

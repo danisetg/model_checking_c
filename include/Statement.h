@@ -11,6 +11,8 @@ class While;
 class Continue;
 class Break;
 class DoWhile;
+class LabeledStatement;
+class Goto;
 
 enum StatementType {
     EXPRESSION,
@@ -21,7 +23,9 @@ enum StatementType {
     WHILE,
     DO_WHILE,
     CONTINUE,
-    BREAK
+    BREAK,
+    LABELED_STATEMENT,
+    GOTO
 };
 
 class Statement
@@ -38,9 +42,11 @@ class Statement
             Break* breakStatement;
             While* whileStatement;
             DoWhile* doWhileStatement;
+            LabeledStatement* labeledStatement;
+            Goto* gto;
         };
         Statement();
-        void parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
+        void parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 

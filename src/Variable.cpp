@@ -4,7 +4,7 @@ Variable::Variable()
 {
     //ctor
 }
-void Variable::parse(queue<Token>& tokens) {
+void Variable::parse(deque<Token>& tokens) {
     if(tokens.empty())
         mad("Missing variable");
 
@@ -14,7 +14,7 @@ void Variable::parse(queue<Token>& tokens) {
         mad("Incorrect variable identifier");
 
     name = token.word;
-    tokens.pop();
+    tokens.pop_front();
 }
 
 string Variable::translate() {

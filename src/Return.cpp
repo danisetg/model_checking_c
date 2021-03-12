@@ -8,7 +8,7 @@ Return::Return()
 {
 }
 
-void Return::parse(queue<Token>& tokens, vector<string>& _funCalls) {
+void Return::parse(deque<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())
         mad("Statement is Empty");
@@ -18,7 +18,7 @@ void Return::parse(queue<Token>& tokens, vector<string>& _funCalls) {
     if(token.type != "RETURN_KEYWORD")
         mad("Missing function return");
 
-    tokens.pop();
+    tokens.pop_front();
 
     Expression _expression;
 

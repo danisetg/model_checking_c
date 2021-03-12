@@ -6,7 +6,7 @@ UnaryOperator::UnaryOperator()
     //ctor
 }
 
-void UnaryOperator::parse (queue<Token>& tokens, vector<string>& _funCalls) {
+void UnaryOperator::parse (deque<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())
         mad("Missing unary operator");
@@ -17,7 +17,7 @@ void UnaryOperator::parse (queue<Token>& tokens, vector<string>& _funCalls) {
         mad("Incorrect unary operator");
 
     op = token.word;
-    tokens.pop();
+    tokens.pop_front();
 
     Expression _expression;
 

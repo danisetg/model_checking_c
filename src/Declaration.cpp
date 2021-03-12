@@ -7,7 +7,7 @@ Declaration::Declaration()
     //ctor
 }
 
-void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls, string _type, string _name) {
+void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls, string _type, string _name) {
 
     if(tokens.empty())
         mad("Declaration is empty");
@@ -27,7 +27,7 @@ void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls, string
         structDecl->name = token.word;
         structDecl->structName = _name;
         name = structDecl->name;
-        tokens.pop();
+        tokens.pop_front();
         type = STRUCT;
     } else
         mad("Not a variable type");
@@ -35,24 +35,24 @@ void Declaration::parse (queue<Token>& tokens, vector<string>& _funCalls, string
     token = tokens.front();
 
     while(token.type == "OPEN_BRACKET") {
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
 
         if(token.type != "INTEGER")
             mad("Array dimension must be constant integer quantity");
 
         dimensions.push_back(stoi(token.word));
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
         if(token.type != "CLOSE_BRACKET")
             mad("missing ']'");
 
-        tokens.pop();
+        tokens.pop_front();
         token = tokens.front();
     }
 
     if(token.type == "ASSIGNMENT") {
-        tokens.pop();
+        tokens.pop_front();
         Expression _exp;
         _exp.parse(tokens, _funCalls);
 

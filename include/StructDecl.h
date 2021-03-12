@@ -8,7 +8,7 @@ class StructDecl
         string structName;
         string name;
         StructDecl();
-        void parse(queue<Token>& tokens);
+        void parse(deque<Token>& tokens);
         string translate();
 };
 

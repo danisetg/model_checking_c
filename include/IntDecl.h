@@ -7,7 +7,7 @@ class IntDecl
     public:
         string name;
         IntDecl();
-        void parse(queue<Token>& tokens);
+        void parse(deque<Token>& tokens);
         string translate();
 };
 

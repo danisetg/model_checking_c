@@ -7,12 +7,14 @@
 #include "DoWhile.h"
 #include "Break.h"
 #include "Continue.h"
+#include "LabeledStatement.h"
+#include "Goto.h"
 Statement::Statement()
 {
     //ctor
 }
 
-void Statement::parse(queue<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
+void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
     if(tokens.empty())
         mad("Statement is Empty");
 
@@ -25,10 +27,10 @@ void Statement::parse(queue<Token>& tokens, vector<Statement>& statements, vecto
         *ret = _ret;
         type = RETURN;
     } else if(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD") {
-        tokens.pop();
+        tokens.pop_front();
         string _type = token.type;
         token = tokens.front();
-        tokens.pop();
+        tokens.pop_front();
         Declaration _decl;
         _decl.parse(tokens, _funCalls, _type, token.word);
         cout<<_type<<" "<<token.word<<endl;
@@ -36,11 +38,22 @@ void Statement::parse(queue<Token>& tokens, vector<Statement>& statements, vecto
         *decl = _decl;
         type = DECLARATION;
     } else if(token.type == "IDENTIFIER" || token.type == "INTEGER") {
-        Expression _exp;
-        _exp.parse(tokens, _funCalls);
-        expression = new Expression;
-        *expression = _exp;
-        type = EXPRESSION;
+        tokens.pop_front();
+        Token token1 = tokens.front();
+        tokens.push_front(token);
+        if(token.type == "IDENTIFIER" && token1.type == "COLON") {
+            LabeledStatement _label;
+            _label.parse(tokens, statements, _funCalls);
+            labeledStatement = new LabeledStatement();
+            *labeledStatement = _label;
+            type = LABELED_STATEMENT;
+        } else {
+            Expression _exp;
+            _exp.parse(tokens, _funCalls);
+            expression = new Expression;
+            *expression = _exp;
+            type = EXPRESSION;
+        }
     } else if(token.type == "IF_KEYWORD") {
         If _if;
         _if.parse(tokens, statements, _funCalls);
@@ -68,22 +81,28 @@ void Statement::parse(queue<Token>& tokens, vector<Statement>& statements, vecto
     }else if(token.type == "BREAK_KEYWORD") {
         type = BREAK;
         breakStatement = new Break();
-        tokens.pop();
+        tokens.pop_front();
     } else if(token.type == "CONTINUE_KEYWORD") {
         type = CONTINUE;
         continueStatement = new Continue();
-        tokens.pop();
-    } else {
+        tokens.pop_front();
+    } else if(token.type == "GOTO_KEYWORD") {
+        type = GOTO;
+        Goto _gto;
+        _gto.parse(tokens);
+        gto = new Goto();
+        *gto = _gto;
+    }else {
         mad("Wrong statement structure");
     }
 
     token = tokens.front();
 
-    if(token.type != "SEMICOLON" && type != IF && type != FOR && type != WHILE)
+    if(token.type != "SEMICOLON" && type != IF && type != FOR && type != WHILE && type != LABELED_STATEMENT)
         mad("Missing ';'");
 
-    if(type != IF && type != FOR && type != WHILE)
-        tokens.pop();
+    if(type != IF && type != FOR && type != WHILE && type != LABELED_STATEMENT)
+        tokens.pop_front();
 }
 
 string Statement::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
@@ -108,5 +127,9 @@ string Statement::translate(string fun_name, int& tabs, int& funCallNumber, stri
             return printTabs(tabs) + breakStatement->translate() + ";";
         case CONTINUE:
             return printTabs(tabs) + continueStatement->translate() + ";";
+        case LABELED_STATEMENT:
+            return printTabs(tabs) + labeledStatement->translate(fun_name, tabs, funCallNumber, previousCode);
+        case GOTO:
+            return printTabs(tabs) + gto->translate();
     }
 }

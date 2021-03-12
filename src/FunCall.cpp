@@ -5,7 +5,7 @@ FunCall::FunCall()
     //ctor
 }
 
-void FunCall::parse(string _name, queue<Token>& tokens, vector<string>& _funCalls) {
+void FunCall::parse(string _name, deque<Token>& tokens, vector<string>& _funCalls) {
     if(tokens.empty())
         mad("Function is empty");
 
@@ -14,7 +14,7 @@ void FunCall::parse(string _name, queue<Token>& tokens, vector<string>& _funCall
     Token token = tokens.front();
     if(token.type != "OPEN_PARENTHESIS")
         mad("Missing '('");
-    tokens.pop();
+    tokens.pop_front();
 
     token = tokens.front();
     while(token.type != "CLOSE_PARENTHESIS") {
@@ -25,10 +25,10 @@ void FunCall::parse(string _name, queue<Token>& tokens, vector<string>& _funCall
         if(token.type != "COMMA" && token.type != "CLOSE_PARENTHESIS")
             mad("Arguments must be separated by ','");
         else if(token.type == "COMMA")
-            tokens.pop();
+            tokens.pop_front();
         token = tokens.front();
     }
-    tokens.pop();
+    tokens.pop_front();
 }
 
 string FunCall::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
