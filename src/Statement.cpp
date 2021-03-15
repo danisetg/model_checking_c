@@ -9,6 +9,7 @@
 #include "Continue.h"
 #include "LabeledStatement.h"
 #include "Goto.h"
+#include "Switch.h"
 Statement::Statement()
 {
     //ctor
@@ -27,13 +28,8 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
         *ret = _ret;
         type = RETURN;
     } else if(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD") {
-        tokens.pop_front();
-        string _type = token.type;
-        token = tokens.front();
-        tokens.pop_front();
         Declaration _decl;
-        _decl.parse(tokens, _funCalls, _type, token.word);
-        cout<<_type<<" "<<token.word<<endl;
+        _decl.parse(tokens, _funCalls);
         decl = new Declaration();
         *decl = _decl;
         type = DECLARATION;
@@ -78,6 +74,12 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
         doWhileStatement = new DoWhile();
         *doWhileStatement = _doWhile;
         type = DO_WHILE;
+    }else if(token.type == "SWITCH_KEYWORD"){
+        Switch _switch;
+        _switch.parse(tokens, statements, _funCalls);
+        switchStatement = new Switch();
+        *switchStatement = _switch;
+        type = SWITCH;
     }else if(token.type == "BREAK_KEYWORD") {
         type = BREAK;
         breakStatement = new Break();
@@ -98,10 +100,10 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
 
     token = tokens.front();
 
-    if(token.type != "SEMICOLON" && type != IF && type != FOR && type != WHILE && type != LABELED_STATEMENT)
+    if(token.type != "SEMICOLON" && type != IF && type != FOR && type != WHILE && type != LABELED_STATEMENT && type != SWITCH)
         mad("Missing ';'");
 
-    if(type != IF && type != FOR && type != WHILE && type != LABELED_STATEMENT)
+    if(type != IF && type != FOR && type != WHILE && type != LABELED_STATEMENT && type != SWITCH)
         tokens.pop_front();
 }
 
@@ -131,5 +133,7 @@ string Statement::translate(string fun_name, int& tabs, int& funCallNumber, stri
             return printTabs(tabs) + labeledStatement->translate(fun_name, tabs, funCallNumber, previousCode);
         case GOTO:
             return printTabs(tabs) + gto->translate();
+        case SWITCH:
+            return printTabs(tabs) + switchStatement->translate(fun_name, tabs, funCallNumber, previousCode);
     }
 }

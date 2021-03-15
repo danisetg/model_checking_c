@@ -23,20 +23,21 @@ void Program::parse(deque<Token>& tokens) {
         string type = token.type;
         tokens.pop_front();
 
-        token = tokens.front();
-        if(token.type != "IDENTIFIER")
+        Token token1 = tokens.front();
+        if(token1.type != "IDENTIFIER")
                 mad("Missing identifier");
 
-        string name = token.word;
+        string name = token1.word;
         tokens.pop_front();
 
-        token = tokens.front();
+        Token token2 = tokens.front();
         vector<string> funCalls;
-        cout<<type<<" "<<token.type<<endl;
 
-        if(token.type != "OPEN_BRACE" && token.type != "OPEN_PARENTHESIS") {
+        if(token2.type != "OPEN_BRACE" && token2.type != "OPEN_PARENTHESIS") {
+            tokens.push_front(token1);
+            tokens.push_front(token);
             Declaration decl;
-            decl.parse(tokens, funCalls, type, name);
+            decl.parse(tokens, funCalls);
             d.push_back(decl);
             token = tokens.front();
             if(token.type != "SEMICOLON")

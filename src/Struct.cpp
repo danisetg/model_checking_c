@@ -23,11 +23,7 @@ void Struct::parse(deque<Token>& tokens, string _name) {
        Declaration decl;
        if(token.type != "STRUCT_KEYWORD" && token.type != "INT_KEYWORD")
             mad("Unknown type");
-       string type = token.type;
-       tokens.pop_front();
-       token = tokens.front();
-       tokens.pop_front();
-       decl.parse(tokens, funCalls, type, token.word);
+       decl.parse(tokens, funCalls);
        declarations.push_back(decl);
        token = tokens.front();
        cout<<token.word<<endl;

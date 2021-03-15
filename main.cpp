@@ -26,7 +26,7 @@ int main()
     }
     return 0;*/
 
-    string program = fileToString("C:\\c_tests\\stage_12\\valid\\goto.c");
+    string program = fileToString("C:\\c_tests\\stage_13\\valid\\default.c");
     deque<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
@@ -34,7 +34,7 @@ int main()
 
 
     for(int i = 0; i < len; i++) {
-      // cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
+       cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
         tokens.push_back(foundTokens[i]);
     }
 
@@ -42,7 +42,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_12\\valid\\goto.pml");
+    outfile.open("C:\\c_tests\\stage_13\\valid\\default.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

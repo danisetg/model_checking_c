@@ -9,7 +9,7 @@ class StructDecl
         string name;
         StructDecl();
         void parse(deque<Token>& tokens);
-        string translate();
+        string translate(bool isPointer);
 };
 
 #endif // STRUCTDECL_H

@@ -12,6 +12,7 @@
 #include <iterator>
 #include <map>
 #include "ArrayDecl.h"
+#include "PointerDecl.h"
 using std::deque;
 using std::map;
 using std::ofstream;
@@ -30,6 +31,7 @@ using std::ostringstream;
 
 
 extern vector<ArrayDecl> globalArrays;
+extern vector<PointerDecl> pointers;
 
 vector<string> split(string str, char delimiter);
 
@@ -40,6 +42,8 @@ void mad(string message);
 string printTabs(int tabs);
 
 void saveArray(string name, vector<int> dimensions);
+
+void savePointer(string name, enum PointerType type);
 
 vector<int> getArrayDimensions(string name);
 

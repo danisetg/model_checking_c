@@ -13,6 +13,7 @@ class Break;
 class DoWhile;
 class LabeledStatement;
 class Goto;
+class Switch;
 
 enum StatementType {
     EXPRESSION,
@@ -25,7 +26,8 @@ enum StatementType {
     CONTINUE,
     BREAK,
     LABELED_STATEMENT,
-    GOTO
+    GOTO,
+    SWITCH
 };
 
 class Statement
@@ -44,6 +46,7 @@ class Statement
             DoWhile* doWhileStatement;
             LabeledStatement* labeledStatement;
             Goto* gto;
+            Switch* switchStatement;
         };
         Statement();
         void parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);

@@ -2,6 +2,7 @@
 
 vector<ArrayDecl> globalArrays;
 vector<ArrayDecl> localArrays;
+vector<PointerDecl> pointers;
 
 vector<string> split(string str, char delimiter) {
     int len = str.length();
@@ -61,6 +62,13 @@ void saveArray(string name, vector<int> dimensions) {
     arr.dimensions = dimensions;
     arr.name = name;
     globalArrays.push_back(arr);
+}
+
+void savePointer(string name, enum PointerType type) {
+    PointerDecl ptr;
+    ptr.name = name;
+    ptr.type = type;
+    pointers.push_back(ptr);
 }
 
 vector<int> getArrayDimensions(string name) {

@@ -34,6 +34,9 @@ void StructDecl::parse(deque<Token>& tokens) {
     tokens.pop_front();
 }
 
-string StructDecl::translate() {
-    return structName + " " + name;
+string StructDecl::translate(bool isPointer) {
+    if(!isPointer)
+        return structName + " " + name;
+
+    return "int " + name;
 }

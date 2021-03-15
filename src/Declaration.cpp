@@ -7,25 +7,37 @@ Declaration::Declaration()
     //ctor
 }
 
-void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls, string _type, string _name) {
+void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())
         mad("Declaration is empty");
 
     Token token = tokens.front();
+    tokens.pop_front();
     string name;
-    cout<<_name<<" "<<_type<<endl;
-    if(_type == "INT_KEYWORD") {
+    if(token.type == "INT_KEYWORD") {
+        token = tokens.front();
+        if(token.type == "MULTIPLICATION") {
+            isPointer = true;
+            tokens.pop_front();
+            token = tokens.front();
+            savePointer(token.word, INTEGER);
+        }
         IntDecl _int;
-        _int.name = _name;
+        _int.name = token.word;
         intDecl = new IntDecl();
         *intDecl = _int;
         name = intDecl->name;
         type = INT;
-    } else if(_type == "STRUCT_KEYWORD") {
+    } else if(token.type == "STRUCT_KEYWORD") {
+        tokens.pop_front();
         structDecl = new StructDecl();
+        token = tokens.front();
+        structDecl->structName = token.word;
+        tokens.pop_front();
+        token = tokens.front();
         structDecl->name = token.word;
-        structDecl->structName = _name;
+
         name = structDecl->name;
         tokens.pop_front();
         type = STRUCT;
@@ -59,7 +71,7 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls, string
         Expression left;
         left.type = VARIABLE;
         left.variable = new Variable();
-        left.variable->name = _name;
+        left.variable->name =  name;
 
         Assignment assignment = Assignment(left, _exp);
 
@@ -79,7 +91,7 @@ string Declaration::translate(int& tabs, bool addExpression) {
             code += intDecl->translate();
             break;
         case STRUCT:
-            code += structDecl->translate();
+            code += structDecl->translate(isPointer);
             break;
     }
 

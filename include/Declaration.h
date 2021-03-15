@@ -14,6 +14,7 @@ class Declaration
 {
     public:
         enum DeclarationType type;
+        bool isPointer;
         union {
             IntDecl* intDecl;
             StructDecl* structDecl;
@@ -21,7 +22,7 @@ class Declaration
         vector<int> dimensions;
         std::optional<Expression> expression;
         Declaration();
-        void parse(deque<Token>& tokens, vector<string>& _funCalls, string _type, string _name);
+        void parse(deque<Token>& tokens, vector<string>& _funCalls);
         string translate(int& tabs, bool addExpression);
 };
 
