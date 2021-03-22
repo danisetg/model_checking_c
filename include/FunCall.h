@@ -10,6 +10,9 @@ class FunCall
         FunCall();
         void parse(string _name, deque<Token>& tokens, vector<string>& _funCalls);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
+        string translateMalloc(int& tabs, int& funCallNumber, string type);
+        string translateFree(int& tabs, string varName);
+
 };
 
 #endif // FUNCALL_H

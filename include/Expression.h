@@ -12,6 +12,7 @@ class Array;
 class StructExp;
 class Increment;
 class Decrement;
+class PointerExp;
 
 enum ExpressionType {
     CONSTANT,
@@ -24,7 +25,8 @@ enum ExpressionType {
     ARRAY,
     STRUCT_EXPRESSION,
     INCREMENT,
-    DECREMENT
+    DECREMENT,
+    POINTER_EXPRESSION
 };
 
 class Expression
@@ -43,6 +45,7 @@ class Expression
             StructExp* structExp;
             Increment* increment;
             Decrement* decrement;
+            PointerExp* pointerExp;
         };
 
         Expression();

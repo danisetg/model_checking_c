@@ -11,6 +11,7 @@
 #include "StructExp.h"
 #include "Increment.h"
 #include "Decrement.h"
+#include "PointerExp.h"
 Expression::Expression()
 {
 }
@@ -89,6 +90,12 @@ Expression Expression::parseFactor (deque<Token>& tokens, vector<string>& _funCa
             exp.type = STRUCT_EXPRESSION;
             exp.structExp = new StructExp();
             *exp.structExp = _struct;
+        } else if(token.type == "ARROW") {
+            PointerExp _pointer;
+            _pointer.parse(_var.name, tokens);
+            exp.type = POINTER_EXPRESSION;
+            exp.pointerExp = new PointerExp();
+            *exp.pointerExp = _pointer;
         }else {
             exp.type = VARIABLE;
             exp.variable = new Variable();
@@ -264,7 +271,7 @@ Expression Expression::parseAssignment(deque<Token>& tokens, vector<string>& _fu
     Token token = tokens.front();
     cout<<token.word<<endl;
     if(token.type == "ASSIGNMENT") {
-        if(logical.type != VARIABLE && logical.type != ARRAY && logical.type != STRUCT_EXPRESSION)
+        if(logical.type != VARIABLE && logical.type != ARRAY && logical.type != STRUCT_EXPRESSION && logical.type != POINTER_EXPRESSION)
             mad("Left part of assignment must be a variable");
         tokens.pop_front();
 
@@ -311,6 +318,9 @@ string Expression::translate(string fun_name, int& tabs, int& funCallNumber, str
             break;
         case STRUCT_EXPRESSION:
             return structExp->translate(fun_name, tabs, funCallNumber, previousCode);
+            break;
+        case POINTER_EXPRESSION:
+            return pointerExp->translate(fun_name, tabs, funCallNumber, previousCode);
             break;
         case INCREMENT:
             return increment->translate();

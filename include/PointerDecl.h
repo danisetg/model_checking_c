@@ -5,15 +5,10 @@
 using std::string;
 
 
-enum PointerType {
-    INTEGER,
-    STRUCTURE
-};
-
 class PointerDecl
 {
     public:
-        enum PointerType type;
+        string type;
         string name;
         PointerDecl();
 };

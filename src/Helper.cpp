@@ -3,6 +3,8 @@
 vector<ArrayDecl> globalArrays;
 vector<ArrayDecl> localArrays;
 vector<PointerDecl> pointers;
+set<string> pointersTypes;
+vector<StructType> structTypes;
 
 vector<string> split(string str, char delimiter) {
     int len = str.length();
@@ -64,11 +66,46 @@ void saveArray(string name, vector<int> dimensions) {
     globalArrays.push_back(arr);
 }
 
-void savePointer(string name, enum PointerType type) {
+void savePointer(string name, string type) {
     PointerDecl ptr;
     ptr.name = name;
     ptr.type = type;
     pointers.push_back(ptr);
+    pointersTypes.insert(type);
+}
+
+void saveStructType(string name, vector<pair<string, string> > members) {
+    StructType structType;
+    structType.name = name;
+    structType.members = members;
+    structTypes.push_back(structType);
+}
+
+vector<string> getPointerTypes() {
+    set<string>::iterator it;
+    vector<string> types;
+    for(it = pointersTypes.begin(); it != pointersTypes.end(); it++) {
+        types.push_back(*it);
+        cout<<*it<<endl;
+    }
+    return types;
+}
+
+vector<pair<string, string> > getStructMembers(string name) {
+    vector<pair<string, string> > members;
+    for(int i = 0; i < structTypes.size(); i++) {
+        if(name == structTypes[i].name)
+            return structTypes[i].members;
+    }
+    return members;
+}
+
+string getPointerType(string pointerName) {
+    for(int i = 0; i < pointers.size(); i++) {
+        if(pointers[i].name == pointerName)
+            return pointers[i].type;
+    }
+    return "-1";
 }
 
 vector<int> getArrayDimensions(string name) {

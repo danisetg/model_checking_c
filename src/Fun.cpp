@@ -1,33 +1,37 @@
 #include "Fun.h"
 #include <string>
 #include "Helper.h"
-#include "Return.h"
-#include "Declaration.h"
+
 Fun::Fun()
 {
 }
 
-void Fun::parse(deque<Token>& tokens, string _name) {
+void Fun::parse(deque<Token>& tokens, string _name, string _type) {
 
     name = _name;
     cout<<name<<endl;
     Token token = tokens.front();
+
+
 
     if(token.type != "OPEN_PARENTHESIS")
         mad("Expected '(' after function name");
 
     tokens.pop_front();
 
+    if(_type == "VOID_KEYWORD")
+        type = VOID;
+    else
+        type = INTEGER;
+
     token = tokens.front();
     while(token.type != "CLOSE_PARENTHESIS") {
-        if(token.type != "INT_KEYWORD")
+        if(token.type != "INT_KEYWORD" && token.type != "STRUCT_KEYWORD")
             mad("Unsupported parameter type");
-        tokens.pop_front();
-        token = tokens.front();
-        cout<<token.type<<endl;
-        Variable _var;
-        _var.parse(tokens);
-        parameters.push_back(_var);
+
+        Declaration _decl;
+        _decl.parse(tokens, funCalls);
+        parameters.push_back(_decl);
 
         token = tokens.front();
         if(token.type != "COMMA" && token.type != "CLOSE_PARENTHESIS")
@@ -92,7 +96,7 @@ string Fun::translate(int& tabs) {
     if(statements.size()) {
         string code = printTabs(tabs) + "proctype " + name + "(" + "chan in_" + name;
         for(int i = 0; i < parameters.size(); i++) {
-            code += "; int " + parameters[i].name;
+            code += "; " + parameters[i].translate(tabs, false);
         }
         code += "){\n";
         tabs++;
@@ -112,6 +116,8 @@ string Fun::translate(int& tabs) {
             string tmp = statements[i].translate(name, tabs, funCallNumber, previousCode);
             code += tmp + '\n';
         }
+        if(type == VOID)
+            code += printTabs(tabs) + "in_" + name + " ! 0;\n" + printTabs(tabs) + "goto end;";
         code += printTabs(tabs) + "end: printf(\"End of " + name + "\");\n";
         tabs--;
         code += printTabs(tabs) + "}";

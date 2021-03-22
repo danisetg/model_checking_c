@@ -21,7 +21,7 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
             isPointer = true;
             tokens.pop_front();
             token = tokens.front();
-            savePointer(token.word, INTEGER);
+            savePointer(token.word, "int");
         }
         IntDecl _int;
         _int.name = token.word;
@@ -30,20 +30,27 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
         name = intDecl->name;
         type = INT;
     } else if(token.type == "STRUCT_KEYWORD") {
-        tokens.pop_front();
         structDecl = new StructDecl();
         token = tokens.front();
+
         structDecl->structName = token.word;
         tokens.pop_front();
         token = tokens.front();
+        cout<<structDecl->structName<<" "<<token.word<<endl;
+        if(token.type == "MULTIPLICATION") {
+            isPointer = true;
+            tokens.pop_front();
+            token = tokens.front();
+            savePointer(token.word, structDecl->structName);
+        }
         structDecl->name = token.word;
 
         name = structDecl->name;
-        tokens.pop_front();
         type = STRUCT;
     } else
         mad("Not a variable type");
 
+    tokens.pop_front();
     token = tokens.front();
 
     while(token.type == "OPEN_BRACKET") {
@@ -109,5 +116,5 @@ string Declaration::translate(int& tabs, bool addExpression) {
         code += " = " + expression->translate(tmp, tabs, aux, tmp);
     }
 
-    return code + ";";
+    return code;
 }

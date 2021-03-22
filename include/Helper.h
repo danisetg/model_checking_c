@@ -13,6 +13,7 @@
 #include <map>
 #include "ArrayDecl.h"
 #include "PointerDecl.h"
+#include "StructType.h"
 using std::deque;
 using std::map;
 using std::ofstream;
@@ -32,6 +33,8 @@ using std::ostringstream;
 
 extern vector<ArrayDecl> globalArrays;
 extern vector<PointerDecl> pointers;
+extern set<string> pointersTypes;
+extern vector<StructType> structTypes;
 
 vector<string> split(string str, char delimiter);
 
@@ -43,7 +46,17 @@ string printTabs(int tabs);
 
 void saveArray(string name, vector<int> dimensions);
 
-void savePointer(string name, enum PointerType type);
+void savePointer(string name, string type);
+
+void saveStructType(string name, vector<pair<string, string> > members);
+
+vector<string> getPointerTypes();
+
+vector<pair<string, string> > getStructMembers(string name);
+
+string getStructType(string name);
+
+string getPointerType(string pointerName);
 
 vector<int> getArrayDimensions(string name);
 

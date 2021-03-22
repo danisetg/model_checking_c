@@ -2,10 +2,10 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-int tokensLength = 47;
+int tokensLength = 49;
 
 //predefined list of tokens to to find program code
-Token tokens[47] = {
+Token tokens[49] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
@@ -35,6 +35,7 @@ Token tokens[47] = {
             Token("ASSIGNMENT", regex("="), ""),
             Token("LOGICAL_NEGATION", regex("!"), ""),
             Token("INT_KEYWORD", regex("int"), ""),
+            Token("VOID_KEYWORD", regex("void"), ""),
             Token("STRUCT_KEYWORD", regex("struct"), ""),
             Token("RETURN_KEYWORD", regex("return"), ""),
             Token("IF_KEYWORD", regex("if"), ""),
@@ -50,6 +51,7 @@ Token tokens[47] = {
             Token("ELSE_KEYWORD", regex("else"), ""),
             Token("COLON", regex(":"), ""),
             Token("COMMA", regex(","), ""),
+            Token("ARROW", regex("->"), ""),
             Token("QUESTION_MARK", regex("\\?"), ""),
             Token("IDENTIFIER", regex("[a-zA-Z]\\w*"), ""),
             Token("INTEGER", regex("[0-9]+"), "")
@@ -57,11 +59,11 @@ Token tokens[47] = {
 
 
 //predefined program special characters that can be found joint to words
-string predefinedTwoCharacters[4] = {"==", "!=", "++", "--"};
+string predefinedTwoCharacters[5] = {"==", "!=", "++", "--", "->"};
 string predefinedCharacters = "{}();-~!+*/%?:,[].";
 
 bool isPredefinedWord(string match) {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         if (predefinedTwoCharacters[i] == match)
             return true;
     }

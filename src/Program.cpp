@@ -18,7 +18,7 @@ void Program::parse(deque<Token>& tokens) {
         mad("Program is empty");
 
     Token token = tokens.front();
-    while(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD") {
+    while(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD" || token.type == "VOID_KEYWORD") {
 
         string type = token.type;
         tokens.pop_front();
@@ -32,7 +32,7 @@ void Program::parse(deque<Token>& tokens) {
 
         Token token2 = tokens.front();
         vector<string> funCalls;
-
+        cout<<type<<" "<<token1.type<<endl;
         if(token2.type != "OPEN_BRACE" && token2.type != "OPEN_PARENTHESIS") {
             tokens.push_front(token1);
             tokens.push_front(token);
@@ -43,13 +43,13 @@ void Program::parse(deque<Token>& tokens) {
             if(token.type != "SEMICOLON")
                 mad("Missing ';'");
             tokens.pop_front();
-        } else if (type == "STRUCT_KEYWORD" && token.type == "OPEN_BRACE") {
+        } else if (type == "STRUCT_KEYWORD" && token2.type == "OPEN_BRACE") {
             Struct _s;
             _s.parse(tokens, name);
             s.push_back(_s);
-        } else if (type == "INT_KEYWORD" && token.type == "OPEN_PARENTHESIS" ) {
+        } else if ((type == "INT_KEYWORD" || type == "VOID_KEYWORD") && token2.type == "OPEN_PARENTHESIS" ) {
             Fun _f;
-            _f.parse(tokens, name);
+            _f.parse(tokens, name, type);
             f.push_back(_f);
         }
         if(tokens.empty())
@@ -69,8 +69,15 @@ string Program::translate(int& tabs) {
         //cout<<" "<<s[i].name<<endl;
     }
 
+    vector<string> pointers_types = getPointerTypes();
+
+    for(int i = 0; i < pointers_types.size(); i++) {
+        code += pointers_types[i] + " " + pointers_types[i] + "_mem[9];\n";
+        code += "int " + pointers_types[i] + "_valid[9];\n";
+    }
+
     for(int i = 0; i < d.size(); i++) {
-        code += d[i].translate(tabs, true) + "\n";
+        code += d[i].translate(tabs, true) + ";\n";
        // cout<<f[i].name<<endl;
     }
 

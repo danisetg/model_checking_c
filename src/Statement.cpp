@@ -114,7 +114,7 @@ string Statement::translate(string fun_name, int& tabs, int& funCallNumber, stri
             return previousCode + ret->translate(fun_name, tabs, funCallNumber, previousCode);
             break;
         case DECLARATION:
-            return decl->translate(tabs, false);
+            return decl->translate(tabs, false) + ";";
         case EXPRESSION:
             return previousCode + printTabs(tabs) + expression->translate(fun_name, tabs, funCallNumber, previousCode) + ";";
         case IF:

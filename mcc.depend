@@ -116,7 +116,7 @@
 	"Const.h"
 	"Helper.h"
 
-1615585330 source:d:\maestria\softs\model_checking_c\main.cpp
+1616164724 source:d:\maestria\softs\model_checking_c\main.cpp
 	<iostream>
 	"Helper.h"
 	<vector>
@@ -129,7 +129,7 @@
 	<sstream>
 	"Fun.h"
 
-1615828087 d:\maestria\softs\model_checking_c\include\helper.h
+1616195074 d:\maestria\softs\model_checking_c\include\helper.h
 	<string>
 	<vector>
 	<iostream>
@@ -143,6 +143,7 @@
 	<map>
 	"ArrayDecl.h"
 	"PointerDecl.h"
+	"StructType.h"
 
 1610492273 d:\maestria\softs\model_checking_c\include\lexer.h
 	<vector>
@@ -163,17 +164,18 @@
 	"Declaration.h"
 	"Struct.h"
 
-1614958896 d:\maestria\softs\model_checking_c\include\fun.h
+1616089594 d:\maestria\softs\model_checking_c\include\fun.h
 	<string>
 	<Helper.h>
 	"Statement.h"
-	"Variable.h"
+	"Declaration.h"
+	"Return.h"
 
 1614958896 d:\maestria\softs\model_checking_c\include\return.h
 	"Helper.h"
 	"Expression.h"
 
-1615562786 d:\maestria\softs\model_checking_c\include\expression.h
+1615915842 d:\maestria\softs\model_checking_c\include\expression.h
 	"Const.h"
 	"Helper.h"
 
@@ -187,7 +189,7 @@
 	<sstream>
 	<fstream>
 
-1615563918 source:d:\maestria\softs\model_checking_c\src\expression.cpp
+1615916204 source:d:\maestria\softs\model_checking_c\src\expression.cpp
 	"Expression.h"
 	"Const.h"
 	"Helper.h"
@@ -201,24 +203,23 @@
 	"StructExp.h"
 	"Increment.h"
 	"Decrement.h"
+	"PointerExp.h"
 
-1614959213 source:d:\maestria\softs\model_checking_c\src\fun.cpp
+1616091747 source:d:\maestria\softs\model_checking_c\src\fun.cpp
 	"Fun.h"
 	<string>
 	"Helper.h"
-	"Return.h"
-	"Declaration.h"
 
-1613754783 source:d:\maestria\softs\model_checking_c\src\helper.cpp
+1616188017 source:d:\maestria\softs\model_checking_c\src\helper.cpp
 	"Helper.h"
 
-1615570281 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
+1616089594 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
 	"Lexer.h"
 	"Token.h"
 	"Helper.h"
 	<regex>
 
-1615829196 source:d:\maestria\softs\model_checking_c\src\program.cpp
+1616099325 source:d:\maestria\softs\model_checking_c\src\program.cpp
 	"Program.h"
 	"Fun.h"
 	"Helper.h"
@@ -275,7 +276,7 @@
 	"Variable.h"
 	"Array.h"
 
-1615828934 source:d:\maestria\softs\model_checking_c\src\declaration.cpp
+1615917720 source:d:\maestria\softs\model_checking_c\src\declaration.cpp
 	"Declaration.h"
 	"Assignment.h"
 	"IntDecl.h"
@@ -293,7 +294,7 @@
 1614959300 source:d:\maestria\softs\model_checking_c\src\variable.cpp
 	"Variable.h"
 
-1615828087 source:d:\maestria\softs\model_checking_c\src\statement.cpp
+1615917766 source:d:\maestria\softs\model_checking_c\src\statement.cpp
 	"Statement.h"
 	"Return.h"
 	"Declaration.h"
@@ -363,10 +364,11 @@
 	"Statement.h"
 	"Expression.h"
 
-1614959149 source:d:\maestria\softs\model_checking_c\src\funcall.cpp
+1616426737 source:d:\maestria\softs\model_checking_c\src\funcall.cpp
 	"FunCall.h"
+	"Variable.h"
 
-1614958896 d:\maestria\softs\model_checking_c\include\funcall.h
+1616426737 d:\maestria\softs\model_checking_c\include\funcall.h
 	"Expression.h"
 
 1614958980 source:d:\maestria\softs\model_checking_c\src\array.cpp
@@ -387,7 +389,7 @@
 	"Helper.h"
 	"Declaration.h"
 
-1615828783 source:d:\maestria\softs\model_checking_c\src\struct.cpp
+1616187312 source:d:\maestria\softs\model_checking_c\src\struct.cpp
 	"Struct.h"
 
 1614958896 d:\maestria\softs\model_checking_c\include\intdecl.h
@@ -409,10 +411,12 @@
 1614959297 source:d:\maestria\softs\model_checking_c\src\structexp.cpp
 	"StructExp.h"
 
-1614693035 source:d:\maestria\softs\model_checking_c\src\structtype.cpp
+1616187312 source:d:\maestria\softs\model_checking_c\src\structtype.cpp
 	"StructType.h"
 
-1614692592 d:\maestria\softs\model_checking_c\include\structtype.h
+1616195073 d:\maestria\softs\model_checking_c\include\structtype.h
+	<string>
+	<vector>
 
 1614692885 source:d:\maestria\softs\model_checking_c\src\inttype.cpp
 	"IntType.h"
@@ -454,9 +458,16 @@
 	"Expression.h"
 	"Statement.h"
 
-1615828087 d:\maestria\softs\model_checking_c\include\pointerdecl.h
+1615906208 d:\maestria\softs\model_checking_c\include\pointerdecl.h
 	<string>
 
 1615827440 source:d:\maestria\softs\model_checking_c\src\pointerdecl.cpp
 	"PointerDecl.h"
+
+1615916337 source:d:\maestria\softs\model_checking_c\src\pointerexp.cpp
+	"PointerExp.h"
+
+1615916011 d:\maestria\softs\model_checking_c\include\pointerexp.h
+	"Helper.h"
+	"Expression.h"
 
