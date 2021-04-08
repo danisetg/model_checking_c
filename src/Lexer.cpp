@@ -2,10 +2,10 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-int tokensLength = 49;
+int tokensLength = 53;
 
 //predefined list of tokens to to find program code
-Token tokens[49] = {
+Token tokens[53] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
@@ -14,6 +14,7 @@ Token tokens[49] = {
             Token("CLOSE_BRACKET", regex("\\]"), ""),
             Token("SEMICOLON", regex(";"), ""),
             Token("DOT", regex("\\."), ""),
+            Token("QUOTES", regex("\""), ""),
             Token("DECREMENT", regex("--"), ""),
             Token("NEGATION", regex("-"), ""),
             Token("INCREMENT", regex("\\+\\+"), ""),
@@ -35,6 +36,7 @@ Token tokens[49] = {
             Token("ASSIGNMENT", regex("="), ""),
             Token("LOGICAL_NEGATION", regex("!"), ""),
             Token("INT_KEYWORD", regex("int"), ""),
+            Token("BOOL_KEYWORD", regex("bool"), ""),
             Token("VOID_KEYWORD", regex("void"), ""),
             Token("STRUCT_KEYWORD", regex("struct"), ""),
             Token("RETURN_KEYWORD", regex("return"), ""),
@@ -49,6 +51,8 @@ Token tokens[49] = {
             Token("BREAK_KEYWORD", regex("break"), ""),
             Token("CONTINUE_KEYWORD", regex("continue"), ""),
             Token("ELSE_KEYWORD", regex("else"), ""),
+            Token("PRINTF_KEYWORD", regex("printf"), ""),
+            Token("SCANF_KEYWORD", regex("scanf"), ""),
             Token("COLON", regex(":"), ""),
             Token("COMMA", regex(","), ""),
             Token("ARROW", regex("->"), ""),
@@ -59,11 +63,11 @@ Token tokens[49] = {
 
 
 //predefined program special characters that can be found joint to words
-string predefinedTwoCharacters[5] = {"==", "!=", "++", "--", "->"};
-string predefinedCharacters = "{}();-~!+*/%?:,[].";
+string predefinedTwoCharacters[6] = {"==", "!=", "++", "--", "->", "&&"};
+string predefinedCharacters = "&{}();-~!+*/%?:,[].\"";
 
 bool isPredefinedWord(string match) {
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         if (predefinedTwoCharacters[i] == match)
             return true;
     }
@@ -74,31 +78,58 @@ vector<string> getProgramWords(string program) {
     int len = program.length();
     string word = "";
     vector<string> str_arr;
+    bool isComment = false;
+    bool isInclude = false;
+    bool isUsing = false;
     for(int i = 0; i < len; i++) {
-        bool _isPredefinedWord = false;
-        if (i < len - 1) {
-            _isPredefinedWord = isPredefinedWord(program.substr(i,2));
-        }
-        int tmp = predefinedCharacters.find(program[i]);
-        //if any space or special character has not being found, we are still reading the word
-        if(program[i] != ' ' && program[i] != '\n' && tmp == string::npos && !_isPredefinedWord) {
-            word += program[i];
-        //else, we finished reading the word, so we add it to the vector
-        } else {
-            if(word.length()) {
-                str_arr.push_back(word);
-                word = "";
-            }
 
-            //if we read a special character, we add it too, as a word
-            if(_isPredefinedWord) {
-                str_arr.push_back(program.substr(i,2));
-                i++;
-            }else if(tmp != string::npos) {
-                str_arr.push_back(string(1, program[i]));
-            }
+        if(i < len - 1 && program[i] == '/' && program[i + 1] == '/')
+            isComment = true;
 
+        if(i < len - 9 && program.substr(i, 8) == "#include")
+            isInclude = true;
+        if(i < len - 16 && program.substr(i, 15) == "using namespace")
+            isUsing = true;
+
+        if(isComment && program[i] == '\n') {
+            isComment = false;
+            continue;
         }
+        if(isInclude && program[i] == '\n') {
+            isInclude = false;
+            continue;
+        }
+        if(isUsing && program[i] == '\n') {
+            isUsing = false;
+            continue;
+        }
+        if(!isComment && !isInclude && !isUsing) {
+            bool _isPredefinedWord = false;
+            if (i < len - 1) {
+                _isPredefinedWord = isPredefinedWord(program.substr(i,2));
+            }
+            int tmp = predefinedCharacters.find(program[i]);
+            //if any space or special character has not being found, we are still reading the word
+            if(program[i] != ' ' && program[i] != '\n' && tmp == string::npos && !_isPredefinedWord) {
+                word += program[i];
+            //else, we finished reading the word, so we add it to the vector
+            } else {
+                if(word.length()) {
+                    str_arr.push_back(word);
+                    word = "";
+                }
+
+                //if we read a special character, we add it too, as a word
+                if(_isPredefinedWord) {
+                    str_arr.push_back(program.substr(i,2));
+                    i++;
+                }else if(tmp != string::npos) {
+                    str_arr.push_back(string(1, program[i]));
+                }
+
+            }
+        }
+
     }
     if(word.length())
         str_arr.push_back(word);

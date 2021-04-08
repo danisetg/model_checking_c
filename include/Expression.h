@@ -53,6 +53,7 @@ class Expression
         Expression parseExpression(deque<Token>& tokens, vector<string>& _funCalls);
         Expression parseTerm(deque<Token>& tokens, vector<string>& _funCalls);
         Expression parseFactor(deque<Token>& tokens, vector<string>& _funCalls);
+        Expression parseSubFactor(deque<Token>& tokens, vector<string>& _funCalls, Expression& exp);
         Expression parseAddition(deque<Token>& tokens, vector<string>& _funCalls);
         Expression parseRelationalEqualities(deque<Token>& tokens, vector<string>& _funCalls);
         Expression parseRelationalInequalities(deque<Token>& tokens, vector<string>& _funCalls);

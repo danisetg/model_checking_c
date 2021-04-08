@@ -13,6 +13,7 @@ class Program
         Program();
         void parse(deque<Token>& tokens);
         string translate(int& tabs);
+        string inputFunction(int& tabs);
 };
 
 #endif // PROGRAM_H

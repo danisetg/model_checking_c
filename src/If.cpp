@@ -75,7 +75,6 @@ void If::parse(deque<Token>& tokens, vector<Statement>& statements, vector<strin
 
 
     token = tokens.front();
-    cout<<token.word<<endl;
     if(token.type == "ELSE_KEYWORD") {
         tokens.pop_front();
         token = tokens.front();
@@ -137,6 +136,8 @@ string If::translate(string fun_name, int& tabs, int& funCallNumber, string& pre
             code += elseBody[i].translate(fun_name, tabs, funCallNumber, previousCode) + "\n";
         }
         tabs--;
+    } else {
+        code += printTabs(tabs) + "::else -> skip;\n";
     }
     tabs--;
     code += printTabs(tabs) + "fi";

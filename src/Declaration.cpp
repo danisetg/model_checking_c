@@ -15,6 +15,7 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
     Token token = tokens.front();
     tokens.pop_front();
     string name;
+    cout<<token.type<<endl;
     if(token.type == "INT_KEYWORD") {
         token = tokens.front();
         if(token.type == "MULTIPLICATION") {
@@ -29,6 +30,20 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
         *intDecl = _int;
         name = intDecl->name;
         type = INT;
+    }else if(token.type == "BOOL_KEYWORD") {
+        token = tokens.front();
+        if(token.type == "MULTIPLICATION") {
+            isPointer = true;
+            tokens.pop_front();
+            token = tokens.front();
+            savePointer(token.word, "bool");
+        }
+        BoolDecl _bool;
+        _bool.name = token.word;
+        boolDecl = new BoolDecl();
+        *boolDecl = _bool;
+        name = boolDecl->name;
+        type = BOOL;
     } else if(token.type == "STRUCT_KEYWORD") {
         structDecl = new StructDecl();
         token = tokens.front();
@@ -36,11 +51,11 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
         structDecl->structName = token.word;
         tokens.pop_front();
         token = tokens.front();
-        cout<<structDecl->structName<<" "<<token.word<<endl;
         if(token.type == "MULTIPLICATION") {
             isPointer = true;
             tokens.pop_front();
             token = tokens.front();
+            cout<<token.word<<" "<<structDecl->structName<<endl;
             savePointer(token.word, structDecl->structName);
         }
         structDecl->name = token.word;
@@ -92,13 +107,15 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
 
 string Declaration::translate(int& tabs, bool addExpression) {
     string code = printTabs(tabs);
-    cout<<type<<endl;
     switch(type) {
         case INT:
             code += intDecl->translate();
             break;
         case STRUCT:
             code += structDecl->translate(isPointer);
+            break;
+        case BOOL:
+            code += boolDecl->translate();
             break;
     }
 

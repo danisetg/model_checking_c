@@ -14,7 +14,6 @@ void Array::parse(string _name, deque<Token>& tokens, vector<string>& _funCalls)
     Token token = tokens.front();
 
     while(token.type == "OPEN_BRACKET") {
-        cout<<"    "<<token.type<<endl;
         tokens.pop_front();
         Expression exp;
         exp.parse(tokens, _funCalls);
@@ -36,7 +35,6 @@ string Array::translate(string fun_name, int& tabs, int& funCallNumber, string& 
         code += getPosition(fun_name, tabs, funCallNumber, previousCode, arrayDimensions, arrayDimensions.size() - 1) + "]";
     } else
         mad("Array " + name + " was never declared");
-    cout<<code<<endl;
     return code;
 }
 

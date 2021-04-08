@@ -26,7 +26,7 @@ int main()
     }
     return 0;*/
 
-    string program = fileToString("C:\\c_tests\\stage_14\\valid\\free.c");
+    string program = fileToString("C:\\c_tests\\Ejemplos\\triangle.c");
     deque<Token> tokens;
     vector<Token> foundTokens = getTokens(program);
 
@@ -42,7 +42,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\stage_14\\valid\\free.pml");
+    outfile.open("C:\\c_tests\\Ejemplos\\triangle.pml");
     int tabs = 0;
     outfile<<p.translate(tabs);
 

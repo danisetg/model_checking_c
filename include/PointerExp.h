@@ -6,10 +6,10 @@
 class PointerExp
 {
     public:
-        string pointerName;
+        Expression exp;
         string varName;
         PointerExp();
-         void parse(string name, deque<Token>& tokens);
+         void parse(Expression _exp, deque<Token>& tokens);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
 };
 

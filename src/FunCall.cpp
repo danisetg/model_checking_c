@@ -106,7 +106,6 @@ string FunCall::translateFree(int& tabs, string varName) {
 }
 
 string FunCall::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
-    cout<<name<<endl;
     if(name == "malloc") {
        previousCode += translateMalloc(tabs, funCallNumber, arguments[0].variable->name);
        string ret = "temp" + to_string(funCallNumber);

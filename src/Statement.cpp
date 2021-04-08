@@ -10,6 +10,8 @@
 #include "LabeledStatement.h"
 #include "Goto.h"
 #include "Switch.h"
+#include "Print.h"
+#include "Scan.h"
 Statement::Statement()
 {
     //ctor
@@ -27,13 +29,42 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
         ret = new Return();
         *ret = _ret;
         type = RETURN;
-    } else if(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD") {
+    } else if(token.type == "INT_KEYWORD" || token.type == "STRUCT_KEYWORD" || token.type == "BOOL_KEYWORD") {
         Declaration _decl;
         _decl.parse(tokens, _funCalls);
         decl = new Declaration();
         *decl = _decl;
         type = DECLARATION;
-    } else if(token.type == "IDENTIFIER" || token.type == "INTEGER") {
+
+        while(tokens.front().type == "COMMA") {
+            tokens.pop_front();
+            if(token.type == "STRUCT_KEYWORD") {
+                Token tmp = Token("IDENTIFIER", regex("[a-zA-Z]\\w*"), _decl.structDecl->structName);
+                tokens.push_front(tmp);
+            }
+            tokens.push_front(token);
+
+            Declaration _decl1;
+            _decl1.parse(tokens, _funCalls);
+            Statement _statement;
+            _statement.type = DECLARATION;
+            _statement.decl = new Declaration();
+            *_statement.decl = _decl1;
+            statements.insert(statements.begin(), _statement);
+        }
+    } else if(token.type == "PRINTF_KEYWORD") {
+        Print _print;
+        _print.parse(tokens);
+        print = new Print();
+        *print = _print;
+        type = PRINT;
+    } else if(token.type == "SCANF_KEYWORD") {
+        Scan _scan;
+        _scan.parse(tokens);
+        scan = new Scan();
+        *scan = _scan;
+        type = SCAN;
+    } else if(token.type == "IDENTIFIER" || token.type == "INTEGER" || token.type == "MULTIPLICATION") {
         tokens.pop_front();
         Token token1 = tokens.front();
         tokens.push_front(token);
@@ -84,7 +115,7 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
         type = BREAK;
         breakStatement = new Break();
         tokens.pop_front();
-    } else if(token.type == "CONTINUE_KEYWORD") {
+    }  else if(token.type == "CONTINUE_KEYWORD") {
         type = CONTINUE;
         continueStatement = new Continue();
         tokens.pop_front();
@@ -108,7 +139,6 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
 }
 
 string Statement::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
-    cout<<type<<endl;
     switch(type) {
         case RETURN:
             return previousCode + ret->translate(fun_name, tabs, funCallNumber, previousCode);
@@ -127,6 +157,10 @@ string Statement::translate(string fun_name, int& tabs, int& funCallNumber, stri
             return previousCode + doWhileStatement->translate(fun_name, tabs, funCallNumber, previousCode) + ";";
         case BREAK:
             return printTabs(tabs) + breakStatement->translate() + ";";
+        case PRINT:
+            return print->translate(tabs);
+        case SCAN:
+            return scan->translate(tabs);
         case CONTINUE:
             return printTabs(tabs) + continueStatement->translate() + ";";
         case LABELED_STATEMENT:

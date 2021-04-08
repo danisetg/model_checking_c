@@ -39,6 +39,7 @@
 		<Unit filename="include/ArrayDecl.h" />
 		<Unit filename="include/Assignment.h" />
 		<Unit filename="include/BinaryOperator.h" />
+		<Unit filename="include/BoolDecl.h" />
 		<Unit filename="include/Break.h" />
 		<Unit filename="include/Conditional.h" />
 		<Unit filename="include/Const.h" />
@@ -59,8 +60,10 @@
 		<Unit filename="include/Lexer.h" />
 		<Unit filename="include/PointerDecl.h" />
 		<Unit filename="include/PointerExp.h" />
+		<Unit filename="include/Print.h" />
 		<Unit filename="include/Program.h" />
 		<Unit filename="include/Return.h" />
+		<Unit filename="include/Scan.h" />
 		<Unit filename="include/Statement.h" />
 		<Unit filename="include/Struct.h" />
 		<Unit filename="include/StructDecl.h" />
@@ -76,6 +79,7 @@
 		<Unit filename="src/ArrayDecl.cpp" />
 		<Unit filename="src/Assignment.cpp" />
 		<Unit filename="src/BinaryOperator.cpp" />
+		<Unit filename="src/BoolDecl.cpp" />
 		<Unit filename="src/Break.cpp" />
 		<Unit filename="src/Conditional.cpp" />
 		<Unit filename="src/Const.cpp" />
@@ -96,8 +100,10 @@
 		<Unit filename="src/Lexer.cpp" />
 		<Unit filename="src/PointerDecl.cpp" />
 		<Unit filename="src/PointerExp.cpp" />
+		<Unit filename="src/Print.cpp" />
 		<Unit filename="src/Program.cpp" />
 		<Unit filename="src/Return.cpp" />
+		<Unit filename="src/Scan.cpp" />
 		<Unit filename="src/Statement.cpp" />
 		<Unit filename="src/Struct.cpp" />
 		<Unit filename="src/StructDecl.cpp" />

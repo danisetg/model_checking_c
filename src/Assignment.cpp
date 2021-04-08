@@ -52,7 +52,6 @@ string Assignment::translateConditional(string fun_name, int& tabs, int& funCall
 }
 
 string Assignment::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
-    cout<<exp.type<<endl;
     string code = "";
     if(exp.type == ASSIGNMENT)
         code = exp.translate(fun_name, tabs, funCallNumber, previousCode) + ";\n" + printTabs(tabs) + leftSide.translate(fun_name, tabs, funCallNumber, previousCode) + " = " + exp.assignment->leftSide.translate(fun_name, tabs, funCallNumber, previousCode);

@@ -15,6 +15,88 @@
 Expression::Expression()
 {
 }
+
+Expression Expression::parseSubFactor(deque<Token>& tokens, vector<string>& _funCalls, Expression& exp) {
+    if(tokens.empty())
+        mad("Missing sub factor expression");
+    Expression _exp;
+    Token token = tokens.front();
+
+    if(token.type == "OPEN_PARENTHESIS") {
+        FunCall _funCall;
+        cout<<exp.variable->name<<endl;
+        _funCall.parse(exp.variable->name, tokens, _funCalls);
+        _exp.type = FUN_CALL;
+        _exp.funCall = new FunCall();
+        *_exp.funCall = _funCall;
+        _funCalls.push_back(_funCall.name);
+         token = tokens.front();
+
+    } else if(token.type == "OPEN_BRACKET") {
+        Array _arr;
+        _arr.parse(exp.variable->name, tokens, _funCalls);
+        _exp.type = ARRAY;
+        _exp.arr = new Array();
+        *_exp.arr = _arr;
+        token = tokens.front();
+
+    } else if(token.type == "DOT") {
+        StructExp _struct;
+        _struct.parse(exp, tokens);
+        _exp.type = STRUCT_EXPRESSION;
+        _exp.structExp = new StructExp();
+        *_exp.structExp = _struct;
+    } else if(token.type == "ARROW") {
+        PointerExp _pointer;
+        _pointer.parse(exp, tokens);
+        _exp.type = POINTER_EXPRESSION;
+        _exp.pointerExp = new PointerExp();
+        *_exp.pointerExp = _pointer;
+    }else if (token.type == "MULTIPLICATION") {
+        tokens.pop_front();
+        token = tokens.front();
+        Variable _var;
+        _var.parse(tokens);
+        _exp.type = VARIABLE;
+        _exp.variable = new Variable();
+        *_exp.variable = _var;
+        PointerExp _pointer;
+        _pointer.parse(_exp, tokens);
+        _exp.type = POINTER_EXPRESSION;
+        _exp.pointerExp = new PointerExp();
+        *_exp.pointerExp = _pointer;
+    }else if(token.type == "INCREMENT"){
+        Increment inc;
+        inc.var = *exp.variable;
+        _exp.increment = new Increment();
+        *_exp.increment = inc;
+        tokens.pop_front();
+        _exp.type = INCREMENT;
+    }else if(token.type == "DECREMENT"){
+        Decrement dec;
+        dec.var = *exp.variable;
+        _exp.decrement = new Decrement();
+        *_exp.decrement = dec;
+        tokens.pop_front();
+        _exp.type = DECREMENT;
+    }else {
+        Variable _var;
+        _var.parse(tokens);
+        _exp.type = VARIABLE;
+        _exp.variable = new Variable();
+        *_exp.variable = _var;
+    }
+
+    token = tokens.front();
+
+    if(token.type == "DOT" || token.type == "ARROW" || token.type == "OPEN_BRACKET"
+       || token.type == "OPEN_PARENTHESIS" || token.type == "INCREMENT" || token.type == "DECREMENT") {
+            _exp = parseSubFactor(tokens, _funCalls, _exp);
+    }
+
+    return _exp;
+}
+
 Expression Expression::parseFactor (deque<Token>& tokens, vector<string>& _funCalls) {
     if(tokens.empty())
         mad("Missing factor expression");
@@ -40,7 +122,9 @@ Expression Expression::parseFactor (deque<Token>& tokens, vector<string>& _funCa
         exp.type = UNARY_OPERATOR;
         exp.unaryOperator = new UnaryOperator();
         *exp.unaryOperator = _unaryOperator;
-    } else if(token.type == "IDENTIFIER") {
+    } else if(token.type == "IDENTIFIER" || token.type == "MULTIPLICATION") {
+        exp = parseSubFactor(tokens, _funCalls, exp);
+        /*
         Variable _var;
         _var.parse(tokens);
         token = tokens.front();
@@ -100,7 +184,7 @@ Expression Expression::parseFactor (deque<Token>& tokens, vector<string>& _funCa
             exp.type = VARIABLE;
             exp.variable = new Variable();
             *exp.variable = _var;
-        }
+        }*/
 
     }else {
         mad("Incorrect expression structure");
@@ -114,6 +198,7 @@ Expression Expression::parseTerm(deque<Token>& tokens, vector<string>& _funCalls
 
     Expression factor = parseFactor(tokens, _funCalls);
     Token token = tokens.front();
+    cout<<token.word<<endl;
     while(token.type == "MULTIPLICATION" || token.type == "DIVISION" || token.type == "MOD") {
         tokens.pop_front();
         Expression factor1 = factor;
@@ -135,7 +220,7 @@ Expression Expression::parseAddition(deque<Token>& tokens, vector<string>& _funC
 
     Expression term = parseTerm(tokens, _funCalls);
     Token token = tokens.front();
-
+cout<<token.word<<endl;
     while(token.type == "NEGATION" || token.type == "ADDITION") {
         tokens.pop_front();
         Expression term1 = term;
@@ -156,7 +241,7 @@ Expression Expression::parseRelationalInequalities(deque<Token>& tokens, vector<
 
     Expression add = parseAddition(tokens, _funCalls);
     Token token = tokens.front();
-
+cout<<token.word<<endl;
     while(token.type == "LESS_OR_EQUAL_TO" || token.type == "LESS_THAN" || token.type == "GREATER_OR_EQUAL_TO" || token.type == "GREATER_THAN") {
         tokens.pop_front();
         Expression add1 = add;
@@ -177,7 +262,7 @@ Expression Expression::parseRelationalEqualities(deque<Token>& tokens, vector<st
 
     Expression rel = parseRelationalInequalities(tokens, _funCalls);
     Token token = tokens.front();
-
+cout<<token.word<<endl;
     while(token.type == "EQUAL_TO" || token.type == "NOT_EQUAL_TO") {
         tokens.pop_front();
         Expression rel1 = rel;
@@ -198,7 +283,7 @@ Expression Expression::parseAnd(deque<Token>& tokens, vector<string>& _funCalls)
 
     Expression rel = parseRelationalEqualities(tokens, _funCalls);
     Token token = tokens.front();
-
+cout<<token.word<<endl;
     while(token.type == "LOGICAL_AND") {
         tokens.pop_front();
         Expression rel1 = rel;
@@ -219,8 +304,9 @@ Expression Expression::parseOr(deque<Token>& tokens, vector<string>& _funCalls) 
 
     Expression logical = parseAnd(tokens, _funCalls);
     Token token = tokens.front();
+    cout<<token.word<<endl;
     while(token.type == "LOGICAL_OR") {
-        cout<<token.word<<endl;
+
         tokens.pop_front();
         Expression logical1 = logical;
         Expression logical2 = parseAnd(tokens, _funCalls);
@@ -240,6 +326,7 @@ Expression Expression::parseConditional(deque<Token>& tokens, vector<string>& _f
 
     Expression logical = parseOr(tokens, _funCalls);
     Token token = tokens.front();
+    cout<<token.word<<endl;
     while(token.type == "QUESTION_MARK") {
         tokens.pop_front();
         Expression e1 = logical;
@@ -290,7 +377,6 @@ void Expression::parse(deque<Token>& tokens, vector<string>& _funCalls) {
 }
 
 string Expression::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
-    cout<<type<<endl;
     switch(type) {
         case CONSTANT:
             return constant->translate();

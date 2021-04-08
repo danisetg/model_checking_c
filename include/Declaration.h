@@ -2,13 +2,15 @@
 #define DECLARATION_H
 #include "IntDecl.h"
 #include "StructDecl.h"
+#include "BoolDecl.h"
 #include "Helper.h"
 #include "Expression.h"
 
 
 enum DeclarationType {
    STRUCT,
-   INT
+   INT,
+   BOOL
 };
 class Declaration
 {
@@ -18,6 +20,7 @@ class Declaration
         union {
             IntDecl* intDecl;
             StructDecl* structDecl;
+            BoolDecl* boolDecl;
         };
         vector<int> dimensions;
         std::optional<Expression> expression;

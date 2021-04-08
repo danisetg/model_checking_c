@@ -1,35 +1,53 @@
 #include "PointerExp.h"
-
+#include "Variable.h"
 PointerExp::PointerExp()
 {
     //ctor
 }
 
-void PointerExp::parse(string name, deque<Token>& tokens) {
+void PointerExp::parse(Expression _exp, deque<Token>& tokens) {
     if(tokens.empty())
         mad("Missing variable");
-    pointerName = name;
+
+    exp = _exp;
 
     Token token = tokens.front();
 
-    if(token.type != "ARROW")
-        mad("Missing '->'");
+    if(token.type == "ARROW") {
+        tokens.pop_front();
 
-    tokens.pop_front();
+        token = tokens.front();
 
-    token = tokens.front();
+        if(token.type != "IDENTIFIER")
+            mad("Missing struct variable reference");
 
-    if(token.type != "IDENTIFIER")
-        mad("Missing struct variable reference");
-
-    varName = token.word;
-    tokens.pop_front();
+        varName = token.word;
+        tokens.pop_front();
+    }
 }
 
 string PointerExp::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
-    string type = getPointerType(pointerName);
-    if(type == "-1")
-        mad("Can't find pointer " + pointerName);
+    string type;
+    string code;
+    switch(exp.type) {
+        case VARIABLE:
+            type = getPointerType(exp.variable->name);
+            cout<<exp.variable->name<<endl;
+            if(type == "-1")
+                mad("Can't find pointer " + exp.variable->name);
+            code = type + "_mem[" + exp.variable->name + "]";
+            break;
+        case POINTER_EXPRESSION:
+            type = getPointerType(exp.pointerExp->varName);
+            if(type == "-1")
+                mad("Can't find pointer " + exp.pointerExp->varName);
+            code = type + "_mem[" + exp.translate(fun_name, tabs, funCallNumber, previousCode) + "]";
+            break;
+    }
 
-    return type + "_mem[" + pointerName + "]." + varName;
+    if(varName.length())
+        code += "." + varName;
+
+    return code;
+
 }

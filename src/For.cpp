@@ -8,13 +8,11 @@ For::For()
 void For::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();
-    cout<<token.type<<endl;
     if(token.type != "FOR_KEYWORD")
         mad("not a for statement");
 
     tokens.pop_front();
     token = tokens.front();
-    cout<<token.type<<endl;
     if(token.type != "OPEN_PARENTHESIS")
         mad("Missing '('");
 
@@ -41,7 +39,6 @@ void For::parse(deque<Token>& tokens, vector<Statement>& statements, vector<stri
         tokens.pop_front();
 
     token = tokens.front();
-    cout<<token.type<<endl;
 
     if(token.type != "SEMICOLON") {
         Expression _endCondition;
@@ -57,7 +54,6 @@ void For::parse(deque<Token>& tokens, vector<Statement>& statements, vector<stri
     tokens.pop_front();
 
     token = tokens.front();
-    cout<<token.type<<endl;
     if(token.type != "CLOSE_PARENTHESIS") {
         Expression _nextValue;
         _nextValue.parse(tokens, _funCalls);
@@ -65,7 +61,6 @@ void For::parse(deque<Token>& tokens, vector<Statement>& statements, vector<stri
     }
 
     token = tokens.front();
-    cout<<token.type<<endl;
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Missing ')'");
 

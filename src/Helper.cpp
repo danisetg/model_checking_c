@@ -47,7 +47,6 @@ void inner_mad()
 
 void mad(string message)
 {
-    cout<<message<<endl;
     auto ptr = std::make_unique<int>();
     inner_mad();
 }

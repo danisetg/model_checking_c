@@ -9,7 +9,6 @@ Fun::Fun()
 void Fun::parse(deque<Token>& tokens, string _name, string _type) {
 
     name = _name;
-    cout<<name<<endl;
     Token token = tokens.front();
 
 
@@ -92,7 +91,6 @@ void Fun::parse(deque<Token>& tokens, string _name, string _type) {
 
 
 string Fun::translate(int& tabs) {
-   // cout<<"    "<<name<<endl;
     if(statements.size()) {
         string code = printTabs(tabs) + "proctype " + name + "(" + "chan in_" + name;
         for(int i = 0; i < parameters.size(); i++) {
@@ -103,7 +101,7 @@ string Fun::translate(int& tabs) {
         if(funCalls.size()) {
             for(int i = 0; i < funCalls.size(); i++) {
                 code += printTabs(tabs) + "int temp" + to_string(i) + ";\n";
-                if(!chanDeclared[funCalls[i]]) {
+                if(!chanDeclared[funCalls[i]] && funCalls[i] != "malloc" && funCalls[i] != "free") {
                     code += printTabs(tabs) + "chan ret_" + funCalls[i] + " = [0] of { int };\n";
                     chanDeclared[funCalls[i]] = true;
                 }
@@ -117,7 +115,7 @@ string Fun::translate(int& tabs) {
             code += tmp + '\n';
         }
         if(type == VOID)
-            code += printTabs(tabs) + "in_" + name + " ! 0;\n" + printTabs(tabs) + "goto end;";
+            code += printTabs(tabs) + "in_" + name + " ! 0;\n" + printTabs(tabs) + "goto end;\n";
         code += printTabs(tabs) + "end: printf(\"End of " + name + "\");\n";
         tabs--;
         code += printTabs(tabs) + "}";

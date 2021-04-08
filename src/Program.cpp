@@ -58,12 +58,30 @@ void Program::parse(deque<Token>& tokens) {
         cout<<token.word<<endl;
     }
 }
-
+string Program::inputFunction(int& tabs) {
+    string code = "proctype input(chan in_input; int min; int max) {\n";
+    tabs++;
+    code += printTabs(tabs) + "atomic {\n";
+	tabs++;
+	code += printTabs(tabs) + "int value = min;\n";
+	code += printTabs(tabs) + "do\n";
+	tabs++;
+	code += printTabs(tabs) + "::value < max -> value++;\n";
+	code += printTabs(tabs) + "::break;\n";
+	tabs--;
+	code += printTabs(tabs) + "od;\n";
+	code += printTabs(tabs) + "in_input ! value;\n";
+	tabs--;
+    code += printTabs(tabs) + "}\n";
+	tabs--;
+	code+= "}\n";
+	return code;
+}
 string Program::translate(int& tabs) {
     //Right now program only consists of a function
     //so it returns its function's translate
     string code = "";
-
+    code += inputFunction(tabs);
     for(int i = 0; i < s.size(); i++) {
         code += s[i].translate(tabs) + "\n";
         //cout<<" "<<s[i].name<<endl;
@@ -86,6 +104,14 @@ string Program::translate(int& tabs) {
         code += f[i].translate(tabs) + "\n";
        // cout<<f[i].name<<endl;
     }
+
+    code += "init {\n";
+    tabs++;
+    code += printTabs(tabs) + "chan ret_main = [0] of { bit };\n";
+    code += printTabs(tabs) + "run main(ret_main);\n";
+    code += printTabs(tabs) + "ret_main ? 0;\n";
+    tabs--;
+    code += "}";
 
    // cout<<code<<endl;
     return code;
