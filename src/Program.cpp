@@ -32,7 +32,6 @@ void Program::parse(deque<Token>& tokens) {
 
         Token token2 = tokens.front();
         vector<string> funCalls;
-        cout<<type<<" "<<token1.type<<endl;
         if(token2.type != "OPEN_BRACE" && token2.type != "OPEN_PARENTHESIS") {
             tokens.push_front(token1);
             tokens.push_front(token);
@@ -55,7 +54,6 @@ void Program::parse(deque<Token>& tokens) {
         if(tokens.empty())
             break;
         token = tokens.front();
-        cout<<token.word<<endl;
     }
 }
 string Program::inputFunction(int& tabs) {
@@ -77,7 +75,7 @@ string Program::inputFunction(int& tabs) {
 	code+= "}\n";
 	return code;
 }
-string Program::translate(int& tabs) {
+string Program::translate(int& tabs, bool translateDefines) {
     //Right now program only consists of a function
     //so it returns its function's translate
     string code = "";
@@ -99,6 +97,12 @@ string Program::translate(int& tabs) {
        // cout<<f[i].name<<endl;
     }
 
+    if(translateDefines) {
+        for(int i = 0; i < def.size(); i++) {
+            code += def[i].translate();
+        }
+    }
+
     for(int i = 0; i < f.size(); i++) {
         string tmp = "";
         code += f[i].translate(tabs) + "\n";
@@ -115,4 +119,10 @@ string Program::translate(int& tabs) {
 
    // cout<<code<<endl;
     return code;
+}
+
+void Program::changeLocalVariablesName() {
+     for(int i = 0; i < f.size(); i++) {
+        f[i].changeVariablesName();
+     }
 }

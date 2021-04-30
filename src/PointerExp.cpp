@@ -51,3 +51,8 @@ string PointerExp::translate(string fun_name, int& tabs, int& funCallNumber, str
     return code;
 
 }
+
+void PointerExp::changeVariablesName(string prefix) {
+    varName = prefix + "_" + varName;
+    exp.changeVariablesName(prefix);
+}

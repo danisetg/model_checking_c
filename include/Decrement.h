@@ -10,6 +10,7 @@ class Decrement
         Decrement();
         void parse(deque<Token>& tokens);
         string translate();
+        void changeVariablesName(string prefix);
 };
 
 #endif // DECREMENT_H

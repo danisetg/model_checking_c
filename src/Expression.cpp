@@ -24,7 +24,6 @@ Expression Expression::parseSubFactor(deque<Token>& tokens, vector<string>& _fun
 
     if(token.type == "OPEN_PARENTHESIS") {
         FunCall _funCall;
-        cout<<exp.variable->name<<endl;
         _funCall.parse(exp.variable->name, tokens, _funCalls);
         _exp.type = FUN_CALL;
         _exp.funCall = new FunCall();
@@ -102,7 +101,6 @@ Expression Expression::parseFactor (deque<Token>& tokens, vector<string>& _funCa
         mad("Missing factor expression");
     Expression exp;
     Token token = tokens.front();
-    cout<<token.word<<endl;
     if(token.type == "OPEN_PARENTHESIS") {
         tokens.pop_front();
         exp = parseAssignment(tokens, _funCalls);
@@ -198,7 +196,6 @@ Expression Expression::parseTerm(deque<Token>& tokens, vector<string>& _funCalls
 
     Expression factor = parseFactor(tokens, _funCalls);
     Token token = tokens.front();
-    cout<<token.word<<endl;
     while(token.type == "MULTIPLICATION" || token.type == "DIVISION" || token.type == "MOD") {
         tokens.pop_front();
         Expression factor1 = factor;
@@ -220,7 +217,6 @@ Expression Expression::parseAddition(deque<Token>& tokens, vector<string>& _funC
 
     Expression term = parseTerm(tokens, _funCalls);
     Token token = tokens.front();
-cout<<token.word<<endl;
     while(token.type == "NEGATION" || token.type == "ADDITION") {
         tokens.pop_front();
         Expression term1 = term;
@@ -241,7 +237,6 @@ Expression Expression::parseRelationalInequalities(deque<Token>& tokens, vector<
 
     Expression add = parseAddition(tokens, _funCalls);
     Token token = tokens.front();
-cout<<token.word<<endl;
     while(token.type == "LESS_OR_EQUAL_TO" || token.type == "LESS_THAN" || token.type == "GREATER_OR_EQUAL_TO" || token.type == "GREATER_THAN") {
         tokens.pop_front();
         Expression add1 = add;
@@ -262,7 +257,6 @@ Expression Expression::parseRelationalEqualities(deque<Token>& tokens, vector<st
 
     Expression rel = parseRelationalInequalities(tokens, _funCalls);
     Token token = tokens.front();
-cout<<token.word<<endl;
     while(token.type == "EQUAL_TO" || token.type == "NOT_EQUAL_TO") {
         tokens.pop_front();
         Expression rel1 = rel;
@@ -283,7 +277,6 @@ Expression Expression::parseAnd(deque<Token>& tokens, vector<string>& _funCalls)
 
     Expression rel = parseRelationalEqualities(tokens, _funCalls);
     Token token = tokens.front();
-cout<<token.word<<endl;
     while(token.type == "LOGICAL_AND") {
         tokens.pop_front();
         Expression rel1 = rel;
@@ -304,7 +297,6 @@ Expression Expression::parseOr(deque<Token>& tokens, vector<string>& _funCalls) 
 
     Expression logical = parseAnd(tokens, _funCalls);
     Token token = tokens.front();
-    cout<<token.word<<endl;
     while(token.type == "LOGICAL_OR") {
 
         tokens.pop_front();
@@ -326,7 +318,6 @@ Expression Expression::parseConditional(deque<Token>& tokens, vector<string>& _f
 
     Expression logical = parseOr(tokens, _funCalls);
     Token token = tokens.front();
-    cout<<token.word<<endl;
     while(token.type == "QUESTION_MARK") {
         tokens.pop_front();
         Expression e1 = logical;
@@ -356,7 +347,6 @@ Expression Expression::parseAssignment(deque<Token>& tokens, vector<string>& _fu
 
     Expression logical = parseConditional(tokens, _funCalls);
     Token token = tokens.front();
-    cout<<token.word<<endl;
     if(token.type == "ASSIGNMENT") {
         if(logical.type != VARIABLE && logical.type != ARRAY && logical.type != STRUCT_EXPRESSION && logical.type != POINTER_EXPRESSION)
             mad("Left part of assignment must be a variable");
@@ -413,6 +403,43 @@ string Expression::translate(string fun_name, int& tabs, int& funCallNumber, str
             break;
         case DECREMENT:
             return decrement->translate();
+            break;
+    }
+}
+
+void Expression::changeVariablesName(string prefix) {
+    switch(type) {
+        case UNARY_OPERATOR:
+            unaryOperator->changeVariablesName(prefix);
+            break;
+        case BINARY_OPERATOR:
+            binaryOperator->changeVariablesName(prefix);
+        case ASSIGNMENT:
+            assignment->changeVariablesName(prefix);
+            break;
+        case VARIABLE:
+            variable->changeName(prefix);
+            break;
+        case CONDITIONAL:
+            cond->changeVariablesName(prefix);
+            break;
+        case FUN_CALL:
+            funCall->changeVariablesName(prefix);
+            break;
+        case ARRAY:
+            arr->changeVariablesName(prefix);
+            break;
+        case STRUCT_EXPRESSION:
+            structExp->changeVariablesName(prefix);
+            break;
+        case POINTER_EXPRESSION:
+            pointerExp->changeVariablesName(prefix);
+            break;
+        case INCREMENT:
+            increment->changeVariablesName(prefix);
+            break;
+        case DECREMENT:
+            decrement->changeVariablesName(prefix);
             break;
     }
 }

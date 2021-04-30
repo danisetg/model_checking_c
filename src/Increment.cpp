@@ -8,3 +8,7 @@ Increment::Increment()
 string Increment::translate() {
     return var.translate() + "++";
 }
+
+void Increment::changeVariablesName(string prefix) {
+    var.changeName(prefix);
+}

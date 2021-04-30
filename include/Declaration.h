@@ -17,6 +17,7 @@ class Declaration
     public:
         enum DeclarationType type;
         bool isPointer;
+        string name;
         union {
             IntDecl* intDecl;
             StructDecl* structDecl;

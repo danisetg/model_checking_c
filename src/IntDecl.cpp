@@ -19,11 +19,9 @@ void IntDecl::parse(deque<Token>& tokens) {
     if(token.type != "IDENTIFIER")
         mad("Missing identifier");
 
-    name = token.word;
-
     tokens.pop_front();
 }
 
-string IntDecl::translate() {
+string IntDecl::translate(string name) {
     return "int " + name;
 }

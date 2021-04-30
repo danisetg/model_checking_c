@@ -15,3 +15,8 @@ string BinaryOperator::translate(string fun_name, int& tabs, int& funCallNumber,
     string code2 = exp2.translate(fun_name, tabs, funCallNumber, previousCode);
     return code1 + " " + op + " " + code2;
 }
+
+void BinaryOperator::changeVariablesName(string prefix) {
+    exp1.changeVariablesName(prefix);
+    exp2.changeVariablesName(prefix);
+}

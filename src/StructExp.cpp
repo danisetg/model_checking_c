@@ -28,3 +28,8 @@ void StructExp::parse(Expression _exp, deque<Token>& tokens) {
 string StructExp::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     return exp.translate(fun_name, tabs, funCallNumber, previousCode) + "." + varName;
 }
+
+void StructExp::changeVariablesName(string prefix) {
+    varName = prefix + "_" + varName;
+    exp.changeVariablesName(prefix);
+}

@@ -131,3 +131,15 @@ string For::translate(string fun_name, int& tabs, int& funCallNumber, string& pr
     code += printTabs(tabs) + "od";
     return code;
 }
+
+void For::changeVariablesName(string prefix) {
+    if(initialValue.has_value())
+        initialValue->changeVariablesName(prefix);
+    if(endCondition.has_value())
+        endCondition->changeVariablesName(prefix);
+    if(nextValue.has_value())
+        nextValue->changeVariablesName(prefix);
+    for(int i = 0; i < forBody.size(); i++) {
+        forBody[i].changeVariablesName(prefix);
+    }
+}

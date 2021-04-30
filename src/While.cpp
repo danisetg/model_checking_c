@@ -9,27 +9,23 @@ While::While()
 void While::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();
-    cout<<token.type<<endl;
     if(token.type != "WHILE_KEYWORD")
         mad("not a while statement");
 
     tokens.pop_front();
     token = tokens.front();
-    cout<<token.type<<endl;
     if(token.type != "OPEN_PARENTHESIS")
         mad("Missing '('");
 
     tokens.pop_front();
 
     token = tokens.front();
-    cout<<token.type<<endl;
 
     Expression _endCondition;
     _endCondition.parse(tokens, _funCalls);
     endCondition = _endCondition;
 
     token = tokens.front();
-    cout<<token.type<<endl;
 
     if(token.type != "CLOSE_PARENTHESIS")
         mad("Missing ')'");
@@ -95,4 +91,11 @@ string While::translate(string fun_name, int& tabs, int& funCallNumber, string& 
     tabs--;
     code += printTabs(tabs) + "od";
     return code;
+}
+
+void While::changeVariablesName(string prefix) {
+    endCondition.changeVariablesName(prefix);
+    for(int i = 0; i < whileBody.size(); i++) {
+        whileBody[i].changeVariablesName(prefix);
+    }
 }

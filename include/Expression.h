@@ -63,6 +63,7 @@ class Expression
         Expression parseConditional(deque<Token>& tokens, vector<string>& _funCalls);
 
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
+        void changeVariablesName(string prefix);
 };
 
 #endif // EXPRESSION_H

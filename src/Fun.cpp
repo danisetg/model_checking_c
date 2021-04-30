@@ -80,7 +80,7 @@ void Fun::parse(deque<Token>& tokens, string _name, string _type) {
 
     for(int i = 0; i < statements.size(); i++) {
         if(statements[i].type == DECLARATION && statements[i].decl->dimensions.size()) {
-            string _name = statements[i].decl->type == INT? statements[i].decl->intDecl->name: statements[i].decl->structDecl->name;
+            string _name = statements[i].decl->name;
             saveLocalArray(_name, statements[i].decl->dimensions, name);
         }
     }
@@ -123,4 +123,10 @@ string Fun::translate(int& tabs) {
     }
     return "";
 
+}
+
+void Fun::changeVariablesName() {
+    for(int i = 0; i < statements.size(); i++) {
+        statements[i].changeVariablesName(name);
+    }
 }

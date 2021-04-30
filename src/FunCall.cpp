@@ -131,3 +131,9 @@ string FunCall::translate(string fun_name, int& tabs, int& funCallNumber, string
         return ret;
     }
 }
+
+void FunCall::changeVariablesName(string prefix) {
+    for(int i = 0; i < arguments.size(); i++) {
+        arguments[i].changeVariablesName(prefix);
+    }
+}

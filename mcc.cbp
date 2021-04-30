@@ -46,6 +46,7 @@
 		<Unit filename="include/Continue.h" />
 		<Unit filename="include/Declaration.h" />
 		<Unit filename="include/Decrement.h" />
+		<Unit filename="include/Define.h" />
 		<Unit filename="include/DoWhile.h" />
 		<Unit filename="include/Expression.h" />
 		<Unit filename="include/For.h" />
@@ -64,6 +65,7 @@
 		<Unit filename="include/Program.h" />
 		<Unit filename="include/Return.h" />
 		<Unit filename="include/Scan.h" />
+		<Unit filename="include/SpecificationGenerator.h" />
 		<Unit filename="include/Statement.h" />
 		<Unit filename="include/Struct.h" />
 		<Unit filename="include/StructDecl.h" />
@@ -86,6 +88,7 @@
 		<Unit filename="src/Continue.cpp" />
 		<Unit filename="src/Declaration.cpp" />
 		<Unit filename="src/Decrement.cpp" />
+		<Unit filename="src/Define.cpp" />
 		<Unit filename="src/DoWhile.cpp" />
 		<Unit filename="src/Expression.cpp" />
 		<Unit filename="src/For.cpp" />
@@ -104,6 +107,7 @@
 		<Unit filename="src/Program.cpp" />
 		<Unit filename="src/Return.cpp" />
 		<Unit filename="src/Scan.cpp" />
+		<Unit filename="src/SpecificationGenerator.cpp" />
 		<Unit filename="src/Statement.cpp" />
 		<Unit filename="src/Struct.cpp" />
 		<Unit filename="src/StructDecl.cpp" />

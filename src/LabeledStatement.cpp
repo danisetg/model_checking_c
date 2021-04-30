@@ -31,3 +31,6 @@ string LabeledStatement::translate(string fun_name, int& tabs, int& funCallNumbe
     return labelName + ":" + statement.translate(fun_name, tabs, funCallNumber, previousCode);
 }
 
+void LabeledStatement::changeVariablesName(string prefix) {
+    statement.changeVariablesName(prefix);
+}

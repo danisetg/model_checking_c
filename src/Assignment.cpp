@@ -61,3 +61,8 @@ string Assignment::translate(string fun_name, int& tabs, int& funCallNumber, str
         code = leftSide.translate(fun_name, tabs, funCallNumber, previousCode) + " = " + exp.translate(fun_name, tabs, funCallNumber, previousCode);
     return code;
 }
+
+void Assignment::changeVariablesName(string prefix) {
+    leftSide.changeVariablesName(prefix);
+    exp.changeVariablesName(prefix);
+}

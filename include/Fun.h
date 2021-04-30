@@ -22,6 +22,7 @@ class Fun
         Fun();
         void parse(deque<Token>& tokens, string _name, string _type);
         string translate(int& tabs);
+        void changeVariablesName();
 };
 
 #endif // FUN_H

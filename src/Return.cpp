@@ -14,7 +14,6 @@ void Return::parse(deque<Token>& tokens, vector<string>& _funCalls) {
         mad("Statement is Empty");
 
     Token token = tokens.front();
-    cout<<token.word<<endl;
     if(token.type != "RETURN_KEYWORD")
         mad("Missing function return");
 
@@ -61,5 +60,9 @@ string Return::translate(string fun_name, int& tabs, int& funCallNumber, string&
         code += printTabs(tabs) + "goto end;";
     }
     return code;
+}
+
+void Return::changeVariablesName(string prefix) {
+    expression.changeVariablesName(prefix);
 }
 

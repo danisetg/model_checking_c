@@ -10,6 +10,7 @@ class Scan
         Scan();
         void parse(deque<Token>& tokens);
         string translate(int& tabs);
+        void changeVariablesName(string prefix);
 };
 
 #endif // SCAN_H

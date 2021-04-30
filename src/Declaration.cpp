@@ -14,7 +14,7 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
 
     Token token = tokens.front();
     tokens.pop_front();
-    string name;
+
     cout<<token.type<<endl;
     if(token.type == "INT_KEYWORD") {
         token = tokens.front();
@@ -25,10 +25,9 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
             savePointer(token.word, "int");
         }
         IntDecl _int;
-        _int.name = token.word;
+        name = token.word;
         intDecl = new IntDecl();
         *intDecl = _int;
-        name = intDecl->name;
         type = INT;
     }else if(token.type == "BOOL_KEYWORD") {
         token = tokens.front();
@@ -39,10 +38,9 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
             savePointer(token.word, "bool");
         }
         BoolDecl _bool;
-        _bool.name = token.word;
+        name = token.word;
         boolDecl = new BoolDecl();
         *boolDecl = _bool;
-        name = boolDecl->name;
         type = BOOL;
     } else if(token.type == "STRUCT_KEYWORD") {
         structDecl = new StructDecl();
@@ -58,9 +56,8 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
             cout<<token.word<<" "<<structDecl->structName<<endl;
             savePointer(token.word, structDecl->structName);
         }
-        structDecl->name = token.word;
+        name = token.word;
 
-        name = structDecl->name;
         type = STRUCT;
     } else
         mad("Not a variable type");
@@ -109,13 +106,13 @@ string Declaration::translate(int& tabs, bool addExpression) {
     string code = printTabs(tabs);
     switch(type) {
         case INT:
-            code += intDecl->translate();
+            code += intDecl->translate(name);
             break;
         case STRUCT:
-            code += structDecl->translate(isPointer);
+            code += structDecl->translate(isPointer, name);
             break;
         case BOOL:
-            code += boolDecl->translate();
+            code += boolDecl->translate(name);
             break;
     }
 

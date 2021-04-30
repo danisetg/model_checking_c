@@ -83,7 +83,6 @@ void Switch::parse(deque<Token>& tokens, vector<Statement>& statements, vector<s
         }
     }
 
-    cout<<token.type<<endl;
     if(token.type != "CLOSE_BRACE")
         mad("missing '}'");
 
@@ -119,4 +118,18 @@ string Switch::translate(string fun_name, int& tabs, int& funCallNumber, string&
     code += printTabs(tabs) + "fi;";
 
     return code;
+}
+
+void Switch::changeVariablesName(string prefix) {
+    condition.changeVariablesName(prefix);
+    for(int i = 0; i < cases.size(); i++) {
+        cases[i].changeVariablesName(prefix);
+        for(int h = 0; h < caseStatements[i].size(); h++) {
+            caseStatements[i][h].changeVariablesName(prefix);
+        }
+    }
+
+    for(int i = 0; i < defaultStatements.size(); i++) {
+        defaultStatements[i].changeVariablesName(prefix);
+    }
 }

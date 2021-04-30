@@ -143,3 +143,13 @@ string If::translate(string fun_name, int& tabs, int& funCallNumber, string& pre
     code += printTabs(tabs) + "fi";
     return code;
 }
+
+void If::changeVariablesName(string prefix) {
+    condition.changeVariablesName(prefix);
+     for(int i = 0; i < ifBody.size(); i++) {
+        ifBody[i].changeVariablesName(prefix);
+    }
+    for(int i = 0; i < elseBody.size(); i++) {
+        elseBody[i].changeVariablesName(prefix);
+    }
+}

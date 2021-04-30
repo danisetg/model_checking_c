@@ -25,9 +25,9 @@ void Struct::parse(deque<Token>& tokens, string _name) {
             mad("Unknown type");
        decl.parse(tokens, funCalls);
        if(decl.type == INT)
-            members.push_back(make_pair("int", decl.intDecl->name));
+            members.push_back(make_pair("int", decl.name));
        else
-            members.push_back(make_pair(decl.structDecl->structName, decl.structDecl->name));
+            members.push_back(make_pair(decl.structDecl->structName, decl.name));
        declarations.push_back(decl);
        token = tokens.front();
        cout<<token.word<<endl;
@@ -48,7 +48,6 @@ void Struct::parse(deque<Token>& tokens, string _name) {
 
 string Struct::translate(int& tabs) {
     string code = "typedef " + name + " {\n";
-    cout<<name<<endl;
     tabs++;
     for(int i = 0; i < declarations.size(); i++) {
         code += declarations[i].translate(tabs, true) + ";\n";

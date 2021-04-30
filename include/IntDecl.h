@@ -5,10 +5,9 @@
 class IntDecl
 {
     public:
-        string name;
         IntDecl();
         void parse(deque<Token>& tokens);
-        string translate();
+        string translate(string name);
 };
 
 #endif // INTDECL_H

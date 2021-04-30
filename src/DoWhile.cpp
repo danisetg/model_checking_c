@@ -34,7 +34,6 @@ void DoWhile::parse(deque<Token>& tokens, vector<Statement>& statements, vector<
             }
             body.push_back(_doWhileBody);
             token = tokens.front();
-            cout<<token.word<<endl;
         }
         if(token.type != "CLOSE_BRACE")
             mad("missing '}'");
@@ -102,4 +101,11 @@ string DoWhile::translate(string fun_name, int& tabs, int& funCallNumber, string
     tabs--;
     code += printTabs(tabs) + "od";
     return code;
+}
+
+void DoWhile::changeVariablesName(string prefix) {
+    endCondition.changeVariablesName(prefix);
+    for(int i = 0; i < body.size(); i++) {
+        body[i].changeVariablesName(prefix);
+    }
 }

@@ -9,6 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include "Fun.h"
+#include "SpecificationGenerator.h"
 using namespace std;
 
 
@@ -44,8 +45,17 @@ int main()
     ofstream outfile;
     outfile.open("C:\\c_tests\\Ejemplos\\triangle.pml");
     int tabs = 0;
-    outfile<<p.translate(tabs);
-
+    outfile<<p.translate(tabs, false);
     outfile.close();
+
+    SpecificationGenerator sp;
+    sp.p = p;
+
+    sp.changeDeclarationsToGlobal();
+    outfile.open("C:\\c_tests\\Ejemplos\\triangle_cft.pml");
+    tabs = 0;
+    outfile<<sp.p.translate(tabs, true);
+    outfile.close();
+
     return 0;
 }

@@ -9,6 +9,7 @@ class Variable
         Variable();
         void parse(deque<Token>& tokens);
         string translate();
+        void changeName(string prefix);
 };
 
 #endif // VARIABLE_H

@@ -53,3 +53,9 @@ string Scan::translate(int& tabs) {
     }
     return code;
 }
+
+void Scan::changeVariablesName(string prefix) {
+    for(int i = 0; i < variables.size(); i++) {
+        variables[i] = prefix + "_" + variables[i];
+    }
+}

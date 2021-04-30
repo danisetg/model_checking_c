@@ -27,3 +27,9 @@ string Conditional::translate(string fun_name, int& tabs, int& funCallNumber, st
     code += printTabs(tabs) + "fi";
     return code;
 }
+
+void Conditional::changeVariablesName(string prefix) {
+    condition.changeVariablesName(prefix);
+    trueAssign.changeVariablesName(prefix);
+    falseAssign.changeVariablesName(prefix);
+}

@@ -5,7 +5,7 @@ BoolDecl::BoolDecl()
     //ctor
 }
 
-void BoolDecl::parse(deque<Token>& tokens) {
+void BoolDecl::parse(deque<Token>& tokens, string name) {
 
     Token token = tokens.front();
 
@@ -24,7 +24,7 @@ void BoolDecl::parse(deque<Token>& tokens) {
     tokens.pop_front();
 }
 
-string BoolDecl::translate() {
+string BoolDecl::translate(string name) {
     return "bool " + name;
 }
 

@@ -13,6 +13,7 @@ class Array
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
         string getPosition(string fun_name, int& tabs, int& funCallNumber, string& previousCode,
                           vector<int> dimensions, int dimsLength);
+        void changeVariablesName(string prefix);
 };
 
 #endif // ARRAY_H

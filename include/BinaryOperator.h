@@ -12,6 +12,7 @@ class BinaryOperator
         BinaryOperator(string _op, Expression& _exp1, Expression& _exp2);
         void parse(deque<Token>& tokens);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
+        void changeVariablesName(string prefix);
 };
 
 #endif // BINARYOPERATOR_H

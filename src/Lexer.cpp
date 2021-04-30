@@ -63,11 +63,14 @@ Token tokens[53] = {
 
 
 //predefined program special characters that can be found joint to words
-string predefinedTwoCharacters[6] = {"==", "!=", "++", "--", "->", "&&"};
+string predefinedTwoCharacters[7] = {"==", "!=", "++", "--", "->", "&&", "\\n"};
 string predefinedCharacters = "&{}();-~!+*/%?:,[].\"";
 
 bool isPredefinedWord(string match) {
-    for (int i = 0; i < 6; i++) {
+
+    for (int i = 0; i < 7; i++) {
+        if(match == "\\n")
+            cout<<"aaaaaaa "<<match<<" "<<predefinedTwoCharacters[i]<<endl;
         if (predefinedTwoCharacters[i] == match)
             return true;
     }
@@ -82,6 +85,7 @@ vector<string> getProgramWords(string program) {
     bool isInclude = false;
     bool isUsing = false;
     for(int i = 0; i < len; i++) {
+
 
         if(i < len - 1 && program[i] == '/' && program[i + 1] == '/')
             isComment = true;
@@ -143,7 +147,6 @@ vector<Token> getTokens(string program) {
     int len = words.size();
     //iterate the words vector and for each word check if it matches any of the predefined tokens
     for(int i = 0; i < len; i++) {
-        cout<<words[i]<<endl;
         for(int h = 0; h < tokensLength; h++) {
             //if word matches with a predefined token, add the token to the vector
             if(regex_match(words[i], tokens[h].regExp)) {

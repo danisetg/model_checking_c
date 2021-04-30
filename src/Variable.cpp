@@ -20,3 +20,7 @@ void Variable::parse(deque<Token>& tokens) {
 string Variable::translate() {
     return name;
 }
+
+void Variable::changeName(string prefix) {
+    name = prefix + "_" + name;
+}

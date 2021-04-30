@@ -10,6 +10,7 @@ class Increment
         Increment();
         void parse(deque<Token>& tokens);
         string translate();
+        void changeVariablesName(string prefix);
 };
 
 #endif // INCREMENT_H

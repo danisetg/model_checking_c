@@ -5,10 +5,9 @@
 class BoolDecl
 {
     public:
-        string name;
         BoolDecl();
-        void parse(deque<Token>& tokens);
-        string translate();
+        void parse(deque<Token>& tokens, string name);
+        string translate(string name);
 };
 
 #endif // BOOLDECL_H

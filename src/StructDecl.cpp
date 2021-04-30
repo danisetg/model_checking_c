@@ -29,12 +29,10 @@ void StructDecl::parse(deque<Token>& tokens) {
     if(token.type != "IDENTIFIER")
         mad("Missing identifier");
 
-    name = token.word;
-
     tokens.pop_front();
 }
 
-string StructDecl::translate(bool isPointer) {
+string StructDecl::translate(bool isPointer, string name) {
     if(!isPointer)
         return structName + " " + name;
 

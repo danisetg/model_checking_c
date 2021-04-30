@@ -45,3 +45,10 @@ string Array::getPosition(string fun_name, int& tabs, int& funCallNumber, string
     return "(" + getPosition(fun_name, tabs, funCallNumber, previousCode, dimensions, dimsLength - 1)
             + "*" + to_string(dimensions[dimsLength]) + " + " + positions[dimsLength].translate(fun_name, tabs, funCallNumber, previousCode) + ")";
 }
+
+void Array::changeVariablesName(string prefix) {
+    name = prefix + "_" + name;
+    for(int i = 0; i < positions.size(); i++) {
+        positions[i].changeVariablesName(prefix);
+    }
+}

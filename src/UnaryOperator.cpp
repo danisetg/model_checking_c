@@ -27,3 +27,7 @@ void UnaryOperator::parse (deque<Token>& tokens, vector<string>& _funCalls) {
 string UnaryOperator::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     return op + expression.translate(fun_name, tabs, funCallNumber, previousCode);
 }
+
+void UnaryOperator::changeVariablesName(string prefix) {
+    expression.changeVariablesName(prefix);
+}

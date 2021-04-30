@@ -171,3 +171,38 @@ string Statement::translate(string fun_name, int& tabs, int& funCallNumber, stri
             return printTabs(tabs) + switchStatement->translate(fun_name, tabs, funCallNumber, previousCode);
     }
 }
+
+void Statement::changeVariablesName(string prefix) {
+    switch(type) {
+        case RETURN:
+            ret->changeVariablesName(prefix);
+            break;
+        case EXPRESSION:
+            expression->changeVariablesName(prefix);
+            break;
+        case IF:
+            ifStatement->changeVariablesName(prefix);
+            break;
+        case FOR:
+            forStatement->changeVariablesName(prefix);
+            break;
+        case WHILE:
+            whileStatement->changeVariablesName(prefix);
+            break;
+        case  DO_WHILE:
+            doWhileStatement->changeVariablesName(prefix);
+            break;
+        case SCAN:
+            scan->changeVariablesName(prefix);
+            break;
+        case PRINT:
+            print->changeVariablesName(prefix);
+            break;
+        case LABELED_STATEMENT:
+            labeledStatement->changeVariablesName(prefix);
+            break;
+        case SWITCH:
+            switchStatement->changeVariablesName(prefix);
+            break;
+    }
+}
