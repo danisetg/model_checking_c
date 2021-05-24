@@ -1,6 +1,7 @@
 #include "If.h"
 #include "Helper.h"
 #include "Declaration.h"
+#include "BinaryOperator.h"
 If::If()
 {
     //ctor
@@ -123,6 +124,9 @@ void If::parse(deque<Token>& tokens, vector<Statement>& statements, vector<strin
 string If::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     string code = "if\n";
     tabs++;
+    if(condition.type == BINARY_OPERATOR) {
+        cout<<condition.binaryOperator->op<<" "<<condition.binaryOperator->exp1.type<<" "<<condition.binaryOperator->exp2.type<<endl;
+    }
     code += printTabs(tabs) + "::" + condition.translate(fun_name, tabs, funCallNumber, previousCode) + " ->\n";
     tabs++;
     for(int i = 0; i < ifBody.size(); i++) {

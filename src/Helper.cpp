@@ -133,3 +133,33 @@ vector<int> getLocalArrayDimensions(string name, string functionName) {
     return noResult;
 }
 
+string exec(const char* cmd) {
+    char buffer[128];
+    string result = "";
+    FILE* pipe = popen(cmd, "r");
+    if (!pipe) mad("popen() failed!");
+    try {
+        while (fgets(buffer, sizeof buffer, pipe) != NULL) {
+            result += buffer;
+        }
+    } catch (...) {
+        pclose(pipe);
+        throw;
+    }
+    pclose(pipe);
+    return result;
+}
+
+
+void createFolderIfNotExists(const char* address)
+{
+	//Judge whether the folder exists, create it if it does not exist
+	const char* dir = address;
+
+	if (_access(dir, 0) == -1)
+	{
+		_mkdir(dir);
+	}
+
+
+}

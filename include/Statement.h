@@ -16,6 +16,7 @@ class Goto;
 class Switch;
 class Print;
 class Scan;
+class Atomic;
 
 enum StatementType {
     EXPRESSION,
@@ -31,7 +32,8 @@ enum StatementType {
     GOTO,
     SWITCH,
     PRINT,
-    SCAN
+    SCAN,
+    ATOMIC
 };
 
 class Statement
@@ -53,6 +55,7 @@ class Statement
             Switch* switchStatement;
             Print* print;
             Scan* scan;
+            Atomic* atomic;
         };
         Statement();
         void parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);

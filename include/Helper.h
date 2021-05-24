@@ -6,6 +6,8 @@
 #include <deque>
 #include <Token.h>
 #include <sstream>
+#include <direct.h>
+#include <io.h>
 #include <fstream>
 #include <optional>
 #include <set>
@@ -63,5 +65,9 @@ vector<int> getArrayDimensions(string name);
 void saveLocalArray(string name, vector<int> dimensions, string functionName);
 
 vector<int> getLocalArrayDimensions(string name, string functionName);
+
+string exec(const char* cmd);
+
+void createFolderIfNotExists(const char* address);
 
 #endif // HELPER_H

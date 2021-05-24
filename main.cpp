@@ -10,6 +10,7 @@
 #include <sstream>
 #include "Fun.h"
 #include "SpecificationGenerator.h"
+#include "SpinInterface.h"
 using namespace std;
 
 
@@ -43,7 +44,7 @@ int main()
     p.parse(tokens);
 
     ofstream outfile;
-    outfile.open("C:\\c_tests\\Ejemplos\\triangle.pml");
+    outfile.open("triangle.pml");
     int tabs = 0;
     outfile<<p.translate(tabs, false);
     outfile.close();
@@ -52,10 +53,17 @@ int main()
     sp.p = p;
 
     sp.changeDeclarationsToGlobal();
-    outfile.open("C:\\c_tests\\Ejemplos\\triangle_cft.pml");
+    outfile.open("triangle_cft.pml");
     tabs = 0;
     outfile<<sp.p.translate(tabs, true);
+
     outfile.close();
+
+    createFolderIfNotExists("test_cases");
+    SpinInterface spin;
+
+    spin.generateCFTests(sp);
+
 
     return 0;
 }

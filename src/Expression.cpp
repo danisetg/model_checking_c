@@ -108,7 +108,7 @@ Expression Expression::parseFactor (deque<Token>& tokens, vector<string>& _funCa
         if(token.type != "CLOSE_PARENTHESIS")
             mad("Incorrect expression format, missing ')'");
         tokens.pop_front();
-    }else if(token.type == "INTEGER") {
+    }else if(token.type == "INTEGER" || token.type == "BOOLEAN_TRUE" || token.type == "BOOLEAN_FALSE") {
         Const _constant;
         _constant.parse(tokens);
         exp.type = CONSTANT;

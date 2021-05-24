@@ -2,10 +2,10 @@
 #include "Token.h"
 #include "Helper.h"
 #include <regex>
-int tokensLength = 53;
+int tokensLength = 55;
 
 //predefined list of tokens to to find program code
-Token tokens[53] = {
+Token tokens[55] = {
             Token("OPEN_BRACE", regex("\\{"), ""),
             Token("CLOSE_BRACE", regex("\\}"), ""),
             Token("OPEN_PARENTHESIS", regex("\\("), ""),
@@ -35,6 +35,8 @@ Token tokens[53] = {
             Token("GREATER_THAN", regex(">"), ""),
             Token("ASSIGNMENT", regex("="), ""),
             Token("LOGICAL_NEGATION", regex("!"), ""),
+            Token("BOOLEAN_TRUE", regex("true"), ""),
+            Token("BOOLEAN_FALSE", regex("false"), ""),
             Token("INT_KEYWORD", regex("int"), ""),
             Token("BOOL_KEYWORD", regex("bool"), ""),
             Token("VOID_KEYWORD", regex("void"), ""),
@@ -69,8 +71,6 @@ string predefinedCharacters = "&{}();-~!+*/%?:,[].\"";
 bool isPredefinedWord(string match) {
 
     for (int i = 0; i < 7; i++) {
-        if(match == "\\n")
-            cout<<"aaaaaaa "<<match<<" "<<predefinedTwoCharacters[i]<<endl;
         if (predefinedTwoCharacters[i] == match)
             return true;
     }

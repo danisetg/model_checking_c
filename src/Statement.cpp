@@ -12,6 +12,7 @@
 #include "Switch.h"
 #include "Print.h"
 #include "Scan.h"
+#include "Atomic.h"
 Statement::Statement()
 {
     //ctor
@@ -64,6 +65,8 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
         scan = new Scan();
         *scan = _scan;
         type = SCAN;
+        _funCalls.push_back("input");
+        cout<<"    input"<<endl;
     } else if(token.type == "IDENTIFIER" || token.type == "INTEGER" || token.type == "MULTIPLICATION") {
         tokens.pop_front();
         Token token1 = tokens.front();
@@ -166,9 +169,11 @@ string Statement::translate(string fun_name, int& tabs, int& funCallNumber, stri
         case LABELED_STATEMENT:
             return printTabs(tabs) + labeledStatement->translate(fun_name, tabs, funCallNumber, previousCode);
         case GOTO:
-            return printTabs(tabs) + gto->translate();
+            return printTabs(tabs) + gto->translate() + ";";
         case SWITCH:
             return printTabs(tabs) + switchStatement->translate(fun_name, tabs, funCallNumber, previousCode);
+         case ATOMIC:
+            return printTabs(tabs) + atomic->translate(fun_name, tabs, funCallNumber, previousCode);
     }
 }
 

@@ -9,6 +9,7 @@ class If
         Expression condition;
         vector<Statement> ifBody;
         vector<Statement> elseBody;
+        int dn;
         If();
         void parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
         string translate(string fun_name,int& tabs, int& funCallNumber, string& previousCode);

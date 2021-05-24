@@ -38,9 +38,11 @@
 		<Unit filename="include/Array.h" />
 		<Unit filename="include/ArrayDecl.h" />
 		<Unit filename="include/Assignment.h" />
+		<Unit filename="include/Atomic.h" />
 		<Unit filename="include/BinaryOperator.h" />
 		<Unit filename="include/BoolDecl.h" />
 		<Unit filename="include/Break.h" />
+		<Unit filename="include/CommandGenerator.h" />
 		<Unit filename="include/Conditional.h" />
 		<Unit filename="include/Const.h" />
 		<Unit filename="include/Continue.h" />
@@ -66,6 +68,7 @@
 		<Unit filename="include/Return.h" />
 		<Unit filename="include/Scan.h" />
 		<Unit filename="include/SpecificationGenerator.h" />
+		<Unit filename="include/SpinInterface.h" />
 		<Unit filename="include/Statement.h" />
 		<Unit filename="include/Struct.h" />
 		<Unit filename="include/StructDecl.h" />
@@ -80,9 +83,11 @@
 		<Unit filename="src/Array.cpp" />
 		<Unit filename="src/ArrayDecl.cpp" />
 		<Unit filename="src/Assignment.cpp" />
+		<Unit filename="src/Atomic.cpp" />
 		<Unit filename="src/BinaryOperator.cpp" />
 		<Unit filename="src/BoolDecl.cpp" />
 		<Unit filename="src/Break.cpp" />
+		<Unit filename="src/CommandGenerator.cpp" />
 		<Unit filename="src/Conditional.cpp" />
 		<Unit filename="src/Const.cpp" />
 		<Unit filename="src/Continue.cpp" />
@@ -108,6 +113,7 @@
 		<Unit filename="src/Return.cpp" />
 		<Unit filename="src/Scan.cpp" />
 		<Unit filename="src/SpecificationGenerator.cpp" />
+		<Unit filename="src/SpinInterface.cpp" />
 		<Unit filename="src/Statement.cpp" />
 		<Unit filename="src/Struct.cpp" />
 		<Unit filename="src/StructDecl.cpp" />

@@ -7,5 +7,6 @@ Define::Define()
 string Define::translate() {
     int tabs = 0;
     string prev = "";
-    return "#define " + name  + " " + exp.translate("", tabs, tabs, prev) + ";\n";
+    cout<<name<<endl;
+    return "#define " + name  + " " + exp.translate("", tabs, tabs, prev) + "\n";
 }

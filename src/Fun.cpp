@@ -91,6 +91,7 @@ void Fun::parse(deque<Token>& tokens, string _name, string _type) {
 
 
 string Fun::translate(int& tabs) {
+    chanDeclared.clear();
     if(statements.size()) {
         string code = printTabs(tabs) + "proctype " + name + "(" + "chan in_" + name;
         for(int i = 0; i < parameters.size(); i++) {
@@ -101,6 +102,7 @@ string Fun::translate(int& tabs) {
         if(funCalls.size()) {
             for(int i = 0; i < funCalls.size(); i++) {
                 code += printTabs(tabs) + "int temp" + to_string(i) + ";\n";
+                cout<<"                              "<<funCalls[i]<<" "<<chanDeclared[funCalls[i]]<<endl;
                 if(!chanDeclared[funCalls[i]] && funCalls[i] != "malloc" && funCalls[i] != "free") {
                     code += printTabs(tabs) + "chan ret_" + funCalls[i] + " = [0] of { int };\n";
                     chanDeclared[funCalls[i]] = true;

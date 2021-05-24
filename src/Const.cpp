@@ -19,8 +19,8 @@ void Const::parse(deque<Token>& tokens) {
 
     Token token = tokens.front();
 
-    if(token.type != "INTEGER")
-        mad("Not an integer value");
+    if(token.type != "INTEGER" && token.type != "BOOLEAN_TRUE" && token.type != "BOOLEAN_FALSE")
+        mad("Not a constant value");
 
     value = token.word;
     tokens.pop_front();

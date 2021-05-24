@@ -1,0 +1,148 @@
+![]!(!main_condition_71 && final)
+spin: couldn't find claim 3 (ignored)
+Starting main with pid 2
+  2:	proc  0 (:init:) triangle_cft.pml:115 (state 1)	[(run main(ret_main))]
+  4:	proc  1 (main) triangle_cft.pml:42 (state 1)	[(1)]
+              Enter 3integers which are sides of a triangle   4:	proc  1 (main) triangle_cft.pml:43 (state 2)	[printf('Enter 3integers which are sides of a triangle ')]
+Starting input with pid 3
+  6:	proc  1 (main) triangle_cft.pml:45 (state 3)	[(run input(ret_input,1,10))]
+  8:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+  8:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 2
+  9:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+  9:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 3
+ 10:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 10:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 4
+ 11:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 11:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 5
+ 12:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 12:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 6
+ 13:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 13:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 7
+ 14:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 14:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 8
+ 15:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 15:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 9
+ 16:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 16:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 10
+ 17:	proc  2 (input) triangle_cft.pml:6 (state 3)	[goto :b0]
+ 18:	proc  2 (input) triangle_cft.pml:4 (state 6)	[break]
+ 19:	proc  2 (input) triangle_cft.pml:8 (state 7)	[in_input!value]
+ 20:	proc  1 (main) triangle_cft.pml:46 (state 4)	[ret_input?main_a]
+		main_a = 10
+ 22: proc 2 terminates
+Starting input with pid 3
+ 24:	proc  1 (main) triangle_cft.pml:47 (state 5)	[(run input(ret_input,1,10))]
+ 26:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 26:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 2
+ 27:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 27:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 3
+ 28:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 28:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 4
+ 29:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 29:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 5
+ 30:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 30:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 6
+ 31:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 31:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 7
+ 32:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 32:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 8
+ 33:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 33:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 9
+ 34:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 34:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 10
+ 35:	proc  2 (input) triangle_cft.pml:6 (state 3)	[goto :b0]
+ 36:	proc  2 (input) triangle_cft.pml:4 (state 6)	[break]
+ 37:	proc  2 (input) triangle_cft.pml:8 (state 7)	[in_input!value]
+ 38:	proc  1 (main) triangle_cft.pml:48 (state 6)	[ret_input?main_b]
+		main_b = 10
+ 40: proc 2 terminates
+Starting input with pid 3
+ 42:	proc  1 (main) triangle_cft.pml:49 (state 7)	[(run input(ret_input,1,10))]
+ 44:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 44:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 2
+ 45:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 45:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 3
+ 46:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 46:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 4
+ 47:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 47:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 5
+ 48:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 48:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 6
+ 49:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 49:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 7
+ 50:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 50:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 8
+ 51:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 51:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 9
+ 52:	proc  2 (input) triangle_cft.pml:5 (state 1)	[((value<max))]
+ 52:	proc  2 (input) triangle_cft.pml:5 (state 2)	[value = (value+1)]
+		input(2):value = 10
+ 53:	proc  2 (input) triangle_cft.pml:6 (state 3)	[goto :b0]
+ 54:	proc  2 (input) triangle_cft.pml:4 (state 6)	[break]
+ 55:	proc  2 (input) triangle_cft.pml:8 (state 7)	[in_input!value]
+ 56:	proc  1 (main) triangle_cft.pml:50 (state 8)	[ret_input?main_c]
+		main_c = 10
+ 58: proc 2 terminates
+ 60:	proc  1 (main) triangle_cft.pml:52 (state 9)	[main_c1 = ((1<=main_a)&&(main_a<=200))]
+		main_c1 = 1
+ 62:	proc  1 (main) triangle_cft.pml:53 (state 10)	[main_c2 = ((1<=main_b)&&(main_b<=200))]
+		main_c2 = 1
+ 64:	proc  1 (main) triangle_cft.pml:54 (state 11)	[main_c3 = ((1<=main_c)&&(main_c<=200))]
+		main_c3 = 1
+ 66:	proc  1 (main) triangle_cft.pml:59 (state 14)	[else]
+ 68:	proc  1 (main) triangle_cft.pml:59 (state 15)	[(1)]
+ 70:	proc  1 (main) triangle_cft.pml:65 (state 20)	[else]
+ 72:	proc  1 (main) triangle_cft.pml:65 (state 21)	[(1)]
+ 74:	proc  1 (main) triangle_cft.pml:71 (state 26)	[else]
+ 76:	proc  1 (main) triangle_cft.pml:71 (state 27)	[(1)]
+ 78:	proc  1 (main) triangle_cft.pml:74 (state 30)	[(!(!(((main_c1&&main_c2)&&main_c3))))]
+              Side A is 10  80:	proc  1 (main) triangle_cft.pml:77 (state 37)	[printf('Side A is %d ',main_a)]
+              Side B is 10  82:	proc  1 (main) triangle_cft.pml:79 (state 38)	[printf('Side B is %d ',main_b)]
+              Side C is 10  84:	proc  1 (main) triangle_cft.pml:81 (state 39)	[printf('Side C is %d ',main_c)]
+ 86:	proc  1 (main) triangle_cft.pml:84 (state 40)	[((((main_a<(main_b+main_c))&&(main_b<(main_a+main_c)))&&(main_c<(main_a+main_b))))]
+ 88:	proc  1 (main) triangle_cft.pml:85 (state 41)	[main_isATriangle = 1]
+		main_isATriangle = 1
+ 90:	proc  1 (main) triangle_cft.pml:90 (state 46)	[(main_isATriangle)]
+ 92:	proc  1 (main) triangle_cft.pml:92 (state 47)	[(((main_a==main_b)&&(main_b==main_c)))]
+              Equilateral  94:	proc  1 (main) triangle_cft.pml:93 (state 48)	[printf('Equilateral ')]
+ 96:	proc  1 (main) triangle_cft.pml:109 (state 62)	[in_main!0]
+ 97:	proc  0 (:init:) triangle_cft.pml:116 (state 2)	[ret_main?0]
+              End of main 99:	proc  1 (main) triangle_cft.pml:111 (state 64) <valid end state>	[printf('End of main')]
+spin: trail ends after 100 steps
+#processes: 2
+		main_c1 = 1
+		main_isATriangle = 1
+		main_c3 = 1
+		main_c2 = 1
+		main_a = 10
+		main_c = 10
+		main_b = 10
+100:	proc  1 (main) triangle_cft.pml:112 (state 65) <valid end state>
+100:	proc  0 (:init:) triangle_cft.pml:117 (state 3) <valid end state>
+5 processes created

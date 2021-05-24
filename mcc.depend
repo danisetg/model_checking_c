@@ -116,7 +116,7 @@
 	"Const.h"
 	"Helper.h"
 
-1619458576 source:d:\maestria\softs\model_checking_c\main.cpp
+1620657539 source:d:\maestria\softs\model_checking_c\main.cpp
 	<iostream>
 	"Helper.h"
 	<vector>
@@ -129,14 +129,17 @@
 	<sstream>
 	"Fun.h"
 	"SpecificationGenerator.h"
+	"SpinInterface.h"
 
-1616198674 d:\maestria\softs\model_checking_c\include\helper.h
+1620055055 d:\maestria\softs\model_checking_c\include\helper.h
 	<string>
 	<vector>
 	<iostream>
 	<deque>
 	<Token.h>
 	<sstream>
+	<direct.h>
+	<io.h>
 	<fstream>
 	<optional>
 	<set>
@@ -184,14 +187,14 @@
 1614962496 d:\maestria\softs\model_checking_c\include\const.h
 	"Helper.h"
 
-1614962531 source:d:\maestria\softs\model_checking_c\src\const.cpp
+1620051427 source:d:\maestria\softs\model_checking_c\src\const.cpp
 	"Const.h"
 	<iostream>
 	<Helper.h>
 	<sstream>
 	<fstream>
 
-1619208161 source:d:\maestria\softs\model_checking_c\src\expression.cpp
+1620051294 source:d:\maestria\softs\model_checking_c\src\expression.cpp
 	"Expression.h"
 	"Const.h"
 	"Helper.h"
@@ -207,15 +210,15 @@
 	"Decrement.h"
 	"PointerExp.h"
 
-1619148148 source:d:\maestria\softs\model_checking_c\src\fun.cpp
+1621179725 source:d:\maestria\softs\model_checking_c\src\fun.cpp
 	"Fun.h"
 	<string>
 	"Helper.h"
 
-1616602442 source:d:\maestria\softs\model_checking_c\src\helper.cpp
+1620055028 source:d:\maestria\softs\model_checking_c\src\helper.cpp
 	"Helper.h"
 
-1619450379 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
+1620051304 source:d:\maestria\softs\model_checking_c\src\lexer.cpp
 	"Lexer.h"
 	"Token.h"
 	"Helper.h"
@@ -259,7 +262,7 @@
 1610396079 d:\maestria\softs\model_checking_c\include\prog.h
 	<Fun.h>
 
-1619147341 source:d:\maestria\softs\model_checking_c\src\binaryoperator.cpp
+1620924577 source:d:\maestria\softs\model_checking_c\src\binaryoperator.cpp
 	"BinaryOperator.h"
 	"Helper.h"
 	"Assignment.h"
@@ -294,10 +297,10 @@
 1619147340 d:\maestria\softs\model_checking_c\include\variable.h
 	"Helper.h"
 
-1619147341 source:d:\maestria\softs\model_checking_c\src\variable.cpp
+1620924577 source:d:\maestria\softs\model_checking_c\src\variable.cpp
 	"Variable.h"
 
-1619450624 source:d:\maestria\softs\model_checking_c\src\statement.cpp
+1621006645 source:d:\maestria\softs\model_checking_c\src\statement.cpp
 	"Statement.h"
 	"Return.h"
 	"Declaration.h"
@@ -312,19 +315,21 @@
 	"Switch.h"
 	"Print.h"
 	"Scan.h"
+	"Atomic.h"
 
-1619147341 d:\maestria\softs\model_checking_c\include\statement.h
+1620676169 d:\maestria\softs\model_checking_c\include\statement.h
 	"Helper.h"
 
-1619147341 d:\maestria\softs\model_checking_c\include\if.h
+1620676169 d:\maestria\softs\model_checking_c\include\if.h
 	"Expression.h"
 	"Statement.h"
 	"Helper.h"
 
-1619147542 source:d:\maestria\softs\model_checking_c\src\if.cpp
+1620924825 source:d:\maestria\softs\model_checking_c\src\if.cpp
 	"If.h"
 	"Helper.h"
 	"Declaration.h"
+	"BinaryOperator.h"
 
 1619147341 source:d:\maestria\softs\model_checking_c\src\conditional.cpp
 	"Conditional.h"
@@ -496,10 +501,10 @@
 1619104181 source:d:\maestria\softs\model_checking_c\src\booldecl.cpp
 	"BoolDecl.h"
 
-1619457950 source:d:\maestria\softs\model_checking_c\src\specificationgenerator.cpp
+1621190435 source:d:\maestria\softs\model_checking_c\src\specificationgenerator.cpp
 	"SpecificationGenerator.h"
 
-1619731125 d:\maestria\softs\model_checking_c\include\specificationgenerator.h
+1621189804 d:\maestria\softs\model_checking_c\include\specificationgenerator.h
 	"Helper.h"
 	"Program.h"
 	"If.h"
@@ -508,10 +513,34 @@
 	"For.h"
 	"DoWhile.h"
 	"Variable.h"
+	"LabeledStatement.h"
+	"Print.h"
+	"Atomic.h"
+	"Assignment.h"
+	"Goto.h"
 
 1619458476 d:\maestria\softs\model_checking_c\include\define.h
 	"Expression.h"
 
-1619458695 source:d:\maestria\softs\model_checking_c\src\define.cpp
+1620584968 source:d:\maestria\softs\model_checking_c\src\define.cpp
 	"Define.h"
+
+1621190192 source:d:\maestria\softs\model_checking_c\src\spininterface.cpp
+	"SpinInterface.h"
+
+1621190173 d:\maestria\softs\model_checking_c\include\spininterface.h
+	"Helper.h"
+	"SpecificationGenerator.h"
+
+1619800392 source:d:\maestria\softs\model_checking_c\src\commandgenerator.cpp
+	"CommandGenerator.h"
+
+1619800392 d:\maestria\softs\model_checking_c\include\commandgenerator.h
+
+1620676169 d:\maestria\softs\model_checking_c\include\atomic.h
+	"Helper.h"
+	"Statement.h"
+
+1620923320 source:d:\maestria\softs\model_checking_c\src\atomic.cpp
+	"Atomic.h"
 
