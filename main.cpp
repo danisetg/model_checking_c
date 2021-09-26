@@ -76,8 +76,6 @@ int main()
     //closes the file.
     outfile.close();
 
-    return 0;
-
     //initialize an specification generator for control flow oriented specifications.
     SpecificationGenerator sp = SpecificationGenerator(p);
     sp.generateCFSpecifications(resultsAddr, fileName);
