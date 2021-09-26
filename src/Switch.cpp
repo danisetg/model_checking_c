@@ -96,7 +96,13 @@ string Switch::translate(string fun_name, int& tabs, int& funCallNumber, string&
     tabs++;
     for(int i = 0; i < cases.size(); i++) {
         code += printTabs(tabs) + "::" + condition.translate(fun_name, tabs, funCallNumber, previousCode)
-                + " == " + cases[i].translate(fun_name, tabs, funCallNumber, previousCode) + " ->\n";
+                + " == " + cases[i].translate(fun_name, tabs, funCallNumber, previousCode);
+        while(!caseStatements[i].size()) {
+            i++;
+            code += " || " + condition.translate(fun_name, tabs, funCallNumber, previousCode)
+                + " == " + cases[i].translate(fun_name, tabs, funCallNumber, previousCode);
+        }
+        code += " ->\n";
         tabs++;
         for(int h = 0; h < caseStatements[i].size(); h++) {
             if(caseStatements[i][h].type != BREAK)

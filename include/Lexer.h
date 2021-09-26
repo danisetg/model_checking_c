@@ -2,9 +2,10 @@
 #define LEXER_H
 #include <vector>
 #include <Token.h>
+#include "Helper.h"
 
 using std::vector;
 using std::string;
-vector<Token> getTokens(string program);
+deque<Token> getTokens(string program);
 
 #endif // LEXER_H

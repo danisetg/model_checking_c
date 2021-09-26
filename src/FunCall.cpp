@@ -5,6 +5,12 @@ FunCall::FunCall()
     //ctor
 }
 
+FunCall::FunCall(const FunCall &funCall) {
+    for(int i = 0; i < funCall.arguments.size(); i++) {
+        arguments.push_back(Expression(funCall.arguments[i]));
+    }
+}
+
 void FunCall::parse(string _name, deque<Token>& tokens, vector<string>& _funCalls) {
     if(tokens.empty())
         mad("Function is empty");

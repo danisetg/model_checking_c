@@ -5,6 +5,11 @@ Array::Array()
     //ctor
 }
 
+Array::Array(const Array &arr) {
+    positions = arr.positions;
+    name = arr.name;
+}
+
 void Array::parse(string _name, deque<Token>& tokens, vector<string>& _funCalls) {
     if(tokens.empty())
         mad("Array is empty");

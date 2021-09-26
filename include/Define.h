@@ -7,6 +7,8 @@ class Define
     public:
         string name;
         Expression exp;
+        string ifLabel;
+        int dn;
         Define();
         string translate();
 };

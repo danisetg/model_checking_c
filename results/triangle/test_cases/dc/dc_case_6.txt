@@ -1,0 +1,30 @@
+![]!(!d_3 && if3 && <>final)
+  2:	proc  0 (:init:) triangle_cft.pml:83 (state 1)	[(run main(ret_main))]
+              Enter 3integers which are sides of a triangle   4:	proc  1 (main) triangle_cft.pml:36 (state 1)	[printf('Enter 3integers which are sides of a triangle ')]
+		a = 10
+ 22: proc 2 terminates
+		b = 10
+ 40: proc 2 terminates
+		c = 9
+ 57: proc 2 terminates
+              Side A is 10  59:	proc  1 (main) triangle_cft.pml:45 (state 8)	[printf('Side A is %d ',a)]
+              Side B is 10  61:	proc  1 (main) triangle_cft.pml:47 (state 9)	[printf('Side B is %d ',b)]
+              Side C is 9  63:	proc  1 (main) triangle_cft.pml:49 (state 10)	[printf('Side C is %d ',c)]
+ 65:	proc  1 (main) triangle_cft.pml:52 (state 11)	[((((a<(b+c))&&(b<(a+c)))&&(c<(a+b))))]
+ 67:	proc  1 (main) triangle_cft.pml:53 (state 12)	[isATriangle = 1]
+		isATriangle = 1
+ 69:	proc  1 (main) triangle_cft.pml:58 (state 17)	[(isATriangle)]
+ 71:	proc  1 (main) triangle_cft.pml:63 (state 20)	[else]
+ 73:	proc  1 (main) triangle_cft.pml:68 (state 23)	[else]
+              Isosceles  75:	proc  1 (main) triangle_cft.pml:69 (state 24)	[printf('Isosceles ')]
+ 77:	proc  1 (main) triangle_cft.pml:77 (state 33)	[in_main!0]
+ 78:	proc  0 (:init:) triangle_cft.pml:84 (state 2)	[ret_main?0]
+              End of main 80:	proc  1 (main) triangle_cft.pml:79 (state 35) <valid end state>	[printf('End of main')]
+#processes: 2
+		isATriangle = 1
+		a = 10
+		c = 9
+		b = 10
+ 82:	proc  1 (main) triangle_cft.pml:80 (state 36) <valid end state>
+ 82:	proc  0 (:init:) triangle_cft.pml:85 (state 3) <valid end state>
+5 processes created

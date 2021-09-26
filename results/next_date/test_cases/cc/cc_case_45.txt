@@ -1,0 +1,42 @@
+![]!(c_151 && if15 && <>final)
+  2:	proc  0 (:init:) next_date_cft.pml:181 (state 1)	[(run main(ret_main))]
+              Enter date in the form MM DD YYYY   4:	proc  1 (main) next_date_cft.pml:75 (state 1)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 2
+ 14: proc 2 terminates
+		day = 29
+ 51: proc 2 terminates
+		year = 2020
+ 80: proc 2 terminates
+ 82:	proc  1 (main) next_date_cft.pml:84 (state 8)	[tomorrowMonth = month]
+		tomorrowMonth = 2
+ 84:	proc  1 (main) next_date_cft.pml:85 (state 9)	[tomorrowYear = year]
+		tomorrowYear = 2020
+ 86:	proc  1 (main) next_date_cft.pml:86 (state 10)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+		isLeap = 1
+ 88:	proc  1 (main) next_date_cft.pml:102 (state 24)	[else]
+ 90:	proc  1 (main) next_date_cft.pml:118 (state 38)	[else]
+ 92:	proc  1 (main) next_date_cft.pml:135 (state 53)	[else]
+ 94:	proc  1 (main) next_date_cft.pml:137 (state 54)	[((month==2))]
+ 96:	proc  1 (main) next_date_cft.pml:141 (state 57)	[else]
+ 98:	proc  1 (main) next_date_cft.pml:151 (state 66)	[else]
+100:	proc  1 (main) next_date_cft.pml:153 (state 67)	[((day==29))]
+102:	proc  1 (main) next_date_cft.pml:155 (state 68)	[(isLeap)]
+104:	proc  1 (main) next_date_cft.pml:156 (state 69)	[tomorrowDay = 1]
+		tomorrowDay = 1
+106:	proc  1 (main) next_date_cft.pml:157 (state 70)	[tomorrowMonth = 3]
+		tomorrowMonth = 3
+              date is 3 1 2020 108:	proc  1 (main) next_date_cft.pml:173 (state 93)	[printf('date is %d %d %d ',tomorrowMonth,tomorrowDay,tomorrowYear)]
+110:	proc  1 (main) next_date_cft.pml:175 (state 94)	[in_main!0]
+111:	proc  0 (:init:) next_date_cft.pml:182 (state 2)	[ret_main?0]
+              End of main113:	proc  1 (main) next_date_cft.pml:177 (state 96) <valid end state>	[printf('End of main')]
+#processes: 2
+		isLeap = 1
+		day = 29
+		tomorrowYear = 2020
+		tomorrowMonth = 3
+		tomorrowDay = 1
+		year = 2020
+		month = 2
+115:	proc  1 (main) next_date_cft.pml:178 (state 97) <valid end state>
+115:	proc  0 (:init:) next_date_cft.pml:183 (state 3) <valid end state>
+5 processes created

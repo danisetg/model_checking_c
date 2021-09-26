@@ -9,6 +9,7 @@ class DoWhile
         Expression endCondition;
         vector<Statement> body;
         DoWhile();
+        DoWhile(const DoWhile &doWhile);
         void parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls);
         string translate(string fun_name,int& tabs, int& funCallNumber, string& previousCode);
         void changeVariablesName(string prefix);

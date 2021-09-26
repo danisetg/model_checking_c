@@ -30,6 +30,7 @@ using std::to_string;
 using std::stoi;
 using std::ifstream;
 using std::ostringstream;
+using std::make_pair;
 
 
 
@@ -37,6 +38,7 @@ extern vector<ArrayDecl> globalArrays;
 extern vector<PointerDecl> pointers;
 extern set<string> pointersTypes;
 extern vector<StructType> structTypes;
+
 
 vector<string> split(string str, char delimiter);
 
@@ -68,6 +70,8 @@ vector<int> getLocalArrayDimensions(string name, string functionName);
 
 string exec(const char* cmd);
 
-void createFolderIfNotExists(const char* address);
+string replaceAll(string s, string a, string b);
+
+void createFolderIfNotExists(string address);
 
 #endif // HELPER_H

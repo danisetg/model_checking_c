@@ -7,6 +7,27 @@ Declaration::Declaration()
     //ctor
 }
 
+Declaration::Declaration(const Declaration &declaration)
+{
+    type = declaration.type;
+    name = declaration.name;
+    isPointer = declaration.isPointer;
+    switch(type) {
+        case INT:
+            intDecl = new IntDecl();
+            *intDecl = *declaration.intDecl;
+            break;
+        case STRUCT:
+            structDecl = new StructDecl();
+            *structDecl = *declaration.structDecl;
+            break;
+        case BOOL:
+            boolDecl = new BoolDecl();
+            *boolDecl = *declaration.boolDecl;
+            break;
+    }
+}
+
 void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())
@@ -15,7 +36,6 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
     Token token = tokens.front();
     tokens.pop_front();
 
-    cout<<token.type<<endl;
     if(token.type == "INT_KEYWORD") {
         token = tokens.front();
         if(token.type == "MULTIPLICATION") {
@@ -53,7 +73,6 @@ void Declaration::parse (deque<Token>& tokens, vector<string>& _funCalls) {
             isPointer = true;
             tokens.pop_front();
             token = tokens.front();
-            cout<<token.word<<" "<<structDecl->structName<<endl;
             savePointer(token.word, structDecl->structName);
         }
         name = token.word;

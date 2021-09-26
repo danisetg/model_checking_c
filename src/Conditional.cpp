@@ -12,6 +12,12 @@ Conditional::Conditional(Expression& e1, Expression& e2, Expression& e3)
     falseAssign = e3;
 }
 
+Conditional::Conditional(const Conditional &cond) {
+    condition = Expression(cond.condition);
+    trueAssign = Expression(cond.trueAssign);
+    falseAssign = Expression(cond.falseAssign);
+}
+
 string Conditional::translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     string code = "if\n";
     tabs++;

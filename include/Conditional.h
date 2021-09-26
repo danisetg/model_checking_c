@@ -11,6 +11,7 @@ class Conditional
         Expression falseAssign;
         Conditional();
         Conditional(Expression& e1, Expression& e2, Expression& e3);
+        Conditional(const Conditional &cond);
         string translate(string fun_name, int& tabs, int& funCallNumber, string& previousCode);
         void changeVariablesName(string prefix);
 };

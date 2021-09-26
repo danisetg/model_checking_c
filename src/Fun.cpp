@@ -6,6 +6,17 @@ Fun::Fun()
 {
 }
 
+Fun::Fun(const Fun &fun) {
+    name = fun.name;
+    type = fun.type;
+    for(int i = 0; i < fun.statements.size(); i++) {
+        Statement aux = Statement(fun.statements[i]);
+        statements.push_back(aux);
+    }
+    parameters = fun.parameters;
+    funCalls = fun.funCalls;
+}
+
 void Fun::parse(deque<Token>& tokens, string _name, string _type) {
 
     name = _name;
@@ -102,7 +113,7 @@ string Fun::translate(int& tabs) {
         if(funCalls.size()) {
             for(int i = 0; i < funCalls.size(); i++) {
                 code += printTabs(tabs) + "int temp" + to_string(i) + ";\n";
-                cout<<"                              "<<funCalls[i]<<" "<<chanDeclared[funCalls[i]]<<endl;
+
                 if(!chanDeclared[funCalls[i]] && funCalls[i] != "malloc" && funCalls[i] != "free") {
                     code += printTabs(tabs) + "chan ret_" + funCalls[i] + " = [0] of { int };\n";
                     chanDeclared[funCalls[i]] = true;

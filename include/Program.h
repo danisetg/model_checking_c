@@ -13,6 +13,7 @@ class Program
         vector<Struct> s;
         vector<Define> def;
         Program();
+        Program(const Program &program);
         void parse(deque<Token>& tokens);
         string translate(int& tabs, bool translateDefines);
         string inputFunction(int& tabs);

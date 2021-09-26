@@ -1,0 +1,147 @@
+![]!((d_4) && X(reset4 && <>(!d_4 && inv_c_41 && inv_c_42 &&  !inv_c_43)))
+  2:	proc  0 (:init:) triangle_mcdc.pml:153 (state 1)	[(run main(ret_main))]
+              Main start   4:	proc  1 (main) triangle_mcdc.pml:59 (state 1)	[printf('Main start ')]
+              Enter 3integers which are sides of a triangle   6:	proc  1 (main) triangle_mcdc.pml:61 (state 2)	[printf('Enter 3integers which are sides of a triangle ')]
+		a = 10
+ 24: proc 2 terminates
+		b = 10
+ 42: proc 2 terminates
+		c = 10
+ 60: proc 2 terminates
+              Side A is 10  62:	proc  1 (main) triangle_mcdc.pml:70 (state 9)	[printf('Side A is %d ',a)]
+              Side B is 10  64:	proc  1 (main) triangle_mcdc.pml:72 (state 10)	[printf('Side B is %d ',b)]
+              Side C is 10  66:	proc  1 (main) triangle_mcdc.pml:74 (state 11)	[printf('Side C is %d ',c)]
+ 68:	proc  1 (main) triangle_mcdc.pml:77 (state 12)	[((((a<(b+c))&&(b<(a+c)))&&(c<(a+b))))]
+ 70:	proc  1 (main) triangle_mcdc.pml:79 (state 13)	[isATriangle = 1]
+		isATriangle = 1
+ 70:	proc  1 (main) triangle_mcdc.pml:80 (state 14)	[c_11_copy = (a<(b+c))]
+		isATriangle = 1
+		c_11_copy = 1
+ 70:	proc  1 (main) triangle_mcdc.pml:81 (state 15)	[c_12_copy = (b<(a+c))]
+		isATriangle = 1
+		c_11_copy = 1
+		c_12_copy = 1
+ 70:	proc  1 (main) triangle_mcdc.pml:82 (state 16)	[c_13_copy = (c<(a+b))]
+		isATriangle = 1
+		c_11_copy = 1
+		c_12_copy = 1
+		c_13_copy = 1
+ 71:	proc  1 (main) triangle_mcdc.pml:84 (state 17)	[((reset1==0))]
+ 71:	proc  1 (main) triangle_mcdc.pml:85 (state 18)	[reset1 = 1]
+		reset1 = 1
+              Main start  73:	proc  1 (main) triangle_mcdc.pml:59 (state 1)	[printf('Main start ')]
+              Enter 3integers which are sides of a triangle  75:	proc  1 (main) triangle_mcdc.pml:61 (state 2)	[printf('Enter 3integers which are sides of a triangle ')]
+ 93: proc 2 terminates
+111: proc 2 terminates
+129: proc 2 terminates
+              Side A is 10 131:	proc  1 (main) triangle_mcdc.pml:70 (state 9)	[printf('Side A is %d ',a)]
+              Side B is 10 133:	proc  1 (main) triangle_mcdc.pml:72 (state 10)	[printf('Side B is %d ',b)]
+              Side C is 10 135:	proc  1 (main) triangle_mcdc.pml:74 (state 11)	[printf('Side C is %d ',c)]
+137:	proc  1 (main) triangle_mcdc.pml:77 (state 12)	[((((a<(b+c))&&(b<(a+c)))&&(c<(a+b))))]
+139:	proc  1 (main) triangle_mcdc.pml:79 (state 13)	[isATriangle = 1]
+139:	proc  1 (main) triangle_mcdc.pml:80 (state 14)	[c_11_copy = (a<(b+c))]
+139:	proc  1 (main) triangle_mcdc.pml:81 (state 15)	[c_12_copy = (b<(a+c))]
+139:	proc  1 (main) triangle_mcdc.pml:82 (state 16)	[c_13_copy = (c<(a+b))]
+140:	proc  1 (main) triangle_mcdc.pml:87 (state 20)	[else]
+141:	proc  1 (main) triangle_mcdc.pml:87 (state 21)	[(1)]
+143:	proc  1 (main) triangle_mcdc.pml:95 (state 29)	[(isATriangle)]
+145:	proc  1 (main) triangle_mcdc.pml:98 (state 30)	[(((a==b)&&(b==c)))]
+              Equilateral 146:	proc  1 (main) triangle_mcdc.pml:100 (state 31)	[printf('Equilateral ')]
+146:	proc  1 (main) triangle_mcdc.pml:102 (state 32)	[c_31_copy = (a==b)]
+		c_31_copy = 1
+146:	proc  1 (main) triangle_mcdc.pml:103 (state 33)	[c_32_copy = (b==c)]
+		c_31_copy = 1
+		c_32_copy = 1
+147:	proc  1 (main) triangle_mcdc.pml:105 (state 34)	[((reset3==0))]
+147:	proc  1 (main) triangle_mcdc.pml:106 (state 35)	[reset3 = 1]
+		reset3 = 1
+              Main start 149:	proc  1 (main) triangle_mcdc.pml:59 (state 1)	[printf('Main start ')]
+              Enter 3integers which are sides of a triangle 151:	proc  1 (main) triangle_mcdc.pml:61 (state 2)	[printf('Enter 3integers which are sides of a triangle ')]
+169: proc 2 terminates
+187: proc 2 terminates
+205: proc 2 terminates
+              Side A is 10 207:	proc  1 (main) triangle_mcdc.pml:70 (state 9)	[printf('Side A is %d ',a)]
+              Side B is 10 209:	proc  1 (main) triangle_mcdc.pml:72 (state 10)	[printf('Side B is %d ',b)]
+              Side C is 10 211:	proc  1 (main) triangle_mcdc.pml:74 (state 11)	[printf('Side C is %d ',c)]
+213:	proc  1 (main) triangle_mcdc.pml:77 (state 12)	[((((a<(b+c))&&(b<(a+c)))&&(c<(a+b))))]
+215:	proc  1 (main) triangle_mcdc.pml:79 (state 13)	[isATriangle = 1]
+215:	proc  1 (main) triangle_mcdc.pml:80 (state 14)	[c_11_copy = (a<(b+c))]
+215:	proc  1 (main) triangle_mcdc.pml:81 (state 15)	[c_12_copy = (b<(a+c))]
+215:	proc  1 (main) triangle_mcdc.pml:82 (state 16)	[c_13_copy = (c<(a+b))]
+216:	proc  1 (main) triangle_mcdc.pml:87 (state 20)	[else]
+217:	proc  1 (main) triangle_mcdc.pml:87 (state 21)	[(1)]
+219:	proc  1 (main) triangle_mcdc.pml:95 (state 29)	[(isATriangle)]
+221:	proc  1 (main) triangle_mcdc.pml:98 (state 30)	[(((a==b)&&(b==c)))]
+              Equilateral 222:	proc  1 (main) triangle_mcdc.pml:100 (state 31)	[printf('Equilateral ')]
+222:	proc  1 (main) triangle_mcdc.pml:102 (state 32)	[c_31_copy = (a==b)]
+222:	proc  1 (main) triangle_mcdc.pml:103 (state 33)	[c_32_copy = (b==c)]
+223:	proc  1 (main) triangle_mcdc.pml:108 (state 37)	[else]
+224:	proc  1 (main) triangle_mcdc.pml:108 (state 38)	[(1)]
+224:	proc  1 (main) triangle_mcdc.pml:134 (state 62)	[c_21_copy = isATriangle]
+		c_21_copy = 1
+225:	proc  1 (main) triangle_mcdc.pml:136 (state 63)	[((reset2==0))]
+225:	proc  1 (main) triangle_mcdc.pml:137 (state 64)	[reset2 = 1]
+		reset2 = 1
+              Main start 227:	proc  1 (main) triangle_mcdc.pml:59 (state 1)	[printf('Main start ')]
+              Enter 3integers which are sides of a triangle 229:	proc  1 (main) triangle_mcdc.pml:61 (state 2)	[printf('Enter 3integers which are sides of a triangle ')]
+247: proc 2 terminates
+		b = 9
+264: proc 2 terminates
+		c = 8
+280: proc 2 terminates
+              Side A is 10 282:	proc  1 (main) triangle_mcdc.pml:70 (state 9)	[printf('Side A is %d ',a)]
+              Side B is 9 284:	proc  1 (main) triangle_mcdc.pml:72 (state 10)	[printf('Side B is %d ',b)]
+              Side C is 8 286:	proc  1 (main) triangle_mcdc.pml:74 (state 11)	[printf('Side C is %d ',c)]
+288:	proc  1 (main) triangle_mcdc.pml:77 (state 12)	[((((a<(b+c))&&(b<(a+c)))&&(c<(a+b))))]
+290:	proc  1 (main) triangle_mcdc.pml:79 (state 13)	[isATriangle = 1]
+290:	proc  1 (main) triangle_mcdc.pml:80 (state 14)	[c_11_copy = (a<(b+c))]
+290:	proc  1 (main) triangle_mcdc.pml:81 (state 15)	[c_12_copy = (b<(a+c))]
+290:	proc  1 (main) triangle_mcdc.pml:82 (state 16)	[c_13_copy = (c<(a+b))]
+291:	proc  1 (main) triangle_mcdc.pml:87 (state 20)	[else]
+292:	proc  1 (main) triangle_mcdc.pml:87 (state 21)	[(1)]
+294:	proc  1 (main) triangle_mcdc.pml:95 (state 29)	[(isATriangle)]
+296:	proc  1 (main) triangle_mcdc.pml:112 (state 42)	[else]
+297:	proc  1 (main) triangle_mcdc.pml:114 (state 43)	[((((a!=b)&&(b!=c))&&(a!=c)))]
+              Scalene 298:	proc  1 (main) triangle_mcdc.pml:116 (state 44)	[printf('Scalene ')]
+298:	proc  1 (main) triangle_mcdc.pml:118 (state 45)	[c_41_copy = (a!=b)]
+		c_41_copy = 1
+298:	proc  1 (main) triangle_mcdc.pml:119 (state 46)	[c_42_copy = (b!=c)]
+		c_41_copy = 1
+		c_42_copy = 1
+298:	proc  1 (main) triangle_mcdc.pml:120 (state 47)	[c_43_copy = (a!=c)]
+		c_41_copy = 1
+		c_42_copy = 1
+		c_43_copy = 1
+299:	proc  1 (main) triangle_mcdc.pml:122 (state 48)	[((reset4==0))]
+299:	proc  1 (main) triangle_mcdc.pml:123 (state 49)	[reset4 = 1]
+		reset4 = 1
+              Main start 301:	proc  1 (main) triangle_mcdc.pml:59 (state 1)	[printf('Main start ')]
+              Enter 3integers which are sides of a triangle 303:	proc  1 (main) triangle_mcdc.pml:61 (state 2)	[printf('Enter 3integers which are sides of a triangle ')]
+321: proc 2 terminates
+338: proc 2 terminates
+		c = 10
+356: proc 2 terminates
+358:	proc  0 (:init:) triangle_mcdc.pml:154 (state 2)	[ret_main?0]
+	transition failed
+#processes: 2
+		isATriangle = 1
+		a = 10
+		c = 10
+		b = 9
+		reset1 = 1
+		reset2 = 1
+		reset3 = 1
+		reset4 = 1
+		reset = 0
+		c_11_copy = 1
+		c_12_copy = 1
+		c_13_copy = 1
+		c_21_copy = 1
+		c_31_copy = 1
+		c_32_copy = 1
+		c_41_copy = 1
+		c_42_copy = 1
+		c_43_copy = 1
+358:	proc  1 (main) triangle_mcdc.pml:70 (state 9)
+358:	proc  0 (:init:) triangle_mcdc.pml:154 (state 2)
+17 processes created

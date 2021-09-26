@@ -1,0 +1,30 @@
+![]!(<>main_d_month_v10 && X(!(main_d_month_v10) U (main_u_month_v19 && <>final)))
+  2:	proc  0 (:init:) next_date_dft.pml:179 (state 1)	[(run main(ret_main))]
+              Enter date in the form MM DD YYYY   4:	proc  1 (main) next_date_dft.pml:73 (state 1)	[printf('Enter date in the form MM DD YYYY ')]
+		main(1):month = 10
+ 22: proc 2 terminates
+		main(1):day = 31
+ 61: proc 2 terminates
+		main(1):year = 2021
+ 91: proc 2 terminates
+ 93:	proc  1 (main) next_date_dft.pml:82 (state 8)	[tomorrowMonth = month]
+		main(1):tomorrowMonth = 10
+ 95:	proc  1 (main) next_date_dft.pml:83 (state 9)	[tomorrowYear = year]
+		main(1):tomorrowYear = 2021
+ 97:	proc  1 (main) next_date_dft.pml:84 (state 10)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+		main(1):isLeap = 0
+ 99:	proc  1 (main) next_date_dft.pml:86 (state 11)	[(((((((month==1)||(month==3))||(month==5))||(month==7))||(month==8))||(month==10)))]
+101:	proc  1 (main) next_date_dft.pml:90 (state 14)	[else]
+103:	proc  1 (main) next_date_dft.pml:92 (state 15)	[((day==31))]
+105:	proc  1 (main) next_date_dft.pml:93 (state 16)	[tomorrowDay = 1]
+		main(1):tomorrowDay = 1
+107:	proc  1 (main) next_date_dft.pml:94 (state 17)	[tomorrowMonth = (month+1)]
+		main(1):tomorrowMonth = 11
+              date is 11 1 2021 109:	proc  1 (main) next_date_dft.pml:171 (state 93)	[printf('date is %d %d %d ',tomorrowMonth,tomorrowDay,tomorrowYear)]
+111:	proc  1 (main) next_date_dft.pml:173 (state 94)	[in_main!0]
+112:	proc  0 (:init:) next_date_dft.pml:180 (state 2)	[ret_main?0]
+              End of main114:	proc  1 (main) next_date_dft.pml:175 (state 96) <valid end state>	[printf('End of main')]
+116: proc 1 terminates
+#processes: 1
+116:	proc  0 (:init:) next_date_dft.pml:181 (state 3) <valid end state>
+5 processes created

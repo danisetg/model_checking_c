@@ -2,18 +2,23 @@
 #define SPININTERFACE_H
 #include "Helper.h"
 #include "SpecificationGenerator.h"
+#include "DFSpecificationGenerator.h"
 
 class SpinInterface
 {
     public:
         SpinInterface();
-
-        string verify(string property, string programFile);
-        void generateCCTests(SpecificationGenerator sp);
-        void generateDCTests(SpecificationGenerator sp);
-        void generateCFTests(SpecificationGenerator sp);
-        void generateMCDCTests(SpecificationGenerator sp);
-        void generateFPCTests(SpecificationGenerator sp);
+        map<string, bool> caseTaken;
+        string verify(string property, string resultsAddr, string filename);
+        void generateCCTests(SpecificationGenerator sp, string resultsAddr, string filename);
+        void generateDCTests(SpecificationGenerator sp, string resultsAddr, string filename);
+        void generateCFTests(SpecificationGenerator sp, string resultsAddr, string filename);
+        void generateMCDCTests(SpecificationGenerator sp, string resultsAddr, string filename);
+        void generateFPCTests(SpecificationGenerator sp, string resultsAddr, string filename);
+        void generateAllDefsTests(DFSpecificationGenerator df, string resultsAddr, string filename);
+        void generateAllUsesTests(DFSpecificationGenerator df, string resultsAddr, string filename);
+        void generateDFTests(DFSpecificationGenerator df, string resultsAddr, string filename);
+        string filterOutput(string response);
 
 };
 

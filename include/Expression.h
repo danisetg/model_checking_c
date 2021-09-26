@@ -49,6 +49,7 @@ class Expression
         };
 
         Expression();
+        Expression(const Expression &exp);
         void parse(deque<Token>& tokens, vector<string>& _funCalls);
         Expression parseExpression(deque<Token>& tokens, vector<string>& _funCalls);
         Expression parseTerm(deque<Token>& tokens, vector<string>& _funCalls);

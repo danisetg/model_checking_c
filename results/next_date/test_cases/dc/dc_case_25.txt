@@ -1,0 +1,39 @@
+![]!(d_13 && if13 && <>final)
+  2:	proc  0 (:init:) next_date_cft.pml:181 (state 1)	[(run main(ret_main))]
+              Enter date in the form MM DD YYYY   4:	proc  1 (main) next_date_cft.pml:75 (state 1)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 2
+ 14: proc 2 terminates
+		day = 28
+ 50: proc 2 terminates
+		year = 2020
+ 79: proc 2 terminates
+ 81:	proc  1 (main) next_date_cft.pml:84 (state 8)	[tomorrowMonth = month]
+		tomorrowMonth = 2
+ 83:	proc  1 (main) next_date_cft.pml:85 (state 9)	[tomorrowYear = year]
+		tomorrowYear = 2020
+ 85:	proc  1 (main) next_date_cft.pml:86 (state 10)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+		isLeap = 1
+ 87:	proc  1 (main) next_date_cft.pml:102 (state 24)	[else]
+ 89:	proc  1 (main) next_date_cft.pml:118 (state 38)	[else]
+ 91:	proc  1 (main) next_date_cft.pml:135 (state 53)	[else]
+ 93:	proc  1 (main) next_date_cft.pml:137 (state 54)	[((month==2))]
+ 95:	proc  1 (main) next_date_cft.pml:141 (state 57)	[else]
+ 97:	proc  1 (main) next_date_cft.pml:143 (state 58)	[((day==28))]
+ 99:	proc  1 (main) next_date_cft.pml:145 (state 59)	[(isLeap)]
+101:	proc  1 (main) next_date_cft.pml:146 (state 60)	[tomorrowDay = 29]
+		tomorrowDay = 29
+              date is 2 29 2020 103:	proc  1 (main) next_date_cft.pml:173 (state 93)	[printf('date is %d %d %d ',tomorrowMonth,tomorrowDay,tomorrowYear)]
+105:	proc  1 (main) next_date_cft.pml:175 (state 94)	[in_main!0]
+106:	proc  0 (:init:) next_date_cft.pml:182 (state 2)	[ret_main?0]
+              End of main108:	proc  1 (main) next_date_cft.pml:177 (state 96) <valid end state>	[printf('End of main')]
+#processes: 2
+		isLeap = 1
+		day = 28
+		tomorrowYear = 2020
+		tomorrowMonth = 2
+		tomorrowDay = 29
+		year = 2020
+		month = 2
+110:	proc  1 (main) next_date_cft.pml:178 (state 97) <valid end state>
+110:	proc  0 (:init:) next_date_cft.pml:183 (state 3) <valid end state>
+5 processes created

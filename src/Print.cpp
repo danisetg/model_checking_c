@@ -31,7 +31,6 @@ void Print::parse(deque<Token>& tokens) {
         message += token.word;
         if(token.type == "IDENTIFIER")
             message += " ";
-        cout<<token.word<<" "<<message<<endl;
         tokens.pop_front();
         token = tokens.front();
     }

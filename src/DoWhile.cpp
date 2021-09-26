@@ -5,7 +5,12 @@ DoWhile::DoWhile()
 {
     //ctor
 }
-
+DoWhile::DoWhile(const DoWhile &doWhile) {
+    endCondition = Expression(doWhile.endCondition);
+    for(int i = 0; i < doWhile.body.size(); i++) {
+        body.push_back(Statement(doWhile.body[i]));
+    }
+}
 void DoWhile::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();

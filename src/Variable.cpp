@@ -18,7 +18,6 @@ void Variable::parse(deque<Token>& tokens) {
 }
 
 string Variable::translate() {
-    cout<<"                              "<<name<<endl;
     return name;
 }
 

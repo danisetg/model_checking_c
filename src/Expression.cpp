@@ -16,6 +16,54 @@ Expression::Expression()
 {
 }
 
+Expression::Expression(const Expression &exp) {
+    type = exp.type;
+    switch(type) {
+        case CONSTANT:
+            constant = new Const();
+            *constant = *exp.constant;
+            break;
+        case UNARY_OPERATOR:
+            unaryOperator = new UnaryOperator(*exp.unaryOperator);
+            break;
+        case BINARY_OPERATOR:
+            binaryOperator = new BinaryOperator(*exp.binaryOperator);
+            break;
+        case ASSIGNMENT:
+            assignment = new Assignment(*exp.assignment);
+            break;
+        case VARIABLE:
+            variable = new Variable();
+            *variable = *exp.variable;
+            break;
+        case CONDITIONAL:
+            cond = new Conditional(*exp.cond);
+            break;
+        case FUN_CALL:
+            funCall = new FunCall(*exp.funCall);
+            break;
+        case ARRAY:
+            arr = new Array(*exp.arr);
+            break;
+        case STRUCT_EXPRESSION:
+            structExp = new StructExp();
+            *structExp = *exp.structExp;
+            break;
+        case POINTER_EXPRESSION:
+            pointerExp = new PointerExp();
+            *pointerExp = *exp.pointerExp;
+            break;
+        case INCREMENT:
+            increment = new Increment();
+            *increment = *exp.increment;
+            break;
+        case DECREMENT:
+            decrement = new Decrement();
+            *decrement = *exp.decrement;
+            break;
+    }
+}
+
 Expression Expression::parseSubFactor(deque<Token>& tokens, vector<string>& _funCalls, Expression& exp) {
     if(tokens.empty())
         mad("Missing sub factor expression");
@@ -122,68 +170,6 @@ Expression Expression::parseFactor (deque<Token>& tokens, vector<string>& _funCa
         *exp.unaryOperator = _unaryOperator;
     } else if(token.type == "IDENTIFIER" || token.type == "MULTIPLICATION") {
         exp = parseSubFactor(tokens, _funCalls, exp);
-        /*
-        Variable _var;
-        _var.parse(tokens);
-        token = tokens.front();
-        if(token.type == "OPEN_PARENTHESIS") {
-            FunCall _funCall;
-            _funCall.parse(_var.name, tokens, _funCalls);
-            exp.type = FUN_CALL;
-            exp.funCall = new FunCall();
-            *exp.funCall = _funCall;
-            _funCalls.push_back(_var.name);
-        } else if(token.type == "OPEN_BRACKET") {
-            Array _arr;
-            _arr.parse(_var.name, tokens, _funCalls);
-            exp.type = ARRAY;
-            exp.arr = new Array();
-            *exp.arr = _arr;
-            token = tokens.front();
-            if(token.type == "DOT") {
-                StructExp _struct;
-                _struct.parse(exp, tokens);
-                exp.type = STRUCT_EXPRESSION;
-                exp.structExp = new StructExp();
-                *exp.structExp = _struct;
-            }
-            cout<<" "<<token.type<<endl;
-        }else if(token.type == "INCREMENT"){
-            Increment inc;
-            inc.var = _var;
-            exp.increment = new Increment();
-            *exp.increment = inc;
-            tokens.pop_front();
-            exp.type = INCREMENT;
-        }else if(token.type == "DECREMENT"){
-            Decrement dec;
-            dec.var = _var;
-            exp.decrement = new Decrement();
-            *exp.decrement = dec;
-            tokens.pop_front();
-            exp.type = DECREMENT;
-        } else if(token.type == "DOT") {
-            Expression _exp;
-            _exp.type = VARIABLE;
-            _exp.variable = new Variable();
-            *_exp.variable = _var;
-            StructExp _struct;
-            _struct.parse(_exp, tokens);
-            exp.type = STRUCT_EXPRESSION;
-            exp.structExp = new StructExp();
-            *exp.structExp = _struct;
-        } else if(token.type == "ARROW") {
-            PointerExp _pointer;
-            _pointer.parse(_var.name, tokens);
-            exp.type = POINTER_EXPRESSION;
-            exp.pointerExp = new PointerExp();
-            *exp.pointerExp = _pointer;
-        }else {
-            exp.type = VARIABLE;
-            exp.variable = new Variable();
-            *exp.variable = _var;
-        }*/
-
     }else {
         mad("Incorrect expression structure");
     }

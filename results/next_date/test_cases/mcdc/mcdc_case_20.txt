@@ -1,0 +1,417 @@
+![]!((d_12) && X(reset12 && <>(!d_12 &&  !inv_c_121)))
+  2:	proc  0 (:init:) next_date_mcdc.pml:414 (state 1)	[(run main(ret_main))]
+              Main start   4:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY   6:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 12
+ 26: proc 2 terminates
+		day = 31
+ 65: proc 2 terminates
+		year = 2021
+ 95: proc 2 terminates
+ 97:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 12
+ 99:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+		tomorrowYear = 2021
+101:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+103:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+105:	proc  1 (main) next_date_mcdc.pml:256 (state 107)	[else]
+107:	proc  1 (main) next_date_mcdc.pml:258 (state 108)	[((month==12))]
+109:	proc  1 (main) next_date_mcdc.pml:273 (state 120)	[else]
+110:	proc  1 (main) next_date_mcdc.pml:275 (state 121)	[((day==31))]
+111:	proc  1 (main) next_date_mcdc.pml:277 (state 122)	[tomorrowDay = 1]
+		tomorrowDay = 1
+111:	proc  1 (main) next_date_mcdc.pml:278 (state 123)	[tomorrowMonth = 1]
+		tomorrowMonth = 1
+		tomorrowDay = 1
+111:	proc  1 (main) next_date_mcdc.pml:279 (state 124)	[tomorrowYear = (year+1)]
+		tomorrowYear = 2022
+		tomorrowMonth = 1
+		tomorrowDay = 1
+111:	proc  1 (main) next_date_mcdc.pml:280 (state 125)	[c_91_copy = (day==31)]
+		tomorrowYear = 2022
+		tomorrowMonth = 1
+		tomorrowDay = 1
+		c_91_copy = 1
+112:	proc  1 (main) next_date_mcdc.pml:282 (state 126)	[((reset9==0))]
+112:	proc  1 (main) next_date_mcdc.pml:283 (state 127)	[reset9 = 1]
+		reset9 = 1
+              Main start 114:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 116:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+136: proc 2 terminates
+175: proc 2 terminates
+205: proc 2 terminates
+207:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 12
+209:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+		tomorrowYear = 2021
+211:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+213:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+215:	proc  1 (main) next_date_mcdc.pml:256 (state 107)	[else]
+217:	proc  1 (main) next_date_mcdc.pml:258 (state 108)	[((month==12))]
+219:	proc  1 (main) next_date_mcdc.pml:273 (state 120)	[else]
+220:	proc  1 (main) next_date_mcdc.pml:275 (state 121)	[((day==31))]
+221:	proc  1 (main) next_date_mcdc.pml:277 (state 122)	[tomorrowDay = 1]
+221:	proc  1 (main) next_date_mcdc.pml:278 (state 123)	[tomorrowMonth = 1]
+		tomorrowMonth = 1
+221:	proc  1 (main) next_date_mcdc.pml:279 (state 124)	[tomorrowYear = (year+1)]
+		tomorrowYear = 2022
+		tomorrowMonth = 1
+221:	proc  1 (main) next_date_mcdc.pml:280 (state 125)	[c_91_copy = (day==31)]
+		tomorrowYear = 2022
+		tomorrowMonth = 1
+222:	proc  1 (main) next_date_mcdc.pml:285 (state 129)	[else]
+223:	proc  1 (main) next_date_mcdc.pml:285 (state 130)	[(1)]
+223:	proc  1 (main) next_date_mcdc.pml:294 (state 140)	[c_71_copy = (month==12)]
+		c_71_copy = 1
+224:	proc  1 (main) next_date_mcdc.pml:296 (state 141)	[((reset7==0))]
+224:	proc  1 (main) next_date_mcdc.pml:297 (state 142)	[reset7 = 1]
+		reset7 = 1
+              Main start 226:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 228:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+248: proc 2 terminates
+		day = 30
+286: proc 2 terminates
+316: proc 2 terminates
+318:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 12
+320:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+		tomorrowYear = 2021
+322:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+324:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+326:	proc  1 (main) next_date_mcdc.pml:256 (state 107)	[else]
+328:	proc  1 (main) next_date_mcdc.pml:258 (state 108)	[((month==12))]
+330:	proc  1 (main) next_date_mcdc.pml:261 (state 109)	[((day<31))]
+331:	proc  1 (main) next_date_mcdc.pml:263 (state 110)	[tomorrowDay = (day+1)]
+		tomorrowDay = 31
+331:	proc  1 (main) next_date_mcdc.pml:264 (state 111)	[c_81_copy = (day<31)]
+		tomorrowDay = 31
+		c_81_copy = 1
+332:	proc  1 (main) next_date_mcdc.pml:266 (state 112)	[((reset8==0))]
+332:	proc  1 (main) next_date_mcdc.pml:267 (state 113)	[reset8 = 1]
+		reset8 = 1
+              Main start 334:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 336:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 11
+355: proc 2 terminates
+		day = 31
+394: proc 2 terminates
+424: proc 2 terminates
+426:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 11
+428:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+430:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+432:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+434:	proc  1 (main) next_date_mcdc.pml:209 (state 64)	[(((((month==4)||(month==6))||(month==9))||(month==11)))]
+436:	proc  1 (main) next_date_mcdc.pml:224 (state 76)	[else]
+437:	proc  1 (main) next_date_mcdc.pml:239 (state 89)	[else]
+              Invalid Input Date 438:	proc  1 (main) next_date_mcdc.pml:240 (state 90)	[printf('Invalid Input Date ')]
+438:	proc  1 (main) next_date_mcdc.pml:244 (state 95)	[c_41_copy = (month==4)]
+438:	proc  1 (main) next_date_mcdc.pml:245 (state 96)	[c_42_copy = (month==6)]
+438:	proc  1 (main) next_date_mcdc.pml:246 (state 97)	[c_43_copy = (month==9)]
+438:	proc  1 (main) next_date_mcdc.pml:247 (state 98)	[c_44_copy = (month==11)]
+		c_44_copy = 1
+439:	proc  1 (main) next_date_mcdc.pml:249 (state 99)	[((reset4==0))]
+439:	proc  1 (main) next_date_mcdc.pml:250 (state 100)	[reset4 = 1]
+		reset4 = 1
+              Main start 441:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 443:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+462: proc 2 terminates
+		day = 30
+500: proc 2 terminates
+530: proc 2 terminates
+532:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+534:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+536:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+538:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+540:	proc  1 (main) next_date_mcdc.pml:209 (state 64)	[(((((month==4)||(month==6))||(month==9))||(month==11)))]
+542:	proc  1 (main) next_date_mcdc.pml:224 (state 76)	[else]
+543:	proc  1 (main) next_date_mcdc.pml:226 (state 77)	[((day==30))]
+544:	proc  1 (main) next_date_mcdc.pml:228 (state 78)	[tomorrowDay = 1]
+		tomorrowDay = 1
+544:	proc  1 (main) next_date_mcdc.pml:229 (state 79)	[tomorrowMonth = (month+1)]
+		tomorrowMonth = 12
+		tomorrowDay = 1
+544:	proc  1 (main) next_date_mcdc.pml:230 (state 80)	[c_61_copy = (day==30)]
+		tomorrowMonth = 12
+		tomorrowDay = 1
+		c_61_copy = 1
+545:	proc  1 (main) next_date_mcdc.pml:232 (state 81)	[((reset6==0))]
+545:	proc  1 (main) next_date_mcdc.pml:233 (state 82)	[reset6 = 1]
+		reset6 = 1
+              Main start 547:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 549:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+568: proc 2 terminates
+		day = 29
+605: proc 2 terminates
+635: proc 2 terminates
+637:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 11
+639:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+641:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+643:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+645:	proc  1 (main) next_date_mcdc.pml:209 (state 64)	[(((((month==4)||(month==6))||(month==9))||(month==11)))]
+647:	proc  1 (main) next_date_mcdc.pml:212 (state 65)	[((day<30))]
+648:	proc  1 (main) next_date_mcdc.pml:214 (state 66)	[tomorrowDay = (day+1)]
+		tomorrowDay = 30
+648:	proc  1 (main) next_date_mcdc.pml:215 (state 67)	[c_51_copy = (day<30)]
+		tomorrowDay = 30
+		c_51_copy = 1
+649:	proc  1 (main) next_date_mcdc.pml:217 (state 68)	[((reset5==0))]
+649:	proc  1 (main) next_date_mcdc.pml:218 (state 69)	[reset5 = 1]
+		reset5 = 1
+              Main start 651:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 653:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 10
+671: proc 2 terminates
+		day = 31
+710: proc 2 terminates
+740: proc 2 terminates
+742:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 10
+744:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+746:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+748:	proc  1 (main) next_date_mcdc.pml:152 (state 12)	[(((((((month==1)||(month==3))||(month==5))||(month==7))||(month==8))||(month==10)))]
+750:	proc  1 (main) next_date_mcdc.pml:167 (state 24)	[else]
+751:	proc  1 (main) next_date_mcdc.pml:169 (state 25)	[((day==31))]
+752:	proc  1 (main) next_date_mcdc.pml:171 (state 26)	[tomorrowDay = 1]
+		tomorrowDay = 1
+752:	proc  1 (main) next_date_mcdc.pml:172 (state 27)	[tomorrowMonth = (month+1)]
+		tomorrowMonth = 11
+		tomorrowDay = 1
+752:	proc  1 (main) next_date_mcdc.pml:173 (state 28)	[c_31_copy = (day==31)]
+		tomorrowMonth = 11
+		tomorrowDay = 1
+		c_31_copy = 1
+753:	proc  1 (main) next_date_mcdc.pml:175 (state 29)	[((reset3==0))]
+753:	proc  1 (main) next_date_mcdc.pml:176 (state 30)	[reset3 = 1]
+		reset3 = 1
+              Main start 755:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 757:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+775: proc 2 terminates
+814: proc 2 terminates
+844: proc 2 terminates
+846:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 10
+848:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+850:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+852:	proc  1 (main) next_date_mcdc.pml:152 (state 12)	[(((((((month==1)||(month==3))||(month==5))||(month==7))||(month==8))||(month==10)))]
+854:	proc  1 (main) next_date_mcdc.pml:167 (state 24)	[else]
+855:	proc  1 (main) next_date_mcdc.pml:169 (state 25)	[((day==31))]
+856:	proc  1 (main) next_date_mcdc.pml:171 (state 26)	[tomorrowDay = 1]
+856:	proc  1 (main) next_date_mcdc.pml:172 (state 27)	[tomorrowMonth = (month+1)]
+		tomorrowMonth = 11
+856:	proc  1 (main) next_date_mcdc.pml:173 (state 28)	[c_31_copy = (day==31)]
+		tomorrowMonth = 11
+857:	proc  1 (main) next_date_mcdc.pml:178 (state 32)	[else]
+858:	proc  1 (main) next_date_mcdc.pml:178 (state 33)	[(1)]
+858:	proc  1 (main) next_date_mcdc.pml:187 (state 43)	[c_11_copy = (month==1)]
+858:	proc  1 (main) next_date_mcdc.pml:188 (state 44)	[c_12_copy = (month==3)]
+858:	proc  1 (main) next_date_mcdc.pml:189 (state 45)	[c_13_copy = (month==5)]
+858:	proc  1 (main) next_date_mcdc.pml:190 (state 46)	[c_14_copy = (month==7)]
+858:	proc  1 (main) next_date_mcdc.pml:191 (state 47)	[c_15_copy = (month==8)]
+858:	proc  1 (main) next_date_mcdc.pml:192 (state 48)	[c_16_copy = (month==10)]
+		c_16_copy = 1
+858:	proc  1 (main) next_date_mcdc.pml:193 (state 49)	[c_101_copy = (month==2)]
+		c_16_copy = 1
+858:	proc  1 (main) next_date_mcdc.pml:194 (state 50)	[c_111_copy = (day<28)]
+		c_16_copy = 1
+858:	proc  1 (main) next_date_mcdc.pml:195 (state 51)	[c_121_copy = (day==28)]
+		c_16_copy = 1
+858:	proc  1 (main) next_date_mcdc.pml:196 (state 52)	[c_131_copy = isLeap]
+		c_16_copy = 1
+858:	proc  1 (main) next_date_mcdc.pml:197 (state 53)	[c_141_copy = (day==29)]
+		c_16_copy = 1
+858:	proc  1 (main) next_date_mcdc.pml:198 (state 54)	[c_151_copy = isLeap]
+		c_16_copy = 1
+859:	proc  1 (main) next_date_mcdc.pml:200 (state 55)	[((reset1==0))]
+859:	proc  1 (main) next_date_mcdc.pml:201 (state 56)	[reset1 = 1]
+		reset1 = 1
+              Main start 861:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 863:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+881: proc 2 terminates
+		day = 30
+919: proc 2 terminates
+949: proc 2 terminates
+951:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 10
+953:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+955:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+957:	proc  1 (main) next_date_mcdc.pml:152 (state 12)	[(((((((month==1)||(month==3))||(month==5))||(month==7))||(month==8))||(month==10)))]
+959:	proc  1 (main) next_date_mcdc.pml:155 (state 13)	[((day<31))]
+960:	proc  1 (main) next_date_mcdc.pml:157 (state 14)	[tomorrowDay = (day+1)]
+		tomorrowDay = 31
+960:	proc  1 (main) next_date_mcdc.pml:158 (state 15)	[c_21_copy = (day<31)]
+		tomorrowDay = 31
+		c_21_copy = 1
+961:	proc  1 (main) next_date_mcdc.pml:160 (state 16)	[((reset2==0))]
+961:	proc  1 (main) next_date_mcdc.pml:161 (state 17)	[reset2 = 1]
+		reset2 = 1
+              Main start 963:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 965:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 2
+975: proc 2 terminates
+		day = 31
+1014: proc 2 terminates
+1044: proc 2 terminates
+1046:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 2
+1048:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+1050:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+1052:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+1054:	proc  1 (main) next_date_mcdc.pml:256 (state 107)	[else]
+1056:	proc  1 (main) next_date_mcdc.pml:303 (state 149)	[else]
+1058:	proc  1 (main) next_date_mcdc.pml:305 (state 150)	[((month==2))]
+1060:	proc  1 (main) next_date_mcdc.pml:321 (state 163)	[else]
+1061:	proc  1 (main) next_date_mcdc.pml:353 (state 192)	[else]
+1062:	proc  1 (main) next_date_mcdc.pml:386 (state 221)	[else]
+              Invalid Input Date 1063:	proc  1 (main) next_date_mcdc.pml:387 (state 222)	[printf('Invalid Input Date ')]
+1063:	proc  1 (main) next_date_mcdc.pml:392 (state 229)	[c_101_copy = (month==2)]
+		c_101_copy = 1
+1064:	proc  1 (main) next_date_mcdc.pml:394 (state 230)	[((reset10==0))]
+1064:	proc  1 (main) next_date_mcdc.pml:395 (state 231)	[reset10 = 1]
+		reset10 = 1
+              Main start 1066:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 1068:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+1078: proc 2 terminates
+		day = 29
+1115: proc 2 terminates
+1145: proc 2 terminates
+1147:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+1149:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+1151:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+1153:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+1155:	proc  1 (main) next_date_mcdc.pml:256 (state 107)	[else]
+1157:	proc  1 (main) next_date_mcdc.pml:303 (state 149)	[else]
+1159:	proc  1 (main) next_date_mcdc.pml:305 (state 150)	[((month==2))]
+1161:	proc  1 (main) next_date_mcdc.pml:321 (state 163)	[else]
+1162:	proc  1 (main) next_date_mcdc.pml:353 (state 192)	[else]
+1163:	proc  1 (main) next_date_mcdc.pml:355 (state 193)	[((day==29))]
+1164:	proc  1 (main) next_date_mcdc.pml:372 (state 207)	[else]
+              Cannot have Feb .29 1165:	proc  1 (main) next_date_mcdc.pml:373 (state 208)	[printf('Cannot have Feb .%d ',day)]
+1165:	proc  1 (main) next_date_mcdc.pml:376 (state 211)	[c_14_copy = (month==7)]
+1165:	proc  1 (main) next_date_mcdc.pml:377 (state 212)	[c_141_copy = (day==29)]
+		c_141_copy = 1
+1166:	proc  1 (main) next_date_mcdc.pml:379 (state 213)	[((reset14==0))]
+1166:	proc  1 (main) next_date_mcdc.pml:380 (state 214)	[reset14 = 1]
+		reset14 = 1
+              Main start 1168:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 1170:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+1180: proc 2 terminates
+1217: proc 2 terminates
+		year = 2020
+1246: proc 2 terminates
+1248:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+1250:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+		tomorrowYear = 2020
+1252:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+		isLeap = 1
+1254:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+1256:	proc  1 (main) next_date_mcdc.pml:256 (state 107)	[else]
+1258:	proc  1 (main) next_date_mcdc.pml:303 (state 149)	[else]
+1260:	proc  1 (main) next_date_mcdc.pml:305 (state 150)	[((month==2))]
+1262:	proc  1 (main) next_date_mcdc.pml:321 (state 163)	[else]
+1263:	proc  1 (main) next_date_mcdc.pml:353 (state 192)	[else]
+1264:	proc  1 (main) next_date_mcdc.pml:355 (state 193)	[((day==29))]
+1265:	proc  1 (main) next_date_mcdc.pml:358 (state 194)	[(isLeap)]
+1266:	proc  1 (main) next_date_mcdc.pml:360 (state 195)	[tomorrowDay = 1]
+		tomorrowDay = 1
+1266:	proc  1 (main) next_date_mcdc.pml:361 (state 196)	[tomorrowMonth = 3]
+		tomorrowMonth = 3
+		tomorrowDay = 1
+1266:	proc  1 (main) next_date_mcdc.pml:362 (state 197)	[c_15_copy = (month==8)]
+		tomorrowMonth = 3
+		tomorrowDay = 1
+1266:	proc  1 (main) next_date_mcdc.pml:363 (state 198)	[c_151_copy = isLeap]
+		tomorrowMonth = 3
+		tomorrowDay = 1
+		c_151_copy = 1
+1267:	proc  1 (main) next_date_mcdc.pml:365 (state 199)	[((reset15==0))]
+1267:	proc  1 (main) next_date_mcdc.pml:366 (state 200)	[reset15 = 1]
+		reset15 = 1
+              Main start 1269:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 1271:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+1281: proc 2 terminates
+		day = 28
+1317: proc 2 terminates
+		year = 2021
+1347: proc 2 terminates
+1349:	proc  1 (main) next_date_mcdc.pml:148 (state 9)	[tomorrowMonth = month]
+		tomorrowMonth = 2
+1351:	proc  1 (main) next_date_mcdc.pml:149 (state 10)	[tomorrowYear = year]
+		tomorrowYear = 2021
+1353:	proc  1 (main) next_date_mcdc.pml:150 (state 11)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+		isLeap = 0
+1355:	proc  1 (main) next_date_mcdc.pml:207 (state 63)	[else]
+1357:	proc  1 (main) next_date_mcdc.pml:256 (state 107)	[else]
+1359:	proc  1 (main) next_date_mcdc.pml:303 (state 149)	[else]
+1361:	proc  1 (main) next_date_mcdc.pml:305 (state 150)	[((month==2))]
+1363:	proc  1 (main) next_date_mcdc.pml:321 (state 163)	[else]
+1364:	proc  1 (main) next_date_mcdc.pml:323 (state 164)	[((day==28))]
+1365:	proc  1 (main) next_date_mcdc.pml:339 (state 177)	[else]
+1366:	proc  1 (main) next_date_mcdc.pml:340 (state 178)	[tomorrowDay = 1]
+1366:	proc  1 (main) next_date_mcdc.pml:341 (state 179)	[tomorrowMonth = 3]
+		tomorrowMonth = 3
+1366:	proc  1 (main) next_date_mcdc.pml:343 (state 182)	[c_12_copy = (month==3)]
+		tomorrowMonth = 3
+1366:	proc  1 (main) next_date_mcdc.pml:344 (state 183)	[c_121_copy = (day==28)]
+		tomorrowMonth = 3
+		c_121_copy = 1
+1367:	proc  1 (main) next_date_mcdc.pml:346 (state 184)	[((reset12==0))]
+1367:	proc  1 (main) next_date_mcdc.pml:347 (state 185)	[reset12 = 1]
+		reset12 = 1
+              Main start 1369:	proc  1 (main) next_date_mcdc.pml:137 (state 1)	[printf('Main start ')]
+              Enter date in the form MM DD YYYY 1371:	proc  1 (main) next_date_mcdc.pml:139 (state 2)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 12
+1391: proc 2 terminates
+		day = 31
+1430: proc 2 terminates
+#processes: 2
+		isLeap = 0
+		day = 31
+		tomorrowYear = 2021
+		tomorrowMonth = 3
+		tomorrowDay = 1
+		year = 2021
+		month = 12
+		reset1 = 1
+		reset2 = 1
+		reset3 = 1
+		reset4 = 1
+		reset5 = 1
+		reset6 = 1
+		reset7 = 1
+		reset8 = 1
+		reset9 = 1
+		reset10 = 1
+		reset11 = 0
+		reset12 = 1
+		reset13 = 0
+		reset14 = 1
+		reset15 = 1
+		reset = 0
+		c_11_copy = 0
+		c_12_copy = 0
+		c_13_copy = 0
+		c_14_copy = 0
+		c_15_copy = 0
+		c_16_copy = 1
+		c_21_copy = 1
+		c_31_copy = 1
+		c_41_copy = 0
+		c_42_copy = 0
+		c_43_copy = 0
+		c_44_copy = 1
+		c_51_copy = 1
+		c_61_copy = 1
+		c_71_copy = 1
+		c_81_copy = 1
+		c_91_copy = 1
+		c_101_copy = 1
+		c_111_copy = 0
+		c_121_copy = 1
+		c_131_copy = 0
+		c_141_copy = 1
+		c_151_copy = 1
+1431:	proc  1 (main) next_date_mcdc.pml:145 (state 7)
+1431:	proc  0 (:init:) next_date_mcdc.pml:415 (state 2)
+43 processes created

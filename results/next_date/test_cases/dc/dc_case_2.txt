@@ -1,0 +1,40 @@
+![]!(!d_1 && if1 && <>final)
+  2:	proc  0 (:init:) next_date_cft.pml:181 (state 1)	[(run main(ret_main))]
+              Enter date in the form MM DD YYYY   4:	proc  1 (main) next_date_cft.pml:75 (state 1)	[printf('Enter date in the form MM DD YYYY ')]
+		month = 12
+ 24: proc 2 terminates
+		day = 31
+ 63: proc 2 terminates
+		year = 2021
+ 93: proc 2 terminates
+ 95:	proc  1 (main) next_date_cft.pml:84 (state 8)	[tomorrowMonth = month]
+		tomorrowMonth = 12
+ 97:	proc  1 (main) next_date_cft.pml:85 (state 9)	[tomorrowYear = year]
+		tomorrowYear = 2021
+ 99:	proc  1 (main) next_date_cft.pml:86 (state 10)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+101:	proc  1 (main) next_date_cft.pml:102 (state 24)	[else]
+103:	proc  1 (main) next_date_cft.pml:118 (state 38)	[else]
+105:	proc  1 (main) next_date_cft.pml:120 (state 39)	[((month==12))]
+107:	proc  1 (main) next_date_cft.pml:124 (state 42)	[else]
+109:	proc  1 (main) next_date_cft.pml:126 (state 43)	[((day==31))]
+111:	proc  1 (main) next_date_cft.pml:127 (state 44)	[tomorrowDay = 1]
+		tomorrowDay = 1
+113:	proc  1 (main) next_date_cft.pml:128 (state 45)	[tomorrowMonth = 1]
+		tomorrowMonth = 1
+115:	proc  1 (main) next_date_cft.pml:129 (state 46)	[tomorrowYear = (year+1)]
+		tomorrowYear = 2022
+              date is 1 1 2022 117:	proc  1 (main) next_date_cft.pml:173 (state 93)	[printf('date is %d %d %d ',tomorrowMonth,tomorrowDay,tomorrowYear)]
+119:	proc  1 (main) next_date_cft.pml:175 (state 94)	[in_main!0]
+120:	proc  0 (:init:) next_date_cft.pml:182 (state 2)	[ret_main?0]
+              End of main122:	proc  1 (main) next_date_cft.pml:177 (state 96) <valid end state>	[printf('End of main')]
+#processes: 2
+		isLeap = 0
+		day = 31
+		tomorrowYear = 2022
+		tomorrowMonth = 1
+		tomorrowDay = 1
+		year = 2021
+		month = 12
+123:	proc  1 (main) next_date_cft.pml:178 (state 97) <valid end state>
+123:	proc  0 (:init:) next_date_cft.pml:183 (state 3) <valid end state>
+5 processes created

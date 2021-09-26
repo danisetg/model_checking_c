@@ -9,7 +9,6 @@ string Atomic::translate(string fun_name, int& tabs, int& funCallNumber, string&
     string code = "atomic{\n";
     tabs++;
     for(int i = 0; i < statements.size(); i++) {
-        cout<<statements[i].type<<endl;
         code += statements[i].translate(fun_name, tabs, funCallNumber, previousCode) + "\n";
     }
     tabs--;

@@ -1,1 +1,0 @@
-spin: triangle_mcdc.pml:10, Error: undeclared variable: inv_main_isATriangle	saw '')' = 41'

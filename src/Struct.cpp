@@ -30,7 +30,6 @@ void Struct::parse(deque<Token>& tokens, string _name) {
             members.push_back(make_pair(decl.structDecl->structName, decl.name));
        declarations.push_back(decl);
        token = tokens.front();
-       cout<<token.word<<endl;
        if(token.type != "SEMICOLON")
             mad("Missing ';'");
        tokens.pop_front();

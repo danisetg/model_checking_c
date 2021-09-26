@@ -6,6 +6,13 @@ While::While()
     //ctor
 }
 
+While::While(const While &whileStatement) {
+    endCondition = Expression(whileStatement.endCondition);
+    for(int i = 0; i < whileStatement.whileBody.size(); i++) {
+        whileBody.push_back(Statement(whileStatement.whileBody[i]));
+    }
+}
+
 void While::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();

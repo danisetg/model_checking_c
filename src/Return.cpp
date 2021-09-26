@@ -8,6 +8,10 @@ Return::Return()
 {
 }
 
+Return::Return(const Return &ret) {
+    expression = Expression(ret.expression);
+}
+
 void Return::parse(deque<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())

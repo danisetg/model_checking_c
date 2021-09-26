@@ -1,0 +1,34 @@
+![]!(<>main_d_tomorrowMonth_v43 && X(!(main_d_tomorrowMonth_v11 || main_d_tomorrowMonth_v19 || main_d_tomorrowMonth_v26 || main_d_tomorrowMonth_v33 || main_d_tomorrowMonth_v43 || main_d_tomorrowMonth_v47) U ((main_u_tomorrowMonth_v50) && <>final)))
+  2:	proc  0 (:init:) next_date_dft.pml:179 (state 1)	[(run main(ret_main))]
+              Enter date in the form MM DD YYYY   4:	proc  1 (main) next_date_dft.pml:73 (state 1)	[printf('Enter date in the form MM DD YYYY ')]
+		main(1):month = 2
+ 14: proc 2 terminates
+		main(1):day = 28
+ 50: proc 2 terminates
+		main(1):year = 2021
+ 80: proc 2 terminates
+ 82:	proc  1 (main) next_date_dft.pml:82 (state 8)	[tomorrowMonth = month]
+		main(1):tomorrowMonth = 2
+ 84:	proc  1 (main) next_date_dft.pml:83 (state 9)	[tomorrowYear = year]
+		main(1):tomorrowYear = 2021
+ 86:	proc  1 (main) next_date_dft.pml:84 (state 10)	[isLeap = (((year%4)==0)&&(((year%100)!=0)||((year%400)==0)))]
+		main(1):isLeap = 0
+ 88:	proc  1 (main) next_date_dft.pml:100 (state 24)	[else]
+ 90:	proc  1 (main) next_date_dft.pml:116 (state 38)	[else]
+ 92:	proc  1 (main) next_date_dft.pml:133 (state 53)	[else]
+ 94:	proc  1 (main) next_date_dft.pml:135 (state 54)	[((month==2))]
+ 96:	proc  1 (main) next_date_dft.pml:139 (state 57)	[else]
+ 98:	proc  1 (main) next_date_dft.pml:141 (state 58)	[((day==28))]
+100:	proc  1 (main) next_date_dft.pml:145 (state 61)	[else]
+102:	proc  1 (main) next_date_dft.pml:146 (state 62)	[tomorrowDay = 1]
+		main(1):tomorrowDay = 1
+104:	proc  1 (main) next_date_dft.pml:147 (state 63)	[tomorrowMonth = 3]
+		main(1):tomorrowMonth = 3
+              date is 3 1 2021 106:	proc  1 (main) next_date_dft.pml:171 (state 93)	[printf('date is %d %d %d ',tomorrowMonth,tomorrowDay,tomorrowYear)]
+108:	proc  1 (main) next_date_dft.pml:173 (state 94)	[in_main!0]
+109:	proc  0 (:init:) next_date_dft.pml:180 (state 2)	[ret_main?0]
+              End of main111:	proc  1 (main) next_date_dft.pml:175 (state 96) <valid end state>	[printf('End of main')]
+#processes: 2
+113:	proc  1 (main) next_date_dft.pml:176 (state 97) <valid end state>
+113:	proc  0 (:init:) next_date_dft.pml:181 (state 3) <valid end state>
+5 processes created

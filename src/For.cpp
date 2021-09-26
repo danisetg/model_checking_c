@@ -5,6 +5,21 @@ For::For()
     //ctor
 }
 
+For::For(const For &forStatement) {
+    if(forStatement.initialValue.has_value()) {
+        initialValue = Statement(forStatement.initialValue.value());
+    }
+    if(forStatement.endCondition.has_value()) {
+        endCondition = Expression(forStatement.endCondition.value());
+    }
+    if(forStatement.nextValue.has_value()) {
+        nextValue = Expression(forStatement.nextValue.value());
+    }
+    for(int i = 0; i < forStatement.forBody.size(); i++) {
+        forBody.push_back(Statement(forStatement.forBody[i]));
+    }
+}
+
 void For::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
 
     Token token = tokens.front();

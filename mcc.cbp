@@ -46,6 +46,7 @@
 		<Unit filename="include/Conditional.h" />
 		<Unit filename="include/Const.h" />
 		<Unit filename="include/Continue.h" />
+		<Unit filename="include/DFSpecificationGenerator.h" />
 		<Unit filename="include/Declaration.h" />
 		<Unit filename="include/Decrement.h" />
 		<Unit filename="include/Define.h" />
@@ -91,6 +92,7 @@
 		<Unit filename="src/Conditional.cpp" />
 		<Unit filename="src/Const.cpp" />
 		<Unit filename="src/Continue.cpp" />
+		<Unit filename="src/DFSpecificationGenerator.cpp" />
 		<Unit filename="src/Declaration.cpp" />
 		<Unit filename="src/Decrement.cpp" />
 		<Unit filename="src/Define.cpp" />

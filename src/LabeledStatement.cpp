@@ -4,6 +4,10 @@ LabeledStatement::LabeledStatement()
 {
     //ctor
 }
+LabeledStatement::LabeledStatement(const LabeledStatement &labeledStatement) {
+    labelName = labeledStatement.labelName;
+    statement = Statement(labeledStatement.statement);
+}
 
 void LabeledStatement::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
   Token token = tokens.front();

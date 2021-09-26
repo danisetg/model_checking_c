@@ -141,9 +141,9 @@ vector<string> getProgramWords(string program) {
 }
 
 //function for extracting program tokens and storing them in a vector the order they are found
-vector<Token> getTokens(string program) {
+deque<Token> getTokens(string program) {
     vector<string> words = getProgramWords(program);
-    vector<Token> foundTokens;
+    deque<Token> foundTokens;
     int len = words.size();
     //iterate the words vector and for each word check if it matches any of the predefined tokens
     for(int i = 0; i < len; i++) {

@@ -12,6 +12,17 @@ Program::Program()
 {
 }
 
+Program::Program(const Program &program) {
+    for(int i = 0; i < program.f.size(); i++) {
+        Fun fun = Fun(program.f[i]);
+        f.push_back(fun);
+
+    }
+    d = program.d;
+    s = program.s;
+    def = program.def;
+}
+
 void Program::parse(deque<Token>& tokens) {
 
     if(tokens.empty())
@@ -82,7 +93,6 @@ string Program::translate(int& tabs, bool translateDefines) {
     code += inputFunction(tabs);
     for(int i = 0; i < s.size(); i++) {
         code += s[i].translate(tabs) + "\n";
-        //cout<<" "<<s[i].name<<endl;
     }
 
     vector<string> pointers_types = getPointerTypes();
@@ -94,7 +104,6 @@ string Program::translate(int& tabs, bool translateDefines) {
 
     for(int i = 0; i < d.size(); i++) {
         code += d[i].translate(tabs, true) + ";\n";
-       // cout<<f[i].name<<endl;
     }
 
     if(translateDefines) {
@@ -106,7 +115,6 @@ string Program::translate(int& tabs, bool translateDefines) {
     for(int i = 0; i < f.size(); i++) {
         string tmp = "";
         code += f[i].translate(tabs) + "\n";
-       // cout<<f[i].name<<endl;
     }
 
     code += "init {\n";
@@ -117,7 +125,6 @@ string Program::translate(int& tabs, bool translateDefines) {
     tabs--;
     code += "}";
 
-   // cout<<code<<endl;
     return code;
 }
 

@@ -18,12 +18,65 @@ Statement::Statement()
     //ctor
 }
 
+Statement::Statement(const Statement &statement) {
+    type = statement.type;
+    switch(type) {
+        case RETURN:
+            ret = new Return(*statement.ret);
+            break;
+        case DECLARATION:
+            decl = new Declaration(*statement.decl);
+            break;
+        case EXPRESSION:
+            expression = new Expression(*statement.expression);
+            break;
+        case IF:
+            ifStatement = new If(*statement.ifStatement);
+            break;
+        case FOR:
+            forStatement = new For(*statement.forStatement);
+            break;
+        case WHILE:
+            whileStatement = new While(*statement.whileStatement);
+            break;
+        case DO_WHILE:
+            doWhileStatement = new DoWhile(*statement.doWhileStatement);
+            break;
+        case BREAK:
+            breakStatement = statement.breakStatement;
+            break;
+        case PRINT:
+            print = new Print();
+            *print = *statement.print;
+            break;
+        case SCAN:
+            scan = new Scan();
+            *scan = *statement.scan;
+            break;
+        case CONTINUE:
+            continueStatement = statement.continueStatement;
+            break;
+        case LABELED_STATEMENT:
+            labeledStatement = new LabeledStatement(*statement.labeledStatement);
+            break;
+        case GOTO:
+            gto = statement.gto;
+            break;
+        case SWITCH:
+            switchStatement = new Switch();
+            *switchStatement = *statement.switchStatement;
+            break;
+         case ATOMIC:
+            atomic = new Atomic();
+            *atomic = *statement.atomic;
+    }
+}
+
 void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vector<string>& _funCalls) {
     if(tokens.empty())
         mad("Statement is Empty");
 
     Token token = tokens.front();
-    cout<<token.word<<endl;
     if(token.type == "RETURN_KEYWORD") {
         Return _ret;
         _ret.parse(tokens, _funCalls);
@@ -66,7 +119,6 @@ void Statement::parse(deque<Token>& tokens, vector<Statement>& statements, vecto
         *scan = _scan;
         type = SCAN;
         _funCalls.push_back("input");
-        cout<<"    input"<<endl;
     } else if(token.type == "IDENTIFIER" || token.type == "INTEGER" || token.type == "MULTIPLICATION") {
         tokens.pop_front();
         Token token1 = tokens.front();

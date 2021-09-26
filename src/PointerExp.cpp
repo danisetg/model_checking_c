@@ -32,7 +32,6 @@ string PointerExp::translate(string fun_name, int& tabs, int& funCallNumber, str
     switch(exp.type) {
         case VARIABLE:
             type = getPointerType(exp.variable->name);
-            cout<<exp.variable->name<<endl;
             if(type == "-1")
                 mad("Can't find pointer " + exp.variable->name);
             code = type + "_mem[" + exp.variable->name + "]";

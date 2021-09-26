@@ -26,7 +26,21 @@ vector<string> split(string str, char delimiter) {
         str_arr.push_back(word);
     return str_arr;
 }
+string replaceAll(string s, string a, string b) {
+    string aux = s;
+    while (true) {
+     /* Locate the substring to replace. */
+     int index = aux.find(a);
+     cout<<aux<<" "<<a<<" "<<b<<" "<<(index == std::string::npos)<<endl;
+     if (index == std::string::npos) break;
 
+     /* Make the replacement. */
+     aux = aux.replace(index, a.length(), b);
+
+    }
+    return aux;
+}
+//reads a file and saves its content in a string
 string fileToString(string dir) {
    ifstream f(dir); //taking file as inputstream
    string str;
@@ -85,7 +99,6 @@ vector<string> getPointerTypes() {
     vector<string> types;
     for(it = pointersTypes.begin(); it != pointersTypes.end(); it++) {
         types.push_back(*it);
-        cout<<*it<<endl;
     }
     return types;
 }
@@ -151,14 +164,14 @@ string exec(const char* cmd) {
 }
 
 
-void createFolderIfNotExists(const char* address)
+void createFolderIfNotExists(string address)
 {
 	//Judge whether the folder exists, create it if it does not exist
-	const char* dir = address;
+	string dir = address;
 
-	if (_access(dir, 0) == -1)
+	if (_access(dir.c_str(), 0) == -1)
 	{
-		_mkdir(dir);
+		_mkdir(dir.c_str());
 	}
 
 

@@ -6,6 +6,11 @@ UnaryOperator::UnaryOperator()
     //ctor
 }
 
+UnaryOperator::UnaryOperator(const UnaryOperator &unaryOperator) {
+    expression = Expression(unaryOperator.expression);
+    op = unaryOperator.op;
+}
+
 void UnaryOperator::parse (deque<Token>& tokens, vector<string>& _funCalls) {
 
     if(tokens.empty())

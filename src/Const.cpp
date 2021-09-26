@@ -1,11 +1,4 @@
 #include "Const.h"
-#include <iostream>
-#include <Helper.h>
-#include <sstream>
-#include <fstream>
-using std::cout;
-using std::endl;
-using std::ofstream;
 Const::Const(string _value)
 {
     value = _value;

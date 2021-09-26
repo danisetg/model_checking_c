@@ -11,59 +11,87 @@
 #include "Fun.h"
 #include "SpecificationGenerator.h"
 #include "SpinInterface.h"
+#include "DFSpecificationGenerator.h"
+#include <locale.h>
 using namespace std;
 
+string getFilename(string addr) {
+    return addr.substr(addr.find_last_of('\\') + 1, addr.find_last_of('.') - addr.find_last_of('\\') - 1);
+}
+
+string getFileExtension(string addr) {
+    return addr.substr(addr.find_last_of('.') + 1);
+}
 
 int main()
 {
-   /* int it = 0;
+    //Function for allowing to print accents in console.
+    setlocale(LC_ALL, "");
 
-    for(int i = 0; i < 3; i++) {
-        for(int h = 0; h < 4; h++) {
-            for(int k = 0; k < 5; k++) {
-                cout<<"["<<i<<"]["<<h<<"]["<<k<<"]"<<"   ---->   "<<"["<<it<<"]"<<endl;
-                it++;
-            }
-        }
-    }
-    return 0;*/
+    string programAdress;
 
-    string program = fileToString("C:\\c_tests\\Ejemplos\\triangle.c");
-    deque<Token> tokens;
-    vector<Token> foundTokens = getTokens(program);
+    bool isAValidCFile = false;
 
-    int len = foundTokens.size();
+    //iterates until a valid C file address is provided
+    do {
+        //Ask for file address and save it in programAddress variable
+        printf("Introduzca la dirección del archivo .c del programa\n");
+        cin>>programAdress;
+
+        isAValidCFile = (getFileExtension(programAdress) == "c");
+
+        if(!isAValidCFile)
+            printf("Debe introducir la dirección un archivo .c\n");
+
+    } while(!isAValidCFile);
+
+    string fileName = getFilename(programAdress);
+    string resultsAddr = "results\\" + fileName;
+
+    //creates a directory for storing the results
+    createFolderIfNotExists("results");
+    createFolderIfNotExists("results\\" + fileName);
 
 
-    for(int i = 0; i < len; i++) {
-     //  cout<<foundTokens[i].type<<" "<<foundTokens[i].word<<endl;
-        tokens.push_back(foundTokens[i]);
-    }
+    //Creates a string with the code of the program.
+    string programString = fileToString(programAdress);
 
+    //get the tokens from Lexer's getTokens function.
+    deque<Token> tokens = getTokens(programString);
+
+    //Creates Program p which will be the root of the AST
     Program p;
+    //builds the AST
     p.parse(tokens);
 
-    ofstream outfile;
-    outfile.open("triangle.pml");
+    //initialize the tabs for the translation indentation.
     int tabs = 0;
+
+    //Creates an ofstream for creating the files with the results
+    ofstream outfile;
+    //creates and open a new file with .pml extension for storing the translation result
+    outfile.open(resultsAddr + "\\" + fileName + ".pml");
+    //translates the program and stores it in the opened file.
     outfile<<p.translate(tabs, false);
+    //closes the file.
     outfile.close();
 
-    SpecificationGenerator sp;
-    sp.p = p;
+    return 0;
 
-    sp.changeDeclarationsToGlobal();
-    outfile.open("triangle_cft.pml");
-    tabs = 0;
-    outfile<<sp.p.translate(tabs, true);
+    //initialize an specification generator for control flow oriented specifications.
+    SpecificationGenerator sp = SpecificationGenerator(p);
+    sp.generateCFSpecifications(resultsAddr, fileName);
 
-    outfile.close();
-
-    createFolderIfNotExists("test_cases");
+    //creates a spin interface instance and generates control flow oriented tests
     SpinInterface spin;
+    spin.generateCFTests(sp, resultsAddr, fileName);
 
-    spin.generateCFTests(sp);
+     //initialize an specification generator for data flow oriented specifications.
+    DFSpecificationGenerator df = DFSpecificationGenerator(p);
+    df.generateDFSpecifications(resultsAddr, fileName);
 
+    //generates data flow oriented tests
+    spin.generateDFTests(df, resultsAddr, fileName);
 
     return 0;
 }

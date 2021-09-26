@@ -12,6 +12,11 @@ Assignment::Assignment()
 {
 }
 
+Assignment::Assignment(const Assignment &assignment) {
+    leftSide = Expression(assignment.leftSide);
+    exp = Expression(assignment.exp);
+}
+
 string Assignment::translateConditional(string fun_name, int& tabs, int& funCallNumber, string& previousCode) {
     If ifStatement;
     ifStatement.condition = exp.cond->condition;
